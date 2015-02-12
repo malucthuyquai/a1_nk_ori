@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/connect_bg"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rlayout_parent"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/connect_top_bar" >
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/connect_primary_m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif"
+            android:text="@string/connect_titlebar_app_name" >
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/connect_second_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/rlayout_parent"
+        android:layout_marginTop="@dimen/connect_second_bar_margin_top"
+        android:background="@drawable/connect_second_bar" >
+
+        <TextView
+            android:id="@+id/your_nabi_friend_code"
+            style="@style/connect_primary_xl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/connect_your_nabi_friend_code" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/friend_code"
+            style="@style/connect_primary_xl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="right" >
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/connect_second_bar"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="4dp"
+            android:paddingTop="8dp" >
+
+            <com.fuhu.nabiconnect.widget.ConnectItemWidget
+                android:id="@+id/connect_chat_item"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1" >
+            </com.fuhu.nabiconnect.widget.ConnectItemWidget>
+
+            <com.fuhu.nabiconnect.widget.ConnectItemWidget
+                android:id="@+id/connect_photo_item"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+            </com.fuhu.nabiconnect.widget.ConnectItemWidget>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp" >
+
+            <com.fuhu.nabiconnect.widget.ConnectItemWidget
+                android:id="@+id/connect_mail_item"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1" >
+            </com.fuhu.nabiconnect.widget.ConnectItemWidget>
+
+            <com.fuhu.nabiconnect.widget.ConnectItemWidget
+                android:id="@+id/connect_friend_item"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+            </com.fuhu.nabiconnect.widget.ConnectItemWidget>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

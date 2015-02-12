@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/avatar_icon_background"
+    android:layout_width="@dimen/avatar_icon_container_size"
+    android:layout_height="@dimen/avatar_icon_container_size" >
+    
+    <ImageView
+            android:id="@+id/avatar_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    
+    <ImageView
+            android:id="@+id/avatar_icon_glasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    <ImageView
+            android:id="@+id/avatar_icon_hairband"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+   
+    <ImageView
+            android:id="@+id/avatar_icon_necktie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    
+    
+    <ImageView
+            android:id="@+id/avatar_icon_hat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    
+     <ImageView
+            android:id="@+id/avatar_icon_moustache"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+     
+     
+
+</RelativeLayout>

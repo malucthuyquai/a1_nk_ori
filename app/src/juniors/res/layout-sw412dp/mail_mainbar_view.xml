@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="match_parent"  
+    android:background="@drawable/mail_bar" >
+    
+    <ImageView
+        android:id="@+id/mail_bar_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/connect_bar_icon" />
+   
+     
+    <com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget
+        android:id="@+id/mail_compose_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/mainbar_item_margin_top"
+        />
+    
+    <com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget
+        android:id="@+id/mail_inbox_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/mail_compose_button"
+        />
+    
+    <com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget
+        android:id="@+id/mail_unsent_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/mail_inbox_button"
+        android:visibility="gone"
+        />  
+</RelativeLayout>

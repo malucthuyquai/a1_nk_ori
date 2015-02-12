@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sticker_background"
+    android:layout_width="@dimen/chat_bar_sticker_widget_width"
+    android:layout_height="@dimen/chat_bar_sticker_widget_height"
+    android:background="#F2F2F2">   
+    
+     
+    <ImageView 
+        android:id="@+id/sticker_icon"
+        android:layout_width="@dimen/sticker_size"
+    	android:layout_height="@dimen/sticker_size"
+    	android:layout_centerInParent="true"/>
+
+	
+</RelativeLayout>

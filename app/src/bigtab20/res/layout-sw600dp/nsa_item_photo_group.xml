@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/photo_frame01"
+            layout="@layout/nsa_item_photo" >
+        </include>
+
+        <include
+            android:id="@+id/photo_frame04"
+            layout="@layout/nsa_item_photo" >
+        </include>
+
+        <include
+            android:id="@+id/photo_frame06"
+            layout="@layout/nsa_item_photo" >
+        </include>
+
+        <include
+            android:id="@+id/photo_frame08"
+            layout="@layout/nsa_item_photo" >
+        </include>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/photo_frame02"
+            layout="@layout/nsa_item_photo" >
+        </include>
+
+        <include
+            android:id="@+id/photo_frame03"
+            layout="@layout/nsa_item_photo" >
+        </include>
+
+        <include
+            android:id="@+id/photo_frame05"
+            layout="@layout/nsa_item_photo" >
+        </include>
+
+        <include
+            android:id="@+id/photo_frame07"
+            layout="@layout/nsa_item_photo" >
+        </include>
+    </LinearLayout>
+
+</LinearLayout>

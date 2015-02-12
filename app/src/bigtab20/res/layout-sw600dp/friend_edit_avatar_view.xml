@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/edit_avatar_container"
+        android:layout_width="@dimen/edit_avatar_container_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/friend_profile_bg" >
+
+        <RelativeLayout
+            android:id="@+id/name_container"
+            android:layout_width="@dimen/edit_avatar_name_container_width"
+            android:layout_height="@dimen/edit_avatar_name_container_height"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edit_avatar_name_container_margin_top" >
+
+            <TextView
+                android:id="@+id/name_text"
+                style="@style/friend_primary_xl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/edit_avatar_name_edit_button_size"
+                android:layout_marginRight="@dimen/edit_avatar_name_edit_button_size"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/name_edittext"
+                style="@style/friend_primary_xl_gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/edit_avatar_name_edit_button_size"
+                android:background="@null"
+                android:imeOptions="flagNoExtractUi"
+                android:maxLines="1"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/name_edit_button"
+                android:layout_width="@dimen/edit_avatar_name_edit_button_size"
+                android:layout_height="@dimen/edit_avatar_name_edit_button_size"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/edit_avatar_name_edit_button_margin_right"
+                android:background="@drawable/friend_pen" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/friend_setup_step2_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/friend_setup_2_margin_top" >
+
+            <TextView
+                android:id="@+id/friend_setup_step2_text"
+                style="@style/friend_primary_xl_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/friend_step_2" />
+
+            <TextView
+                android:id="@+id/friend_setup_create_name_text"
+                style="@style/friend_primary_xl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/friend_setup_step2_text"
+                android:layout_centerHorizontal="true"
+                android:text="@string/friend_customize_character" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/edit_avatar_icon"
+            android:layout_width="@dimen/edit_avatar_icon_size"
+            android:layout_height="@dimen/edit_avatar_icon_size"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/edit_avatar_icon_margin_top" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="@dimen/edit_avatar_circle_button_size"
+            android:layout_height="@dimen/edit_avatar_circle_button_size"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/edit_avatar_circle_button_margin_bottom"
+            android:layout_toLeftOf="@+id/v_mid"
+            android:background="@drawable/friend_btn_reject_friend_selector" />
+
+        <View
+            android:id="@+id/v_mid"
+            android:layout_width="16dp"
+            android:layout_height="@dimen/edit_avatar_circle_button_size"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/edit_avatar_circle_button_margin_bottom" >
+        </View>
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="@dimen/edit_avatar_circle_button_size"
+            android:layout_height="@dimen/edit_avatar_circle_button_size"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/edit_avatar_circle_button_margin_bottom"
+            android:layout_toRightOf="@+id/v_mid"
+            android:background="@drawable/friend_btn_accept_friend_selector" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/assets_category_container"
+        android:layout_width="@dimen/edit_avatar_bar_width"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/edit_avatar_container"
+        android:background="@drawable/friend_colorful_bg" >
+
+        <com.fuhu.nabiconnect.friend.widget.AvatarBarButtonWidget
+            android:id="@+id/avatar_icon_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+        <com.fuhu.nabiconnect.friend.widget.AvatarBarButtonWidget
+            android:id="@+id/avatar_color_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avatar_icon_button" />
+
+        <com.fuhu.nabiconnect.friend.widget.AvatarBarButtonWidget
+            android:id="@+id/avatar_hat_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avatar_color_button" />
+
+        <com.fuhu.nabiconnect.friend.widget.AvatarBarButtonWidget
+            android:id="@+id/avatar_accessories_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avatar_hat_button" />
+
+        <com.fuhu.nabiconnect.friend.widget.AvatarBarButtonWidget
+            android:id="@+id/avatar_background_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/avatar_accessories_button" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/assets_item_scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/assets_category_container"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:id="@+id/assets_item_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableLayout
+                android:id="@+id/assets_item_table"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

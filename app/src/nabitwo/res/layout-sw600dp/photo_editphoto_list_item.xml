@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fuhu.nabiconnect.photo.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ImageView
+        android:id="@+id/EditPhoto_Item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/photo_editphoto_item_background"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="@dimen/photo_editphoto_itembg_sapcing"
+        android:layout_marginLeft="@dimen/photo_editphoto_itembg_sapcing"
+        android:layout_marginRight="@dimen/photo_editphoto_itembg_sapcing"
+        android:layout_marginTop="@dimen/photo_editphoto_itembg_sapcing"/>
+    
+    <ImageView
+        android:id="@+id/EditPhoto_ItemSelectContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"/>
+    
+
+</com.fuhu.nabiconnect.photo.SquareLayout>

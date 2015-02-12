@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 1920x1200 8" DreamTab -->
+    <!-- 800x400 5" nabi junior -->
+    <integer name="photo_target_width">300</integer>
+    <!-- shared -->
+    <dimen name="nsa_gallery_top_margin">4dp</dimen>
+    <dimen name="nsa_kid_name_bot_margin">4dp</dimen>
+    <dimen name="nsa_topbar_height">48dp</dimen>
+    <dimen name="nsa_topbar_item_height">40dp</dimen>
+    <dimen name="nsa_pd_height">48dp</dimen>
+    <dimen name="nsa_back_button_side">40dp</dimen>
+    <dimen name="nsa_top_back_left_margin">12dp</dimen>
+    <!-- kid list avatar -->
+    <dimen name="nsa_avatar_ring_width">4dp</dimen>
+    <dimen name="nsa_avatar_ring_padding">2dp</dimen>
+    <!-- text size -->
+    <dimen name="nsa_text_size">18dp</dimen>
+    <dimen name="nsa_kid_name_size">20dp</dimen>
+    <!-- mid layout height -->
+    <dimen name="nsa_mid_height">48dp</dimen>
+    <!-- friend -->
+    <dimen name="nsa_item_friend_avatar">70dp</dimen>
+    <dimen name="nsa_gallery_arrow_width">48dp</dimen>
+    <dimen name="nsa_gallery_arrow_height">40dp</dimen>
+    <dimen name="nsa_avatar_dim_s">60dp</dimen>
+    <dimen name="nsa_delete_dim">48dp</dimen>
+    <dimen name="blocked_list_height">160dp</dimen>
+    <dimen name="block_list_margin">24dp</dimen>
+    <dimen name="dialog_padding">120dp</dimen>
+    <dimen name="dialog_padding_vertical">16dp</dimen>
+    <!-- chat -->
+    <dimen name="nsa_chat_icon_side">32dp</dimen>
+    <dimen name="nsa_chat_unread_icon_side">24dp</dimen>
+    <dimen name="nsa_chat_unread_top_margin">-8dp</dimen>
+    <dimen name="nsa_conversation_avatar">70dp</dimen>
+    <dimen name="nsa_chat_delete_dim">48dp</dimen>
+    <dimen name="nsa_chat_max_width">300dp</dimen>
+    <!-- mail -->
+    <dimen name="nsa_mail_icon_side">36dp</dimen>
+    <dimen name="nsa_unread_icon_side">20dp</dimen>
+    <dimen name="nsa_mail_unread_top_margin">-4dp</dimen>
+    <dimen name="nsa_unread_text_size">14dp</dimen>
+    <dimen name="nsa_mail_width">128dp</dimen>
+    <dimen name="nsa_mail_height">96dp</dimen>
+    <!-- photo -->
+    <dimen name="nsa_photo_avatar_margin">8dp</dimen>
+    <dimen name="nsa_photo_name_top_margin">4dp</dimen>
+    <dimen name="nsa_photo_time_bottom_margin">4dp</dimen>
+    <dimen name="nsa_photo_name_text_size">18dp</dimen>
+    <dimen name="nsa_photo_time_text_size">16dp</dimen>
+    <dimen name="nsa_photo_header_height">48dp</dimen>
+    <dimen name="nsa_photo_short_height">280dp</dimen>
+    <dimen name="nsa_photo_long_height">320dp</dimen>
+
+</resources>

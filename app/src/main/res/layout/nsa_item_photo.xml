@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nsa_photo_header_height"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/white" >
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/nsa_photo_header_height"
+            android:layout_height="@dimen/nsa_photo_header_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/nsa_photo_avatar_margin"
+            android:contentDescription="@string/empty"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chat_avatar_default" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/nsa_photo_name_top_margin"
+            android:layout_toLeftOf="@+id/iv_delete"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/nsa_photo_name_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/nsa_photo_time_bottom_margin"
+            android:layout_toLeftOf="@+id/iv_delete"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="#999999"
+            android:textSize="@dimen/nsa_photo_time_text_size" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="@dimen/nsa_photo_header_height"
+            android:layout_height="@dimen/nsa_photo_header_height"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/empty"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nsa_btn_photo_x" >
+        </ImageView>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_photo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:background="@android:color/white" >
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/empty"
+            android:scaleType="centerCrop" >
+        </ImageView>
+    </FrameLayout>
+
+</LinearLayout>

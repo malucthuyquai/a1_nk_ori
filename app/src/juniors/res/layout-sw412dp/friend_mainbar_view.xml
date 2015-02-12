@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/friend_mainbar_container"
+    android:layout_width="80dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/connect_left_bar_bg"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/chat_bar_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/connect_bar_icon" >
+    </ImageView>
+
+    <View
+        android:layout_width="80dp"
+        android:layout_height="1dp"
+        android:background="@drawable/connect_left_bar_dividor" >
+    </View>
+
+</LinearLayout>

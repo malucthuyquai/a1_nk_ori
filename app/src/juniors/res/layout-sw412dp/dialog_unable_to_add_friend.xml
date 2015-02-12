@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="@dimen/friend_whole_dialog_width"
+        android:layout_height="@dimen/friend_whole_dialog_height"
+        android:layout_gravity="center" >
+
+        <RelativeLayout
+            android:layout_width="@dimen/friend_dialog_bg_width"
+            android:layout_height="@dimen/friend_dialog_bg_height"
+            android:layout_centerInParent="true"
+            android:background="@drawable/friend_dialog_bg" >
+
+            <ImageView
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="32px"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/dialog_blocked_avatar" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/mail_secondary_m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/friend_dialog_context_margin_left"
+                android:layout_marginTop="@dimen/friend_dialog_title_margin_top"
+                android:text="@string/friend_unable_to_add_friend_title" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_message"
+                style="@style/mail_primary_m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginLeft="@dimen/friend_dialog_context_margin_left"
+                android:layout_marginRight="@dimen/friend_dialog_context_margin_right"
+                android:layout_marginTop="24dp"
+                android:text="@string/friend_unable_to_add_friend_message" >
+            </TextView>
+
+            <Button
+                android:id="@+id/btn_close"
+                style="@style/mail_primary_m"
+                android:layout_width="@dimen/friend_dialog_button_width"
+                android:layout_height="@dimen/friend_dialog_button_height"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/friend_request_sent_button_bottom_margin"
+                android:layout_marginRight="@dimen/friend_dialog_submit_button_margin_right"
+                android:background="@drawable/friend_dialog_btn_cancel"
+                android:gravity="center"
+                android:text="@string/friend_create_user_name_cancel_btn_text" >
+            </Button>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_cross"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/friend_dialog_x_icon_margin_right"
+            android:layout_marginTop="@dimen/friend_dialog_x_icon_margin_top"
+            android:background="@drawable/friend_dialog_btn_x" >
+        </Button>
+    </RelativeLayout>
+
+</merge>

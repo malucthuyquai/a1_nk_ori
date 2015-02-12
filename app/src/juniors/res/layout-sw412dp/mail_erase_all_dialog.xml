@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="688dp"
+    android:layout_height="412dp"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/erase_all_dialog_background"
+        android:layout_width="@dimen/mail_erase_all_dialog_width"
+        android:layout_height="@dimen/mail_erase_all_dialog_height"
+        android:layout_centerInParent="true"
+        android:background="@drawable/mail_erase_all_dialog_bg" >
+        
+        <TextView 
+            android:id="@+id/erase_all_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/mail_erase_all_dialog_title_margin_top"
+            android:text="@string/mail_erase_all"
+            style="@style/mail_primary_l"/>
+        
+    
+
+        <Button
+            android:id="@+id/erase_all_cancel_button"
+            android:layout_width="@dimen/mail_erase_all_dialog_button_size"
+            android:layout_height="@dimen/mail_erase_all_dialog_button_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="35dp"
+            android:layout_marginLeft="@dimen/mail_erase_all_dialog_button_margin_side"
+            android:background="@drawable/friend_btn_reject_friend_selector" />
+
+        <Button
+            android:id="@+id/erase_all_ok_button"
+            android:layout_width="@dimen/mail_erase_all_dialog_button_size"
+            android:layout_height="@dimen/mail_erase_all_dialog_button_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="35dp"
+            android:layout_marginRight="@dimen/mail_erase_all_dialog_button_margin_side"
+            android:background="@drawable/friend_btn_accept_friend_selector" />
+    </RelativeLayout>
+
+</RelativeLayout>

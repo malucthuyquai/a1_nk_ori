@@ -1,0 +1,14 @@
+<resources>
+ 
+    <style name="notification_primary_s">
+        <item name="android:textSize">16px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+     
+    
+    <style name="notification_primary_m">
+        <item name="android:textSize">20px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+</resources>

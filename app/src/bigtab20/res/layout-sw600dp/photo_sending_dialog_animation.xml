@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/device_screen_width"
+    android:layout_height="@dimen/device_screen_height"
+    android:orientation="horizontal" >
+    
+	<RelativeLayout
+	    android:id="@+id/photo_sending_animation_dialog_main_rl"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerInParent="true" >
+	
+	    <ImageView
+	        android:id="@+id/photo_sending_animation_zone"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	
+	    <TextView
+	        android:id="@+id/photo_sending_textview"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="@dimen/sending_textview_margin_left"
+	        android:layout_marginTop="@dimen/sending_textview_margin_top"
+	        android:textColor="@color/sendingDialogAnimation"
+	        android:textSize="@dimen/sending_textview_dialog_context_textsize"
+	        android:visibility="visible" />
+	</RelativeLayout>
+
+</RelativeLayout>

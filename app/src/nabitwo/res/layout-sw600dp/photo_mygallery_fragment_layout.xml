@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/MyGalleryActivityLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/CenterFrame"
+        style="@style/photolayout_centerframe_mygallery"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/white" >
+
+        <ImageView
+            android:id="@+id/ProfileBackgoround"
+            style="@style/photolayout_profile_background"
+            android:background="@drawable/photo_mygallery_profile_background" />
+
+        <ImageButton
+            android:id="@+id/MyGallery_GridButton"
+            style="@style/photolayout_mygallery_gridbutton"
+            android:layout_below="@+id/ProfileBackgoround"
+            android:background="@drawable/photo_selector_mygallery_gridbtn" />
+
+        <ImageButton
+            android:id="@+id/MyGallery_ListButton"
+            style="@style/photolayout_mygallery_gridbutton"
+            android:layout_below="@+id/ProfileBackgoround"
+            android:layout_toRightOf="@+id/MyGallery_GridButton"
+            android:background="@drawable/photo_selector_mygallery_listbtn" />
+
+        <ImageView
+            android:id="@+id/Profile_Photo"
+            style="@style/photolayout_profile_photo"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/chat_avatar_default"/>
+
+        <TextView
+            android:id="@+id/Profile_Name"
+            style="@style/photolayout_wrap"
+            android:layout_below="@+id/Profile_Photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/photo_mygallery_username_margetop"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@drawable/white"
+            android:textSize="@dimen/photo_mygallery_username_textsize" />
+
+        <TextView
+            android:id="@+id/MyGallery_PhotosNum"
+            style="@style/photolayout_mygallery_photonum"
+            android:layout_below="@+id/MyGallery_GridButton"
+            android:gravity="center"
+            android:text="--"
+            android:textColor="@drawable/darkgray"
+            android:textSize="@dimen/photo_mygallery_photonum_textsize" />
+
+        <ImageView
+            android:id="@+id/Profile_CenterGrayLine"
+           	style="@style/photolayout_mygallery_CenterGrayLine"
+            android:layout_centerHorizontal="true"
+            android:layout_alignTop="@+id/MyGallery_PhotosNum"
+            android:background="@drawable/darkgray" />
+         
+        <TextView
+            android:id="@+id/MyGallery_PhotosText"
+            style="@style/photolayout_mygallery_phototext"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/MyGallery_PhotosNum"
+            android:gravity="center_horizontal"
+            android:text="@string/photo_mygalleryactivity_photos"
+            android:textSize="@dimen/photo_mygallery_phototext_textsize" />
+
+        <TextView
+            android:id="@+id/MyGallery_FriendsNum"
+            style="@style/photolayout_mygallery_photonum"
+            android:layout_below="@+id/MyGallery_ListButton"
+            android:layout_toRightOf="@+id/MyGallery_PhotosNum"
+            android:gravity="center"
+            android:text="--"
+            android:textColor="@drawable/darkgray"
+            android:textSize="@dimen/photo_mygallery_photonum_textsize"/>
+
+        <TextView
+            android:id="@+id/MyGallery_FriendsText"
+            style="@style/photolayout_mygallery_phototext"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/MyGallery_FriendsNum"
+            android:layout_toRightOf="@+id/MyGallery_PhotosText"
+            android:gravity="center_horizontal"
+            android:text="@string/photo_mygalleryactivity_friends"
+            android:textSize="@dimen/photo_mygallery_phototext_textsize" />
+    </RelativeLayout>
+
+     <RelativeLayout
+         style="@style/photolayout_full"
+         android:layout_toRightOf="@+id/CenterFrame"
+         android:background="@drawable/backgroundgray" >
+        
+        <RelativeLayout
+            style="@style/photolayout_wrap"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/MyGallery_Mountain_Icon"
+                style="@style/photolayout_wrap"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/photo_default_mountain_icon" />
+
+            <TextView
+                android:id="@+id/MyGalllery_NoPhotoText"
+                style="@style/photolayout_wrap"
+                android:layout_below="@+id/MyGallery_Mountain_Icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/photo_inbox_nophototext_margetop"
+                android:text="@string/photo_mygalleryactivity_nophototext"
+                android:textSize="@dimen/photo_inbox_nophototext_textsize" />
+        </RelativeLayout>
+        
+        <FrameLayout
+            android:id="@+id/RightFrame"
+            style="@style/photolayout_full" >
+        </FrameLayout>
+
+     </RelativeLayout>
+
+</RelativeLayout>

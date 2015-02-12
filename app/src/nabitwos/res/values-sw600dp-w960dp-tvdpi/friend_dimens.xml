@@ -1,0 +1,124 @@
+<resources>
+
+    <dimen name="avatar_icon_container_size">500px</dimen>
+    <!-- Screen Resolution of device -->
+    <dimen name="device_screen_width">1280px</dimen>
+    <dimen name="device_screen_height">752px</dimen>
+
+    <!-- MainBar -->
+    <dimen name="mainbar_item_width">0px</dimen>
+    <dimen name="mainbar_item_parent_mode_width">150px</dimen>
+
+    <!-- main page information -->
+    <dimen name="self_information_container_width">530px</dimen>
+    <dimen name="self_information_container_parent_mode_width">450px</dimen>
+    <dimen name="edit_avatar_button_size">72px</dimen>
+    <dimen name="edit_avatar_button_margin_top">28px</dimen>
+    <dimen name="edit_avatar_button_margin_right">12px</dimen>
+    <dimen name="self_avatar_icon_size">347px</dimen>
+    <dimen name="self_avatar_icon_margin_top">145px</dimen>
+    <dimen name="self_code_description_width">353px</dimen>
+    <dimen name="self_code_description_margin_bottom">13px</dimen>
+    <dimen name="self_code_container_width">390px</dimen>
+    <dimen name="self_code_container_margin_bottom">67px</dimen>
+
+    <!-- frined list -->
+    <dimen name="friend_list_title_height">115px</dimen>
+    <dimen name="friend_list_add_button_size">100px</dimen>
+    <dimen name="friend_list_add_button_margin_right">17px</dimen>
+
+    <!-- friend item widget -->
+    <dimen name="friend_item_background_width">749px</dimen>
+    <dimen name="friend_item_background_parent_mode_width">678px</dimen>
+    <dimen name="friend_item_background_height">210px</dimen>
+    <dimen name="friend_item_avatar_size">140px</dimen>
+    <dimen name="friend_item_avatar_margin_left">26px</dimen>
+    <dimen name="friend_item_circle_button_size">84px</dimen>
+    <dimen name="friend_item_circle_button_margin_right">19px</dimen>
+    <dimen name="friend_item_circle_button_margin_btn">13px</dimen>
+    <dimen name="friend_item_request_container_margin_left">17px</dimen>
+    <dimen name="friend_item_request_name_margin_top">60px</dimen>
+    <dimen name="friend_item_delete_container_width">100px</dimen>
+    <dimen name="friend_item_friend_name_parent_mode_width">393px</dimen>
+    <dimen name="friend_item_friend_name_nabi_mode_width">453px</dimen>
+    <dimen name="friend_item_request_name_parent_mode_width">267px</dimen>
+    <dimen name="friend_item_request_name_nabi_mode_width">360px</dimen>
+
+    <!-- edit avatar page -->
+    <dimen name="edit_avatar_container_width">623px</dimen>
+    <dimen name="edit_avatar_container_parent_mode_width">473px</dimen>
+    <dimen name="edit_avatar_circle_button_size">93px</dimen>
+    <dimen name="edit_avatar_circle_button_margin_bottom">16px</dimen>
+    <dimen name="edit_avatar_circle_button_margin_side">201px</dimen>
+    <dimen name="edit_avatar_circle_button_parent_mode_margin_side">126px</dimen>
+    <dimen name="edit_avatar_bar_width">150px</dimen>
+    <dimen name="edit_avatar_button_height">151px</dimen>
+    <dimen name="edit_avatar_name_container_width">433px</dimen>
+    <dimen name="edit_avatar_name_container_height">73px</dimen>
+    <dimen name="edit_avatar_name_container_margin_top">60px</dimen>
+    <dimen name="edit_avatar_name_text_width">347px</dimen>
+    <dimen name="edit_avatar_name_edit_button_size">56px</dimen>
+    <dimen name="edit_avatar_name_edit_button_margin_right">3px</dimen>
+    <dimen name="edit_avatar_icon_size">350px</dimen>
+    <dimen name="edit_avatar_icon_margin_top">187px</dimen>
+
+    <!-- asset item widget -->
+    <dimen name="asset_item_boarder_width">250px</dimen>
+    <dimen name="asset_item_background_size">235px</dimen>
+    <dimen name="asset_item_inner_background_size">223px</dimen>
+    <dimen name="asset_item_image_size">180px</dimen>
+    <dimen name="asset_item_row_padding_top">7px</dimen>
+    <dimen name="asset_item_row_padding_left">3px</dimen>
+
+    <!-- add friend dialog -->
+    <dimen name="friend_dialog_background_width">924px</dimen>
+    <dimen name="friend_dialog_background_height">444px</dimen>
+    <dimen name="friend_dialog_text_bar_margin_top">117px</dimen>
+    <dimen name="friend_dialog_code_container_margin_top">139px</dimen>
+    <dimen name="friend_dialog_code_container_margin_left">160px</dimen>
+    <dimen name="friend_dialog_description_text_margin_top">45px</dimen>
+    <dimen name="friend_dialog_text_width">87px</dimen>
+    <dimen name="friend_dialog_button_margin_bottom">48px</dimen>
+    <dimen name="friend_dialog_button_margin_side">343px</dimen>
+    <dimen name="friend_request_sent_button_bottom_margin">48px</dimen>
+
+    <!-- setup views -->
+    <dimen name="friend_setup_text_margin_top">80px</dimen>
+    <dimen name="friend_setup_text_margin_left">680px</dimen>
+    <dimen name="friend_setup_text_parent_margin_left">597px</dimen>
+    <dimen name="friend_setup_text_description_margin_top">13px</dimen>
+    <dimen name="friend_setup_next_button_margin_top">413px</dimen>
+    <dimen name="friend_setup_next_button_margin_right">380px</dimen>
+    <dimen name="friend_setup_next_button_parent_margin_right">313px</dimen>
+    <dimen name="friend_setup_user_name_width">527px</dimen>
+    <dimen name="friend_setup_user_name_margin_top">250px</dimen>
+    <dimen name="friend_setup_user_name_margin_left">687px</dimen>
+    <dimen name="friend_setup_user_name_parent_margin_left">603px</dimen>
+    <dimen name="friend_setup_warning_text_margin_top">20px</dimen>
+    <dimen name="friend_setup_2_margin_top">27px</dimen>
+
+    <!-- dialog -->
+    <dimen name="friend_dialog_title_margin_top">51px</dimen>
+    <dimen name="friend_dialog_context_margin_top">127px</dimen>
+    <dimen name="friend_dialog_context_margin_left">190px</dimen>
+    <dimen name="friend_dialog_context_margin_right">40px</dimen>
+    <dimen name="friend_dialog_context_margin_bottom">100px</dimen>
+    <dimen name="friend_whole_dialog_width">833px</dimen>
+    <dimen name="friend_whole_dialog_height">577px</dimen>
+    <dimen name="friend_dialog_bg_width">733px</dimen>
+    <dimen name="friend_dialog_bg_height">500px</dimen>
+    <dimen name="friend_dialog_button_width">217px</dimen>
+    <dimen name="friend_dialog_button_height">73px</dimen>
+    <dimen name="friend_dialog_submit_button_margin_right">70px</dimen>
+    <dimen name="friend_dialog_cancel_button_margin_left">193px</dimen>
+    <dimen name="friend_dialog_imgv_icon_margin_top">50px</dimen>
+    <dimen name="friend_dialog_imgv_icon_margin_left">37px</dimen>
+    <dimen name="friend_dialog_x_icon_margin_right">733px</dimen>
+    <dimen name="friend_dialog_x_icon_margin_top">-1px</dimen>
+
+    <!-- setup -->
+    <dimen name="friend_setup_next_width">180dp</dimen>
+    <dimen name="friend_setup_next_height">60dp</dimen>
+    <dimen name="friend_setup_next_height_half">30dp</dimen>
+
+</resources>

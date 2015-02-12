@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nsa_shade"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="12dp"
+    android:paddingTop="12dp" >
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/nsa_item_friend_avatar"
+        android:layout_height="@dimen/nsa_item_friend_avatar"
+        android:layout_marginLeft="32dp"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat_avatar_default" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:padding="16dp"
+        android:singleLine="true"
+        android:text="@string/default_text"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/nsa_text_size" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="@dimen/nsa_delete_dim"
+        android:layout_height="@dimen/nsa_delete_dim"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nsa_btn_friend_x" >
+    </ImageView>
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/device_screen_width"
+    android:layout_height="@dimen/device_screen_height"
+    android:orientation="horizontal" >
+    
+<RelativeLayout
+    android:id="@+id/friend_dialog_main_rl"
+        android:layout_width="@dimen/friend_whole_dialog_width"
+        android:layout_height="@dimen/friend_whole_dialog_height"
+        android:layout_centerInParent="true">
+        
+    <RelativeLayout
+        android:id="@+id/friend_dialog_background"
+        android:layout_width="@dimen/friend_dialog_bg_width"
+        android:layout_height="@dimen/friend_dialog_bg_height"
+        android:layout_centerInParent="true"
+        android:background="@drawable/friend_dialog_bg" >
+        
+        <ImageView
+        android:id="@+id/connect_mail_main_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/friend_dialog_imgv_icon_margin_top"
+        android:layout_marginLeft="@dimen/friend_dialog_imgv_icon_margin_left"
+        android:src="@drawable/friend_create_user_name_icon" />
+        
+        <TextView 
+            android:id="@+id/friend_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/friend_dialog_title_margin_top"
+            android:layout_marginLeft="@dimen/friend_dialog_context_margin_left"
+            android:text="@string/friend_create_user_name_title"
+            style="@style/mail_secondary_m"/>
+        
+        <TextView 
+            android:id="@+id/friend_dialog_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/friend_dialog_context_margin_top"
+            android:layout_marginLeft="@dimen/friend_dialog_context_margin_left"
+            android:layout_marginRight="@dimen/friend_dialog_context_margin_right"
+            android:layout_marginBottom="@dimen/friend_dialog_context_margin_bottom"
+            android:text="@string/friend_create_user_name_context"
+            style="@style/mail_primary_m"/>
+    
+
+        <Button
+            android:id="@+id/friend_dialog_cancel_icon"
+            android:layout_width="@dimen/friend_dialog_button_width"
+            android:layout_height="@dimen/friend_dialog_button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/friend_dialog_button_margin_bottom"
+            android:layout_marginLeft="@dimen/friend_dialog_cancel_button_margin_left"
+            android:background="@drawable/friend_dialog_btn_cancel" 
+            android:text="@string/friend_create_user_name_cancel_btn_text"
+            style="@style/mail_primary_m"
+            />
+
+        <Button
+            android:id="@+id/friend_dialog_submit_icon"
+            android:layout_width="@dimen/friend_dialog_button_width"
+            android:layout_height="@dimen/friend_dialog_button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/friend_dialog_button_margin_bottom"
+            android:layout_marginRight="@dimen/friend_dialog_submit_button_margin_right"
+            android:background="@drawable/friend_dialog_btn_submit" 
+            android:text="@string/friend_create_user_name_submit_btn_text"
+            style="@style/mail_primary_m"
+            />
+        
+    </RelativeLayout>
+    
+    <Button
+        android:id="@+id/friend_dialog_x_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/friend_dialog_x_icon_margin_top"
+        android:layout_marginLeft="@dimen/friend_dialog_x_icon_margin_right"
+        android:background="@drawable/friend_dialog_btn_x" />
+    
+  </RelativeLayout>
+</RelativeLayout>

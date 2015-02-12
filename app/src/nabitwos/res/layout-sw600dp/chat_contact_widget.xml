@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contact_background_boarder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chat_animal_bg" >
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/contact_widget_size"
+        android:layout_height="@dimen/contact_widget_size"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/contact_widget_margin_top"
+        android:src="@drawable/chat_avatar_default" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/chat_primary_l_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/avatar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/contact_widget_name_margin_top"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:singleLine="true" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/message_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/contact_widget_message_indicator_maring_right"
+        android:layout_marginTop="@dimen/contact_widget_message_indicator_maring_top"
+        android:background="@drawable/chat_text_icon"
+        android:visibility="invisible" >
+    </ImageView>
+
+</RelativeLayout>

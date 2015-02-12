@@ -1,0 +1,200 @@
+<resources>
+
+    <!-- this is for 160dpi -->
+    
+    <style name="NoAnimTheme" parent="android:Theme.Holo">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <style name="Theme.CustomDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="photolayout_full">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+    <style name="photolayout_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="photolayout_widthfull_heightwrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="photolayout_widthwrap_heightfull">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="photolayout_centerframe">
+        <item name="android:layout_width">464px</item>  <!-- 745px 560dp-->
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+     <style name="photolayout_centerframe_wrapheight">
+        <item name="android:layout_width">464px</item>  <!-- 745px 560dp-->
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="photolayout_rightframe">
+        <item name="android:layout_width">230px</item>  <!-- 385px 257dp-->
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+    <style name="photolayout_centerframe_mygallery">
+        <item name="android:layout_width">240px</item>  <!-- 386px 257dp-->
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+    <style name="photolayout_rightframe_mygallery">
+        <item name="android:layout_width">454px</item>  <!-- 664px 443dp-->
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    
+      <style name="photolayout_tapframe_editphoto">
+        <item name="android:layout_width">85px</item>  <!-- 147px 98dp-->
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="photolayout_photowedgit_profile_photo">
+        <item name="android:layout_width">54px</item>   <!-- 65px 43dp-->
+        <item name="android:layout_height">54px</item>
+        <item name="android:layout_marginTop">5px</item> <!-- 7px 5dp-->
+        <item name="android:layout_marginLeft">5px</item>
+        <item name="android:layout_marginBottom">5px</item>
+    </style>
+    
+    <style name="photolayout_photowedgit_photo">
+        <item name="android:layout_width">852px</item>   <!-- 852px 568dp-->
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">9px</item>
+    </style>
+       
+    <style name="photolayout_photowedgit_xbutton">
+        <item name="android:layout_width">65px</item>   <!-- 77px 58dp-->
+        <item name="android:layout_height">65px</item>
+    </style>
+    
+    
+     <style name="photolayout_profile_background">
+        <item name="android:layout_width">240px</item>  <!-- 386px 290dp-->
+        <item name="android:layout_height">240px</item>
+    </style>
+    
+    <style name="photolayout_mygallery_gridbutton">
+        <item name="android:layout_width">120px</item>  <!-- 193px 145dp-->
+        <item name="android:layout_height">120px</item>
+    </style>
+    
+    <style name="photolayout_mygallery_photonum">
+        <item name="android:layout_width">120px</item>  <!-- 205px 154dp-->
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8px</item> <!-- 30px 20dp-->
+    </style>
+    
+    <style name="photolayout_mygallery_phototext">
+        <item name="android:layout_width">120px</item>  <!-- 205px 154dp-->
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+      <style name="photolayout_mygallery_CenterGrayLine">
+        <item name="android:layout_width">1dp</item>  
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    
+    <style name="photolayout_profile_photo">
+        <item name="android:layout_width">150px</item>    <!-- 240px 160dp-->
+        <item name="android:layout_height">150px</item>
+        <item name="android:layout_marginTop">20px</item> <!-- 45px 30dp-->
+    </style>
+      
+    <style name="photolayout_leftbutton_bar">
+        <item name="android:layout_width">106px</item>   <!-- 150px 113dp-->
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="photolayout_leftbutton">
+        <item name="android:layout_width">106px</item>   <!-- 150px 100dp-->
+        <item name="android:layout_height">106px</item>
+    </style>
+    
+     <style name="photolayout_leftbutton_Icon">
+        <item name="android:layout_width">106px</item>   <!-- 187px 140dp-->
+        <item name="android:layout_height">106px</item>  <!-- 187px 140dp-->
+    </style>
+    
+    <style name="photolayout_textureview">
+        <item name="android:layout_width">464px</item>    <!-- 760px 507dp-->
+        <item name="android:layout_height">348px</item>   <!-- 570px 380dp-->
+    </style>
+    
+    <style name="photolayout_zoomcircle">
+        <item name="android:layout_width">250px</item>    <!-- 450px 300dp-->
+        <item name="android:layout_height">250px</item>
+        <item name="android:layout_marginRight">-55px</item> <!-- -110px -73dp-->
+    </style>
+    
+    <style name="photolayout_shutter">
+        <item name="android:layout_width">125px</item>    <!-- 230px 153dp-->
+        <item name="android:layout_height">125px</item>
+        <item name="android:layout_marginRight">5px</item> <!-- 10px 7dp-->
+    </style>
+    
+    <style name="photolayout_zoomplus">
+        <item name="android:layout_width">28px</item>      <!-- 50px 33dp-->
+        <item name="android:layout_height">28px</item>
+        <item name="android:layout_marginBottom">15px</item>
+        <item name="android:layout_marginRight">55px</item>
+    </style>
+    
+    <style name="photolayout_zoomminus">
+        <item name="android:layout_width">28px</item>      <!-- 50px 33dp-->
+        <item name="android:layout_height">28px</item>
+        <item name="android:layout_marginTop">10px</item>
+        <item name="android:layout_marginRight">55px</item>
+    </style>
+    
+    <style name="photolayout_cameraswitch_btn">
+        <item name="android:layout_width">50px</item>     <!-- 114px 86dp-->
+        <item name="android:layout_height">38px</item>    <!-- 76px 57dp-->
+        <item name="android:layout_marginLeft">22px</item> <!-- 60px 40dp-->
+        <item name="android:layout_marginTop">25px</item>
+        
+    </style>
+    
+    <style name="photolayout_cameragotogallery_btn">
+        <item name="android:layout_width">60px</item>     <!-- 100px 67dp-->
+        <item name="android:layout_height">60px</item>
+        <item name="android:layout_marginLeft">25px</item>
+        <item name="android:layout_marginBottom">20px</item> <!-- 40px 27dp-->        
+    </style>
+
+    <style name="photolayout_circular_seekbar">
+        <item name="android:layout_width">200px</item>     <!-- 360px 240dp<-->
+        <item name="android:layout_height">200px</item>
+        <item name="android:layout_marginRight">-18px</item> <!-- -50px -33dp-->
+    </style>
+    
+    <style name="photolayout_popup_button">
+        <item name="android:layout_width">60px</item>     <!-- 95px 63dp-->
+        <item name="android:layout_height">60px</item>
+    </style>
+    
+    <style name="photolayout_editphoto_tapbutton">
+        <item name="android:layout_width">85px</item>    <!-- 147px 98dp-->
+        <item name="android:layout_height">85px</item>   <!-- 147px 98dp-->
+    </style> 
+
+</resources>

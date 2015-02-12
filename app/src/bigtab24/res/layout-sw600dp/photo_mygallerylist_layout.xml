@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.fuhu.nabiconnect.photo.widget.BaseScrollView
+        android:id="@+id/MyGalleryScrollView"
+        style="@style/photolayout_full"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:id="@+id/MyGallerylistLayout"
+            style="@style/photolayout_wrap"
+            android:orientation="vertical" >
+            
+            <TextView
+                android:id="@+id/MyGallery_UpdateText"
+                style="@style/photolayout_wrap"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/photo_topprogress_text"
+                android:textSize="@dimen/photo_inbox_updatetext_textsize"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/MyGalleryRightFrame"
+                style="@style/photolayout_wrap"/>
+            
+        </RelativeLayout>
+    </com.fuhu.nabiconnect.photo.widget.BaseScrollView> 
+
+</RelativeLayout>

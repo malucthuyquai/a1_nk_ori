@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/PhotoActivityLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundgray"
+    >
+
+    <RelativeLayout
+        android:id="@+id/Photo_NoPhotoIconAndText"
+        style="@style/photolayout_wrap"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/Photo_Mountain_Icon"
+            style="@style/photolayout_wrap"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/photo_default_mountain_icon" />
+
+        <TextView
+            android:id="@+id/Photo_NoPhotoText"
+            style="@style/photolayout_wrap"
+            android:layout_below="@+id/Photo_Mountain_Icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/photo_inbox_nophototext_margetop"
+            android:text="@string/photo_photoactivity_nophototext"
+            android:textSize="@dimen/photo_inbox_nophototext_textsize" />
+    </RelativeLayout>
+
+    <com.fuhu.nabiconnect.photo.widget.BaseScrollView
+        android:id="@+id/PhotoActivityScrollView"
+        style="@style/photolayout_full" >
+
+        <RelativeLayout style="@style/photolayout_widthfull_heightwrap" >
+
+            <TextView
+                android:id="@+id/Photo_UpdateText"
+                style="@style/photolayout_wrap"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/photo_topprogress_text"
+                android:textSize="@dimen/photo_inbox_updatetext_textsize"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/RightFrame"
+                style="@style/photolayout_widthfull_heightwrap" />
+        </RelativeLayout>
+    </com.fuhu.nabiconnect.photo.widget.BaseScrollView>
+
+    <!--
+        <com.fuhu.nabiconnect.photo.pulltorefresh.PullToRefreshScrollView
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/PhotoActivityScrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            ptr:ptrAnimationStyle="flip"
+            ptr:ptrMode="both" >
+
+            <RelativeLayout style="@style/photolayout_widthfull_heightwrap" >
+
+                <TextView
+                    android:id="@+id/Photo_UpdateText"
+                    style="@style/photolayout_wrap"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/photo_topprogress_text"
+                    android:textSize="@dimen/photo_inbox_updatetext_textsize"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/RightFrame"
+                    style="@style/photolayout_widthfull_heightwrap" />
+            </RelativeLayout>
+        </com.fuhu.nabiconnect.photo.pulltorefresh.PullToRefreshScrollView>
+    -->
+
+</RelativeLayout>

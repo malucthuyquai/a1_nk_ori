@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/friend_item_background"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/friend_item_background_height"
+    android:background="#000000" >
+
+    <!-- android:background="@drawable/friend_widget_bg -->
+
+    <ImageView
+        android:id="@+id/friend_avatar"
+        android:layout_width="@dimen/friend_item_avatar_size"
+        android:layout_height="@dimen/friend_item_avatar_size"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/friend_item_avatar_margin_left"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/chat_avatar_default" />
+
+    <RelativeLayout
+        android:id="@+id/friend_request_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/friend_item_request_container_margin_left"
+        android:layout_toLeftOf="@+id/reject_button"
+        android:layout_toRightOf="@+id/friend_avatar" >
+
+        <TextView
+            android:id="@+id/friend_request_name"
+            style="@style/friend_primary_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/friend_item_request_name_margin_top"
+            android:ellipsize="end"
+            android:scrollHorizontally="true"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/be_friend_string"
+            style="@style/friend_primary_m_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/friend_request_name"
+            android:text="Let&apos;s be friends!" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/friend_name"
+        style="@style/friend_primary_l"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/friend_item_request_container_margin_left"
+        android:layout_toLeftOf="@+id/delete_friend_container"
+        android:layout_toRightOf="@+id/friend_avatar"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="@dimen/friend_item_circle_button_size"
+        android:layout_height="@dimen/friend_item_circle_button_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/friend_item_circle_button_margin_right"
+        android:background="@drawable/friend_btn_accept_friend_selector" />
+
+    <Button
+        android:id="@+id/reject_button"
+        android:layout_width="@dimen/friend_item_circle_button_size"
+        android:layout_height="@dimen/friend_item_circle_button_size"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/friend_item_circle_button_margin_btn"
+        android:layout_toLeftOf="@+id/accept_button"
+        android:background="@drawable/friend_btn_reject_friend_selector" />
+
+    <RelativeLayout
+        android:id="@+id/delete_friend_container"
+        android:layout_width="@dimen/friend_item_delete_container_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" >
+
+        <ImageView
+            android:id="@+id/delete_friend_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/empty" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_alignParentBottom="true"
+        android:background="#666666" />
+
+</RelativeLayout>

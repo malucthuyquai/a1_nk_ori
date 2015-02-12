@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/CenterFrame"
+        style="@style/photolayout_centerframe"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/black" >
+        
+        <!--  this layout is added by solve a strange bug. down--> 
+        
+        <RelativeLayout
+            style="@style/photolayout_wrap"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/photo_addphoto_button_margebottom" >
+            
+            <ImageView
+                style="@style/photolayout_popup_button"
+                android:background="@drawable/transparent_pic"/>
+
+        </RelativeLayout>
+
+        <!--  this layout is added by solve a strange bug. up--> 
+
+        <ImageView
+            android:id="@+id/Show_Local_Gallery"
+            style="@style/photolayout_full"
+            android:layout_centerVertical="true" />
+
+        <LinearLayout
+            style="@style/photolayout_wrap"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/photo_addphoto_button_margebottom" >
+
+            <ImageButton
+                android:id="@+id/Popup_X_Button"
+                style="@style/photolayout_popup_button"
+                android:background="@drawable/photo_popup_x_button_unselect" />
+
+            <ImageButton
+                android:id="@+id/Popup_V_Button"
+                style="@style/photolayout_popup_button"
+                android:layout_marginLeft="@dimen/photo_camera_mygallery_vbutton_margeleft"
+                android:background="@drawable/photo_selector_popup_v_button" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/Local_Gallery"
+        style="@style/photolayout_full"
+        android:numColumns="2"
+        android:horizontalSpacing="@dimen/photo_cameragallery_gridview_spacing"
+        android:verticalSpacing="@dimen/photo_cameragallery_gridview_spacing"
+        android:layout_toRightOf="@+id/CenterFrame"
+        android:background="@drawable/black" />
+    
+    <!--
+    <FrameLayout
+        android:id="@+id/Local_Gallery"
+        style="@style/photolayout_full"
+        android:layout_toRightOf="@+id/CenterFrame" >
+    </FrameLayout>
+    -->
+
+</RelativeLayout>

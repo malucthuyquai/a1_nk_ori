@@ -1,0 +1,123 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* build-2S.xml
+* build-DW.xml
+* build-JR.xml
+* build-N2.xml
+* build-SD20.xml
+* build-SD24.xml
+* build\
+* build\2015-01-15 Release\
+* build\2015-01-15 Release\nabiKonnect-JR_US-104-01-15-01-dev.apk
+* build\2015-01-15 Release\nabiKonnect-JR_US-104-01-15-01-prd.apk
+* build\2015-01-15 Release\nabiKonnect-JR_US-104-01-15-01-prod_log.apk
+* build\2015-01-15 Release\nabiKonnect-JR_US-104-01-15-01-stg.apk
+* build\2015-01-15 Release\nabiKonnect-N2S_US-104-01-15-01-dev.apk
+* build\2015-01-15 Release\nabiKonnect-N2S_US-104-01-15-01-prd.apk
+* build\2015-01-15 Release\nabiKonnect-N2S_US-104-01-15-01-prod_log.apk
+* build\2015-01-15 Release\nabiKonnect-N2S_US-104-01-15-01-stg.apk
+* build\2015-01-15 Release\nabiKonnect-N2_US-104-01-15-01-dev.apk
+* build\2015-01-15 Release\nabiKonnect-N2_US-104-01-15-01-prd.apk
+* build\2015-01-15 Release\nabiKonnect-N2_US-104-01-15-01-prod_log.apk
+* build\2015-01-15 Release\nabiKonnect-N2_US-104-01-15-01-stg.apk
+* build\2015-01-15 Release\nabiKonnect-SD20_US-104-01-15-01-dev.apk
+* build\2015-01-15 Release\nabiKonnect-SD20_US-104-01-15-01-prd.apk
+* build\2015-01-15 Release\nabiKonnect-SD20_US-104-01-15-01-prod_log.apk
+* build\2015-01-15 Release\nabiKonnect-SD20_US-104-01-15-01-stg.apk
+* build\2015-01-15 Release\nabiKonnect-SD24_US-104-01-15-01-dev.apk
+* build\2015-01-15 Release\nabiKonnect-SD24_US-104-01-15-01-prd.apk
+* build\2015-01-15 Release\nabiKonnect-SD24_US-104-01-15-01-prod_log.apk
+* build\2015-01-15 Release\nabiKonnect-SD24_US-104-01-15-01-stg.apk
+* build\2015-01-29 Release N2\
+* build\2015-01-29 Release N2\nabiKonnect-N2_US-104-01-29-01-dev.apk
+* build\2015-01-29 Release N2\nabiKonnect-N2_US-104-01-29-01-prd.apk
+* build\2015-01-29 Release N2\nabiKonnect-N2_US-104-01-29-01-prod_log.apk
+* build\2015-01-29 Release N2\nabiKonnect-N2_US-104-01-29-01-stg.apk
+* build\2015-01-30 Release N2\
+* build\2015-01-30 Release N2\nabiKonnect-N2_US-104-01-30-01-dev.apk
+* build\2015-01-30 Release N2\nabiKonnect-N2_US-104-01-30-01-prd.apk
+* build\2015-01-30 Release N2\nabiKonnect-N2_US-104-01-30-01-prod_log.apk
+* build\2015-01-30 Release N2\nabiKonnect-N2_US-104-01-30-01-stg.apk
+* build\2015-02-05 Release\
+* build\2015-02-05 Release\nabiKonnect-JR_US-104-02-05-01-dev.apk
+* build\2015-02-05 Release\nabiKonnect-JR_US-104-02-05-01-prd.apk
+* build\2015-02-05 Release\nabiKonnect-JR_US-104-02-05-01-prod_log.apk
+* build\2015-02-05 Release\nabiKonnect-JR_US-104-02-05-01-stg.apk
+* build\2015-02-05 Release\nabiKonnect-N2S_US-104-02-05-01-dev.apk
+* build\2015-02-05 Release\nabiKonnect-N2S_US-104-02-05-01-prd.apk
+* build\2015-02-05 Release\nabiKonnect-N2S_US-104-02-05-01-prod_log.apk
+* build\2015-02-05 Release\nabiKonnect-N2S_US-104-02-05-01-stg.apk
+* build\2015-02-05 Release\nabiKonnect-N2_US-104-02-05-01-dev.apk
+* build\2015-02-05 Release\nabiKonnect-N2_US-104-02-05-01-prd.apk
+* build\2015-02-05 Release\nabiKonnect-N2_US-104-02-05-01-prod_log.apk
+* build\2015-02-05 Release\nabiKonnect-N2_US-104-02-05-01-stg.apk
+* build\2015-02-05 Release\nabiKonnect-SD20_US-104-02-05-01-dev.apk
+* build\2015-02-05 Release\nabiKonnect-SD20_US-104-02-05-01-prd.apk
+* build\2015-02-05 Release\nabiKonnect-SD20_US-104-02-05-01-prod_log.apk
+* build\2015-02-05 Release\nabiKonnect-SD20_US-104-02-05-01-stg.apk
+* build\2015-02-05 Release\nabiKonnect-SD24_US-104-02-05-01-dev.apk
+* build\2015-02-05 Release\nabiKonnect-SD24_US-104-02-05-01-prd.apk
+* build\2015-02-05 Release\nabiKonnect-SD24_US-104-02-05-01-prod_log.apk
+* build\2015-02-05 Release\nabiKonnect-SD24_US-104-02-05-01-stg.apk
+* build\nabiKonnect-DT8_US-104-02-06-03-prod_log.apk
+* build\nabiKonnect-DT8_US-104-02-06-04-prod_log.apk
+* build\nabiKonnect-DT8_US-104-02-06-05-prod_log.apk
+* build\nabiKonnect-DT8_US-104-02-06-06-prod_log.apk
+* proguard-project.txt
+* version.properties
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\android-query-full.0.26.8.jar => app\libs\android-query-full.0.26.8.jar
+* libs\apache-mime4j-0.6.jar => app\libs\apache-mime4j-0.6.jar
+* libs\cmrLib.jar => app\libs\cmrLib.jar
+* libs\commons-io-2.4.jar => app\libs\commons-io-2.4.jar
+* libs\google-play-services.jar => app\libs\google-play-services.jar
+* libs\httpclient-4.3.2.jar => app\libs\httpclient-4.3.2.jar
+* libs\httpcore-4.3.1.jar => app\libs\httpcore-4.3.1.jar
+* libs\httpmime-4.3.2.jar => app\libs\httpmime-4.3.2.jar
+* libs\nabi-container-103031801-DT.jar => app\libs\nabi-container-103031801-DT.jar
+* libs\nabi-library-1030080601-temp.jar => app\libs\nabi-library-1030080601-temp.jar
+* libs\ND_NS_104012301.jar => app\libs\ND_NS_104012301.jar
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

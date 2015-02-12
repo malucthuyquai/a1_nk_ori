@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_avatar_bar_button_background"
+    android:layout_width="@dimen/edit_avatar_bar_width"
+    android:layout_height="@dimen/edit_avatar_button_height">
+
+    <ImageView
+            android:id="@+id/edit_avatar_bar_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+    
+
+</RelativeLayout>

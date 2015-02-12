@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/PhotoNewActivityLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/LastButtonBarWidget"
+        style="@style/photolayout_leftbutton_bar"
+        android:background="@drawable/photo_leftbtnbar_background" >
+
+        <ImageView
+            android:id="@+id/NabiPhotoIcon"
+            style="@style/photolayout_leftbutton_Icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/HomeInboxButton"
+            style="@style/photolayout_leftbutton"
+            android:layout_below="@+id/NabiPhotoIcon"
+            android:background="@drawable/photo_selector_inboxbtn"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/CameraButton"
+            style="@style/photolayout_leftbutton"
+            android:layout_below="@+id/HomeInboxButton"
+            android:background="@drawable/photo_selector_camerabtn"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/MyGalleryButton"
+            style="@style/photolayout_leftbutton"
+            android:layout_below="@+id/CameraButton"
+            android:background="@drawable/photo_selector_mygallerbtn"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/photo_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/LastButtonBarWidget"
+        android:background="@drawable/backgroundgray" >
+
+        <RelativeLayout
+            android:id="@+id/Photo_NoPhotoIconAndText"
+            style="@style/photolayout_wrap"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/Photo_Mountain_Icon"
+                style="@style/photolayout_wrap"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/photo_default_mountain_icon" />
+
+            <TextView
+                android:id="@+id/Photo_NoPhotoText"
+                style="@style/photolayout_wrap"
+                android:layout_below="@+id/Photo_Mountain_Icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/photo_inbox_nophototext_margetop"
+                android:text="@string/photo_photoactivity_nophototext"
+                android:textSize="@dimen/photo_inbox_nophototext_textsize" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

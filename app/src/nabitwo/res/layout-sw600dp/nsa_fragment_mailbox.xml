@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nsa_bg" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/nsa_shade" >
+    </View>
+
+    <!-- top bar -->
+
+    <RelativeLayout
+        android:id="@+id/rl_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:paddingBottom="4dp"
+        android:paddingRight="16dp"
+        android:paddingTop="4dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/nsa_back_button_side"
+            android:layout_height="@dimen/nsa_back_button_side"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/nsa_top_back_left_margin"
+            android:contentDescription="@string/empty"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nsa_back" >
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/nsa_topbar_item_height"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/nsa_topbar_item_height"
+                android:layout_height="@dimen/nsa_topbar_item_height"
+                android:contentDescription="@string/empty"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mail_indicator_read" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/nsa_topbar_item_height"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"
+                android:text="@string/default_text"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/nsa_text_size" >
+            </TextView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/nsa_avatar_dim_s"
+        android:layout_height="@dimen/nsa_avatar_dim_s"
+        android:layout_below="@+id/rl_topbar"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat_avatar_default" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="@dimen/nsa_avatar_dim_s"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/iv_avatar"
+        android:layout_alignRight="@+id/iv_avatar"
+        android:layout_below="@+id/iv_avatar"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginRight="-30dp"
+        android:gravity="center"
+        android:text="@string/default_text"
+        android:textColor="@color/nsa_orange"
+        android:textSize="@dimen/nsa_text_size" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/lv_mail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_topbar"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="60dp"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" >
+    </ListView>
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nsa_bg"
+    android:orientation="vertical" >
+
+    <!-- top bar -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nsa_topbar_height"
+        android:background="@android:color/white"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/nsa_back_button_side"
+            android:layout_height="@dimen/nsa_back_button_side"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/nsa_top_back_left_margin"
+            android:contentDescription="@string/empty"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nsa_back" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/nsa_chat"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/nsa_text_size" >
+        </TextView>
+    </RelativeLayout>
+
+    <!-- chat history -->
+
+    <ListView
+        android:id="@+id/lv_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/nsa_shade"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="8dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>

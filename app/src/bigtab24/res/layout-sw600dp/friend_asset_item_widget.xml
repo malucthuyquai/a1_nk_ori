@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/asset_item_background_boarder"
+    android:layout_width="@dimen/asset_item_boarder_width"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/asset_item_background"
+        android:layout_width="@dimen/asset_item_background_size"
+        android:layout_height="@dimen/asset_item_background_size"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/friend_list_bg" >
+
+        <RelativeLayout
+            android:id="@+id/asset_inner_background"
+            android:layout_width="@dimen/asset_item_inner_background_size"
+            android:layout_height="@dimen/asset_item_inner_background_size"
+            android:layout_centerInParent="true"
+            android:background="#EAE0D0" >
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="@dimen/asset_item_image_size"
+            android:layout_height="@dimen/asset_item_image_size"
+            android:layout_centerInParent="true" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" >
+        </ImageView>
+
+        <RelativeLayout
+            android:id="@+id/touch_receiver"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

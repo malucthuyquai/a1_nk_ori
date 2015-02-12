@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- not in use -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shop_bar_background"
+    android:layout_width="@dimen/shopbar_item_width"
+    android:layout_height="@dimen/shopbar_item_height"
+    android:background="@drawable/chat_top_bar_three2" >
+
+    <TextView
+        android:id="@+id/shop_bar_text"
+        style="@style/chat_primary_m"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

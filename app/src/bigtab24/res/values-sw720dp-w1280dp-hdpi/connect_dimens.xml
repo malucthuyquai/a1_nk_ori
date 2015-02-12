@@ -1,0 +1,22 @@
+<resources>
+    <!-- connect activity page -->
+	<dimen name="friend_code_margin_right">30px</dimen>
+	<dimen name="rlayout_secondbar_text_margin_top">36px</dimen>
+	<dimen name="your_nabi_friend_code_margin_left">30px</dimen>
+	<dimen name="connect_second_bar_margin_top">-5px</dimen>
+	<dimen name="connect_item_margin_bar_top">35px</dimen>
+	<dimen name="connect_item_margin_item_top">23px</dimen>
+	<dimen name="connect_item_margin_side">45px</dimen>
+    
+    <!-- connect item widget -->
+	<dimen name="connect_item_widget_width">910px</dimen>
+	<dimen name="connect_item_widget_height">316px</dimen>
+	<dimen name="connect_item_widget_main_image_margin_left">50px</dimen>
+	<dimen name="connect_item_widget_button_container_width">611px</dimen>
+	<dimen name="connect_item_widget_button_margin_left">22px</dimen>
+	<dimen name="connect_item_widget_text_margin_left">90px</dimen>
+	<dimen name="connect_item_widget_sub_image_margin_right">46px</dimen>
+	<dimen name="connect_item_widget_unread_indicator_size">70px</dimen>
+	<dimen name="connect_item_widget_unread_indicator_margin_right">15px</dimen>
+	<dimen name="connect_item_widget_unread_indicator_margin_top">86px</dimen>
+</resources>

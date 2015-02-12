@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nsa_bg"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" >
+
+            <com.fuhu.nabiconnect.nsa.view.NSAGallery
+                android:id="@+id/gl_kids"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_name"
+                android:layout_marginTop="@dimen/nsa_gallery_top_margin"
+                android:spacing="-15dp"
+                android:unselectedAlpha="1" >
+            </com.fuhu.nabiconnect.nsa.view.NSAGallery>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/nsa_kid_name_size" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_left"
+                android:layout_width="@dimen/nsa_gallery_arrow_width"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/empty"
+                android:scaleType="fitCenter"
+                android:src="@drawable/nsa_btn_left" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="@dimen/nsa_gallery_arrow_width"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/empty"
+                android:scaleType="fitCenter"
+                android:src="@drawable/nsa_btn_right" >
+            </ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_mid"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nsa_mid_height"
+            android:background="@android:color/white"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp" >
+
+            <TextView
+                android:id="@+id/tv_mid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:text="@string/nsa_chat"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/nsa_text_size" >
+            </TextView>
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/lv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/nsa_shade"
+            android:divider="@android:color/transparent"
+            android:listSelector="@android:color/transparent"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:scrollbars="none" >
+        </ListView>
+    </LinearLayout>
+
+</ScrollView>

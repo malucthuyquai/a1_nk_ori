@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/friend_dialog_main_rl"
+        android:layout_width="@dimen/friend_whole_dialog_width"
+        android:layout_height="@dimen/friend_whole_dialog_height"
+        android:layout_gravity="center" >
+
+        <RelativeLayout
+            android:id="@+id/friend_dialog_background"
+            android:layout_width="@dimen/friend_dialog_bg_width"
+            android:layout_height="@dimen/friend_dialog_bg_height"
+            android:layout_centerInParent="true"
+            android:background="@drawable/friend_dialog_bg" >
+
+            <ImageView
+                android:id="@+id/connect_mail_main_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/friend_dialog_imgv_icon_margin_left"
+                android:layout_marginTop="@dimen/friend_dialog_imgv_icon_margin_top"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/friend_friend_request_sent_icon" />
+
+            <TextView
+                android:id="@+id/friend_dialog_title"
+                style="@style/mail_secondary_m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/friend_dialog_context_margin_left"
+                android:layout_marginTop="@dimen/friend_dialog_title_margin_top"
+                android:text="@string/friend_friedn_Request_sent_title" />
+
+            <TextView
+                android:id="@+id/friend_dialog_context"
+                style="@style/mail_primary_m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/friend_dialog_context_margin_bottom"
+                android:layout_marginLeft="@dimen/friend_dialog_context_margin_left"
+                android:layout_marginRight="@dimen/friend_dialog_context_margin_right"
+                android:layout_marginTop="@dimen/friend_dialog_context_margin_top"
+                android:text="@string/friend_friedn_Request_sent_context" />
+
+            <Button
+                android:id="@+id/friend_dialog_submit_icon"
+                style="@style/mail_primary_m"
+                android:layout_width="@dimen/friend_dialog_button_width"
+                android:layout_height="@dimen/friend_dialog_button_height"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/friend_request_sent_button_bottom_margin"
+                android:layout_marginRight="@dimen/friend_dialog_submit_button_margin_right"
+                android:background="@drawable/friend_dialog_btn_submit"
+                android:text="@string/friend_friedn_Request_sent_submit_btn_text" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/friend_dialog_x_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/friend_dialog_x_icon_margin_right"
+            android:layout_marginTop="@dimen/friend_dialog_x_icon_margin_top"
+            android:background="@drawable/friend_dialog_btn_x" />
+    </RelativeLayout>
+
+</merge>

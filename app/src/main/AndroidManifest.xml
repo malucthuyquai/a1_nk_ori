@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fuhu.nabiconnect"
+    android:versionCode="104020501"
+    android:versionName="104020501prod_log" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="fuhu.nabi.permission.PUSH_SELF_UPDATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="fuhu.nabi.permission.ACCOUNT_MANAGER" />
+    <uses-permission android:name="nabi.permission.account.READ_DATA" />
+    <uses-permission android:name="nabi.permission.app.ASK_MOM" />
+    <uses-permission android:name="nabi.permission.app.PARENT_MODE_ONLY" />
+    <uses-permission android:name="nabi.permission.sys.MODE_CHANGE_KILLABLE" />
+    <uses-permission android:name="nabi.permission.app.LOCK_ON_PLACEMENT" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <permission
+        android:name="com.javapapers.android.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.javapapers.android.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:name="com.fuhu.nabiconnect.application.NabiconnectApplication"
+        android:allowBackup="true"
+        android:enabled="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:screenOrientation="landscape" >
+        <meta-data
+            android:name="server"
+            android:value="prod1" />
+
+        <activity
+            android:name="com.fuhu.nabiconnect.ConnectActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:taskAffinity="nabi.connect"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.chat.ChatActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/chat_activity_label"
+            android:screenOrientation="landscape"
+            android:taskAffinity="nabi.chat"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.fuhu.nabiconnect.chat.NABICHAT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.friend.FriendActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/friend_activity_label"
+            android:screenOrientation="landscape"
+            android:taskAffinity="nabi.friend"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.fuhu.nabiconnect.friend.NABIFRIEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.mail.MailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/mail_activity_label"
+            android:screenOrientation="landscape"
+            android:taskAffinity="nabi.mail"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.fuhu.nabiconnect.mail.NABIMAIL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.photo.PhotoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/photo_activity_label"
+            android:taskAffinity="nabi.photo"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.fuhu.nabiconnect.photo.NABIPHOTO" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Add activity-alias for WingsChallenge by Ricky -->
+        <activity-alias
+            android:name="com.fuhu.nabiconnect.photo.CameraGalleryActivity"
+            android:targetActivity="com.fuhu.nabiconnect.photo.PhotoActivity" >
+            <intent-filter>
+                <action android:name="com.fuhu.nabiconnect.photo.CameraGalleryActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+    
+
+        <!-- <activity
+            android:name="com.fuhu.nabiconnect.photo.CameraGalleryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.fuhu.nabiconnect.photo.CameraGalleryActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>-->
+        
+        <activity
+            android:name="com.fuhu.nabiconnect.nsa.NSAActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:icon="@drawable/nsa_144"
+            android:label="@string/nsa_app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="sensorLandscape"
+            android:taskAffinity="@string/affinity_nsa"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="adjustNothing" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Activities for notification center -->
+        <activity
+            android:name="com.fuhu.nabiconnect.chat.ChatParentActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.friend.FriendParentActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.mail.MailParentActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+        <activity
+            android:name="com.fuhu.nabiconnect.photo.PhotoParentActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+
+        <receiver android:name="com.fuhu.nabiconnect.utils.SwitchKidIntentReceiver" >
+            <intent-filter>
+                <action android:name="com.nabi.intent.action.UPDATE_ACCOUNT_DATA" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.fuhu.nabiconnect.notification.receiver.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.fuhu.nabiconnect" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.fuhu.nabiconnect.notification.service.NotificationDialogService" >
+        </service>
+    </application>
+
+</manifest>

@@ -1,0 +1,50 @@
+<resources>
+
+
+    <style name="chat_primary_l_gray">
+        <item name="android:textSize">72px</item>
+        <item name="android:textColor">#666666</item>
+    </style>
+    
+     <style name="chat_primary_l_gray_2">
+        <item name="android:textSize">72px</item>
+        <item name="android:textColor">#606060</item>
+    </style>
+    
+     <style name="chat_primary_l">
+        <item name="android:textSize">72px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+     <style name="chat_primary_l_light_orange">
+        <item name="android:textSize">72px</item>
+        <item name="android:textColor">#FFD066</item>
+    </style>
+
+     <style name="chat_primary_m">
+        <item name="android:textSize">49px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+     <style name="chat_primary_m_gray">
+        <item name="android:textSize">49px</item>
+        <item name="android:textColor">#666666</item>
+    </style>
+     
+     
+     <style name="chat_primary_s_gray">
+        <item name="android:textSize">43px</item>
+        <item name="android:textColor">#606060</item>
+    </style>
+     
+     <style name="chat_primary_s_orange">
+        <item name="android:textSize">38px</item>
+        <item name="android:textColor">#FF8300</item>
+    </style>
+    
+      <style name="chat_primary_xs">
+        <item name="android:textSize">27px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+</resources>

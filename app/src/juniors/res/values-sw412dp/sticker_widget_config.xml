@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="sticker_widget_min_scale" format="float" type="dimen">0.6</item>
+    <item name="sticker_widget_max_scale" format="float" type="dimen">1.0</item>
+    <item name="sticker_widget_button_side" format="float" type="dimen">48</item>
+    <item name="sticker_widget_button_spacing" format="float" type="dimen">24</item>
+    <item name="sticker_widget_boarder_width" format="float" type="dimen">6</item>
+
+</resources>

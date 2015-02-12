@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/black" >
+    
+    <RelativeLayout
+        android:id="@+id/CenterFrame"
+        style="@style/photolayout_centerframe_wrapheight"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" >
+
+        <FrameLayout
+            android:id="@+id/ShowPhotoLayout"
+            style="@style/photolayout_widthfull_heightwrap"
+            android:layout_centerVertical="true"
+            android:background="@drawable/white" >
+
+            <ImageView
+                android:id="@+id/PhotoView"
+                style="@style/photolayout_full"
+                android:scaleType="matrix" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/TabFrame"
+        style="@style/photolayout_tapframe_editphoto"
+        android:layout_toRightOf="@+id/CenterFrame"
+        android:background="@drawable/black"
+        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/Edit_Photo_Frame"
+            style="@style/photolayout_editphoto_tapbutton"
+            android:background="@drawable/photo_selector_edit_photo_frame" />
+        
+        <ImageButton
+            android:id="@+id/Edit_Photo_Frame_Vertical"
+            style="@style/photolayout_editphoto_tapbutton"
+            android:background="@drawable/photo_selector_edit_photo_frame02" />        
+
+        <ImageButton
+            android:id="@+id/Edit_Photo_Sticker"
+            style="@style/photolayout_editphoto_tapbutton"
+            android:background="@drawable/photo_selector_edit_photo_sticker" />
+
+        <ImageButton
+            android:id="@+id/Edit_Photo_Move"
+            style="@style/photolayout_editphoto_tapbutton"
+            android:background="@drawable/photo_selector_edit_photo_move" />
+
+        <ImageButton
+            android:id="@+id/Edit_Photo_Mail"
+            style="@style/photolayout_editphoto_tapbutton"
+            android:background="@drawable/photo_selector_edit_photo_mail" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/RightFrame"
+        style="@style/photolayout_full"
+        android:layout_toRightOf="@+id/TabFrame" />
+    
+
+</RelativeLayout>

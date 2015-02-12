@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white" >
+    
+    <ImageView
+        android:id="@+id/Profile_Photo"
+        style="@style/photolayout_photowedgit_profile_photo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/chat_avatar_default"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/Profile_Name"
+        style="@style/photolayout_wrap"
+        android:layout_alignTop="@+id/Profile_Photo"
+        android:layout_marginLeft="@dimen/photo_photowedgit_username_margeleft"
+        android:layout_marginRight="@dimen/photo_photowedgit_username_margeright"
+        android:layout_marginTop="@dimen/photo_photowedgit_username_margetop"
+        android:layout_toLeftOf="@+id/X_Button"
+        android:layout_toRightOf="@+id/Profile_Photo"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@drawable/blue"
+        android:textSize="@dimen/photo_photowedgit_username_textsize"/>
+
+    <TextView
+        android:id="@+id/Post_Time"
+        style="@style/photolayout_wrap"
+        android:layout_alignLeft="@+id/Profile_Name"
+        android:layout_below="@+id/Profile_Name"
+        android:textSize="@dimen/photo_photowedgit_posttime_textsize" />
+
+    <ImageButton
+        android:id="@+id/X_Button"
+        style="@style/photolayout_photowedgit_xbutton"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/photo_x_button_unselect" />
+
+    <ImageView
+        android:id="@+id/Photo"
+        style="@style/photolayout_full"
+        android:background="@drawable/white"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Profile_Photo" 
+        android:scaleType="centerCrop"/>
+        
+    <ProgressBar
+        android:id="@+id/marker_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Profile_Photo"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:indeterminate="true" />
+  
+</RelativeLayout>

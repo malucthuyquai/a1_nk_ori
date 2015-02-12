@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- not in use -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   
+    <RelativeLayout
+        android:id="@+id/shop_buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/chat_top_bar_three2">
+
+         
+        <com.fuhu.nabiconnect.chat.widget.ShopBarButtonWidget
+            android:id="@+id/shop_top_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <com.fuhu.nabiconnect.chat.widget.ShopBarButtonWidget
+            android:id="@+id/shop_free_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/shop_top_button"
+            android:layout_marginLeft="@dimen/shopbar_item_margin_left"/>
+
+
+        <com.fuhu.nabiconnect.chat.widget.ShopBarButtonWidget
+            android:id="@+id/shop_new_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/shop_free_button"
+            android:layout_marginLeft="@dimen/shopbar_item_margin_left"/>
+
+    </RelativeLayout>
+
+  
+    <ListView
+        android:id="@+id/shop_items_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_buttons_container"
+        android:visibility="invisible" />
+    
+    
+    <com.fuhu.nabiconnect.chat.widget.CustomScrollView
+            android:id="@+id/shop_items_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_buttons_container"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:id="@+id/shop_items_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TableLayout
+                    android:id="@+id/shop_items_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                </TableLayout>
+            </RelativeLayout>
+   </com.fuhu.nabiconnect.chat.widget.CustomScrollView>
+    
+
+
+</RelativeLayout>
+
+

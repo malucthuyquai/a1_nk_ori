@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dialog_padding_vertical"
+    android:paddingLeft="@dimen/dialog_padding"
+    android:paddingRight="@dimen/dialog_padding"
+    android:paddingTop="@dimen/dialog_padding_vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_block_title"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/dialog_blocked_friend_title"
+        android:textColor="@android:color/white"
+        android:textSize="24dp" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
+        android:background="@drawable/dialog_block_background"
+        android:clickable="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="80dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/dialog_blocked_friend_confirm_message"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/dialog_block_cancel"
+                android:text="@android:string/cancel"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" >
+            </Button>
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="60dp" >
+            </View>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/dialog_block_confirm"
+                android:text="@string/confirm"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </View>
+
+</LinearLayout>

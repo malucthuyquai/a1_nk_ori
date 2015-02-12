@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- MainBar -->
+    <dimen name="chat_mainbar_item_width">151px</dimen>
+    <dimen name="mainbar_item_height">145px</dimen>
+    <dimen name="mainbar_item_margin_top">149px</dimen>
+
+    <!-- Contact widget -->
+    <dimen name="contact_widget_boarder_size">373px</dimen>
+    <dimen name="contact_widget_background_size">361px</dimen>
+    <dimen name="contact_widget_message_indicator_maring_top">21px</dimen>
+    <dimen name="contact_widget_message_indicator_maring_right">28px</dimen>
+    <dimen name="contact_widget_size">211px</dimen>
+    <dimen name="contact_widget_margin_top">47px</dimen>
+    <dimen name="contact_widget_name_margin_top">17px</dimen>
+
+    <!-- shopBar -->
+    <dimen name="shopbar_item_width">373px</dimen>
+    <dimen name="shopbar_item_height">85px</dimen>
+    <dimen name="shopbar_item_margin_left">4px</dimen>
+    <dimen name="shopbar_inner_item_size">167px</dimen>
+    
+    <!-- shop item -->
+    <dimen name="shop_item_button_widget_width">167px</dimen>
+    <dimen name="shop_item_button_widget_height">59px</dimen>
+    <dimen name="shop_item_button_text_margin_right">13px</dimen>
+    <dimen name="shop_bar_category_name_margin_left">27px</dimen>
+    
+    <!-- chat bar -->
+    <dimen name="chat_bar_height">91px</dimen>
+    <dimen name="chat_bar_item_margin_left">20px</dimen>
+    <dimen name="chat_bar_edit_text_width">700px</dimen>
+    <dimen name="chat_bar_edit_text_margin_left">30px</dimen>
+    <dimen name="chat_bar_sticker_container_height">316px</dimen>
+    <dimen name="chat_bar_category_icon_height">67px</dimen>
+    <dimen name="chat_bar_category_icon_width">107px</dimen>
+    <dimen name="chat_bar_sticker_widget_width">160px</dimen>
+    <dimen name="chat_bar_sticker_widget_height">250px</dimen>
+    
+    <!-- message box -->
+    <dimen name="message_box_divider_height">13px</dimen>
+    <dimen name="message_box_width">1129px</dimen>
+    <dimen name="message_box_avatar_size">116px</dimen>
+    <dimen name="message_box_avatar_margin_side">27px</dimen>
+    <dimen name="message_box_content_max_length">687px</dimen>
+    <dimen name="message_box_sticker_margin_side">28px</dimen>
+    <dimen name="message_box_indicator_margin_top">33px</dimen>
+    <dimen name="message_box_indicator_margin_side">10px</dimen>
+    <dimen name="message_box_padding">27px</dimen>
+    <dimen name="message_box_timestamp_padding_left">10px</dimen>
+    <dimen name="message_box_send_failed_indicator_margin_right">13px</dimen>
+    
+    <!-- Sticker -->
+    <dimen name="sticker_size">120px</dimen>
+
+</resources>

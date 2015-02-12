@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+// use build type to indicate server
+// use product flavor to determine device type
+android {
+    // up this counter if you are making more than one release in the same day
+    final int REVISE_NO = 1;
+
+    compileSdkVersion 17
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.fuhu.nabiconnect"
+        minSdkVersion 14
+        targetSdkVersion 17
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("c:\\projects\\fuhu_android");
+            storePassword "pass\$1214"
+            keyAlias "fuhu"
+            keyPassword "pass\$1214"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig = signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        dreamtab {
+            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+            versionName = versionCode + "_andoridStudio"
+        }
+
+        nabitwo {
+            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+        }
+
+        nabitwos {
+            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+        }
+
+        juniors {
+            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+        }
+
+        bigtab20 {
+            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+        }
+
+        bigtab24 {
+            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+        }
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:18.0.0'
+    compile files('libs/android-query-full.0.26.8.jar')
+    compile files('libs/apache-mime4j-0.6.jar')
+    compile files('libs/cmrLib.jar')
+    compile files('libs/commons-io-2.4.jar')
+    compile files('libs/google-play-services.jar')
+    compile files('libs/httpclient-4.3.2.jar')
+    compile files('libs/httpcore-4.3.1.jar')
+    compile files('libs/httpmime-4.3.2.jar')
+    compile files('libs/nabi-container-103031801-DT.jar')
+    compile files('libs/nabi-library-1030080601-temp.jar')
+    compile files('libs/ND_NS_104012301.jar')
+}
+
+def String getVersionCode(int reviseNo) {
+    Calendar cal = Calendar.getInstance();
+    int year = cal.get(Calendar.YEAR) - 1911;
+    int month = cal.get(Calendar.MONTH) + 1;
+    int day = cal.get(Calendar.DAY_OF_MONTH);
+    return String.format("%03d%02d%02d%02d", year, month, day, reviseNo);
+}

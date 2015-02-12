@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="20dp" >
+
+    <ImageView
+        android:id="@+id/iv_avatar_left"
+        android:layout_width="@dimen/nsa_avatar_dim_s"
+        android:layout_height="@dimen/nsa_avatar_dim_s"
+        android:layout_marginRight="8dp"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat_avatar_default" >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/iv_arrow_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="-1dp"
+        android:layout_marginTop="40dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nsa_chat_arrow_left" >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/iv_sticker"
+        android:layout_width="@dimen/nsa_avatar_dim_s"
+        android:layout_height="@dimen/nsa_avatar_dim_s"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:visibility="invisible" >
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/ll_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/nsa_chat_bubble_left"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/nsa_chat_msg_margin"
+            android:layout_marginLeft="@dimen/nsa_chat_msg_margin"
+            android:layout_marginTop="@dimen/nsa_chat_msg_margin"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxEms="15"
+                android:singleLine="true"
+                android:text="@string/default_text"
+                android:textColor="@color/nsa_orange"
+                android:textSize="@dimen/nsa_text_size" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/nsa_chat_max_width"
+                android:text="@string/default_text"
+                android:textColor="@color/nsa_chat_msg_grey"
+                android:textSize="@dimen/nsa_text_size" >
+            </TextView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="@dimen/nsa_chat_delete_dim"
+            android:layout_height="@dimen/nsa_chat_delete_dim"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="@dimen/nsa_chat_msg_margin"
+            android:contentDescription="@string/empty"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nsa_btn_photo_x" >
+        </ImageView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginTop="40dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nsa_chat_arrow_right" >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/iv_avatar_right"
+        android:layout_width="@dimen/nsa_avatar_dim_s"
+        android:layout_height="@dimen/nsa_avatar_dim_s"
+        android:layout_marginLeft="8dp"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat_avatar_default" >
+    </ImageView>
+
+</LinearLayout>

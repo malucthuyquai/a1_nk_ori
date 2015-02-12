@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app2="http://schemas.android.com/apk/res-auto"
+    style="@style/photolayout_full"
+    >
+
+    <RelativeLayout
+        android:id="@+id/CenterFrame"
+        style="@style/photolayout_centerframe"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/black"
+        >
+
+        <TextureView
+            android:id="@+id/TextureView"
+            style="@style/photolayout_textureview"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RightFrame"
+        style="@style/photolayout_rightframe"
+        android:layout_toRightOf="@+id/CenterFrame"
+        android:background="@drawable/photo_camera_background"
+        >
+
+        <ImageView
+            android:id="@+id/CameraBtn_BackCircle_ByControlZoom"
+            style="@style/photolayout_zoomcircle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/photo_camera_button_backcircle"
+            />
+
+        <ImageView
+            android:id="@+id/ZoomIn_Plus"
+            style="@style/photolayout_zoomplus"
+            android:layout_above="@+id/Shutter"
+            android:layout_alignParentRight="true"
+            />
+
+        <ImageButton
+            android:id="@+id/Shutter"
+            style="@style/photolayout_shutter"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/photo_selector_camera_button"
+            />
+
+        <ImageView
+            android:id="@+id/ZoomOut_Minus"
+            style="@style/photolayout_zoomminus"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/Shutter"
+            />
+
+        <ImageButton
+            android:id="@+id/SwitchCamera"
+            style="@style/photolayout_cameraswitch_btn"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/photo_selector_camera_switcher"
+            />
+
+        <ImageButton
+            android:id="@+id/CameraGotoGalleryButton"
+            style="@style/photolayout_cameragotogallery_btn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/photo_selector_cameragotogallery_frame"
+            />
+    </RelativeLayout>
+
+    <com.fuhu.nabiconnect.photo.object.CircularSeekBar
+        android:id="@+id/CircularSeekBar"
+        style="@style/photolayout_circular_seekbar"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        app2:end_angle="245"
+        app2:progress="0"
+        app2:start_angle="115"
+        />
+
+</RelativeLayout>

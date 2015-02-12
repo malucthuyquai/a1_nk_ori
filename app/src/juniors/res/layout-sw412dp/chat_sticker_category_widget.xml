@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sticker_category_background"
+    android:layout_width="@dimen/chat_bar_category_icon_width"
+    android:layout_height="@dimen/chat_bar_category_icon_height" >
+
+    <ImageView
+        android:id="@+id/category_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/category_icon_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/chat_button_bar_line" />
+
+</RelativeLayout>

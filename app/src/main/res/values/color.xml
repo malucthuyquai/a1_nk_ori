@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="white">#FFFFFF</drawable>
+    <drawable name="blue">#1C86EE</drawable>
+    <drawable name="gray">#CCCCCC</drawable>
+    <drawable name="darkgray">#666666</drawable>
+    <drawable name="black">#000000</drawable>
+    <drawable name="backgroundgray">#EDEDED</drawable>
+    
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#1C86EE</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="backgroundgray">#EDEDED</color>
+    <color name="darkgray">#666666</color>
+    <color name="black">#000000</color>
+    <color name="sendingDialogAnimation">#77d7ed</color>
+    
+    <!-- background color of contact fragment -->
+    <color name="contact_background_color">#CCCCCC</color>
+    
+
+	<!-- background color of contact fragment -->
+    <color name="avatar_bg_red">#FF0A35</color>
+    <color name="avatar_bg_green">#46B2AC</color>
+    <color name="avatar_bg_orange">#FF811E</color>
+    <color name="avatar_bg_yellow">#FFC800</color>
+    <color name="avatar_bg_gray">#B3B3B3</color>
+    <color name="avatar_bg_brown">#AD5F2A</color>
+    
+    <color name="friend_delete_container_blue">#39A6CC</color>
+    
+    <color name="friend_list_item_color">#262626</color>
+    <color name="friend_request_list_item_color">#3B3B3B</color>
+    
+    <color name="photo_circlegray">#656565</color>
+    
+    <!-- background color of contact fragment -->
+    <color name="wallpaper_bg_1">#E91C2F</color>
+    <color name="wallpaper_bg_2">#EF5837</color>
+    <color name="wallpaper_bg_3">#F9EB56</color>
+    <color name="wallpaper_bg_4">#89C056</color>
+    <color name="wallpaper_bg_5">#1A6B32</color>
+    <color name="wallpaper_bg_6">#2CCDE8</color>
+    <color name="wallpaper_bg_7">#0B7DB9</color>
+    <color name="wallpaper_bg_8">#663087</color>
+    <color name="wallpaper_bg_9">#7A2B1F</color>
+    <color name="wallpaper_bg_10">#000000</color>
+    <color name="wallpaper_bg_11">#8B8B8B</color>
+    <color name="wallpaper_bg_12">#FFFFFF</color>
+    
+</resources>

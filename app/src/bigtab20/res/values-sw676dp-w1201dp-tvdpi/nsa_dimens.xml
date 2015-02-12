@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 1600x900 -->
+    <integer name="photo_target_width">700</integer>
+    <!-- shared -->
+    <dimen name="nsa_topbar_height">60dp</dimen>
+    <dimen name="nsa_topbar_item_height">53dp</dimen>
+    <dimen name="nsa_pd_height">60dp</dimen>
+    <dimen name="nsa_back_button_side">37dp</dimen>
+    <!-- kid list avatar -->
+    <dimen name="nsa_avatar_ring_width">7dp</dimen>
+    <dimen name="nsa_avatar_ring_padding">3.5dp</dimen>
+    <!-- text size -->
+    <dimen name="nsa_text_size">32dp</dimen>
+    <dimen name="nsa_kid_name_size">40dp</dimen>
+    <!-- mid layout height -->
+    <dimen name="nsa_mid_height">60dp</dimen>
+    <!-- friend -->
+    <dimen name="nsa_item_friend_avatar">100dp</dimen>
+    <dimen name="nsa_gallery_arrow_width">48dp</dimen>
+    <dimen name="nsa_gallery_arrow_height">46dp</dimen>
+    <dimen name="nsa_avatar_dim_s">120dp</dimen>
+    <dimen name="nsa_delete_dim">53dp</dimen>
+    <dimen name="blocked_list_height">270dp</dimen>
+    <dimen name="dialog_padding">300dp</dimen>
+    <!-- chat -->
+    <dimen name="nsa_chat_icon_side">40dp</dimen>
+    <dimen name="nsa_chat_unread_icon_side">26dp</dimen>
+    <dimen name="nsa_chat_unread_top_margin">-8dp</dimen>
+    <dimen name="nsa_conversation_avatar">93dp</dimen>
+    <dimen name="nsa_chat_delete_dim">53dp</dimen>
+    <dimen name="nsa_chat_max_width">640dp</dimen>
+    <!-- mail -->
+    <dimen name="nsa_mail_icon_side">48dp</dimen>
+    <dimen name="nsa_unread_icon_side">26dp</dimen>
+    <dimen name="nsa_mail_unread_top_margin">-4dp</dimen>
+    <dimen name="nsa_unread_text_size">18dp</dimen>
+    <dimen name="nsa_mail_width">206dp</dimen>
+    <dimen name="nsa_mail_height">159dp</dimen>
+    <!-- photo -->
+    <dimen name="nsa_photo_avatar_margin">8dp</dimen>
+    <dimen name="nsa_photo_name_top_margin">8dp</dimen>
+    <dimen name="nsa_photo_time_bottom_margin">8dp</dimen>
+    <dimen name="nsa_photo_name_text_size">25dp</dimen>
+    <dimen name="nsa_photo_time_text_size">22dp</dimen>
+    <dimen name="nsa_photo_header_height">73dp</dimen>
+    <dimen name="nsa_photo_short_height">340dp</dimen>
+    <dimen name="nsa_photo_long_height">460dp</dimen>
+
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    
+    <!-- Notification dialog -->
+    <dimen name="notification_dialog_margin_top">87px</dimen>
+    <dimen name="notification_dialog_width">707px</dimen>
+    <dimen name="notification_dialog_height">87px</dimen>
+    <dimen name="notification_dialog_icon_size">43px</dimen>
+    <dimen name="notification_dialog_icon_margin_left">20px</dimen>
+    <dimen name="notification_dialog_text_width">552px</dimen>
+    <dimen name="notification_dialog_text_margin_top">19px</dimen>
+    <dimen name="notification_dialog_text_margin_left">20px</dimen>
+    <dimen name="notification_dialog_content_margin_top">-5px</dimen>
+
+</resources>

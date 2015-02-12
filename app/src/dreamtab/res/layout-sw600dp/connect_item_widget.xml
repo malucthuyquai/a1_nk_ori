@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/connect_item_background"
+    android:layout_width="@dimen/connect_item_widget_width"
+    android:layout_height="@dimen/connect_item_widget_height"
+    android:background="@drawable/connect_garybg">   
+    
+     
+    <ImageView 
+        android:id="@+id/connect_item_main_image"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_centerVertical="true"
+    	android:layout_marginLeft="@dimen/connect_item_widget_main_image_margin_left"
+    	android:src="@drawable/connect_imgv_chat"/>
+    
+	<RelativeLayout 
+	    android:id="@+id/connect_item_button_container"
+        android:layout_width="@dimen/connect_item_widget_button_container_width"
+    	android:layout_height="match_parent"
+    	android:layout_toRightOf="@+id/connect_item_main_image"
+    	android:layout_marginLeft="@dimen/connect_item_widget_button_margin_left">
+	    
+	    <Button
+            android:id="@+id/connect_item_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/connect_btn_item_widget" />
+	    
+	    <TextView
+            android:id="@+id/connect_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/connect_item_widget_text_margin_left"
+            android:fontFamily="sans-serif-light"
+            style="@style/connect_primary_xl_gray" />
+	    
+	    <ImageView 
+	        android:id="@+id/connect_item_sub_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/connect_item_widget_sub_image_margin_right"
+            android:src="@drawable/connect_icon_chat"/>
+	    
+	    <RelativeLayout 
+            android:id="@+id/mail_inbox_unread_indicator"
+            android:layout_width="@dimen/connect_item_widget_unread_indicator_size"
+            android:layout_height="@dimen/connect_item_widget_unread_indicator_size"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/connect_item_widget_unread_indicator_margin_right"
+            android:layout_marginTop="@dimen/connect_item_widget_unread_indicator_margin_top"
+            android:background="@drawable/connect_notify_bg"
+            android:visibility="invisible">
+            
+            <TextView
+            android:id="@+id/mail_unread_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="@style/connect_primary_s"
+            android:textStyle="bold"/>
+            
+        </RelativeLayout>
+	    
+	    
+	    
+	</RelativeLayout>
+    
+    
+	
+</RelativeLayout>

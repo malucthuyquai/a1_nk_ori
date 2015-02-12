@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"  
+    android:background="@drawable/chat_chatbar" >
+   
+    <ImageView
+        android:id="@+id/chat_bar_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/connect_bar_icon" />
+    
+    <com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget
+        android:id="@+id/contact_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mainbar_item_margin_top"
+        />
+    
+    <com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget
+        android:id="@+id/chat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contact_button"
+        />
+    
+    <com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget
+        android:id="@+id/shop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_button"
+        android:visibility="gone"
+        />  
+
+</RelativeLayout>

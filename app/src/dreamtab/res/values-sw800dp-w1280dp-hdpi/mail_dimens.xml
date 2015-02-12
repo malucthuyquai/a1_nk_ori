@@ -1,0 +1,135 @@
+<resources>
+
+    <!--
+    Default screen margins, per the Android Design guidelines. 
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    -->
+
+    <dimen name="mail_effect_bar_container_width">366px</dimen>
+    <dimen name="mail_effect_bar_width">256px</dimen>
+    <dimen name="mail_effect_bar_switch_margin_top">40px</dimen>
+    <dimen name="mail_effect_bar_item_padding_top">13px</dimen>
+    <dimen name="mail_inbox_bar_height">115px</dimen>
+    <dimen name="mail_inbox_bar_back_margin_left">30px</dimen>
+    <dimen name="mail_inbox_bar_shadow_height">6px</dimen>
+    <dimen name="mail_inbox_sender_info_container_width">300px</dimen>
+    <dimen name="mail_inbox_sender_info_container_margin_top">30px</dimen>
+    <dimen name="mail_inbox_sender_info_container_margin_left">65px</dimen>
+    <dimen name="mail_inbox_sender_avatar_size">225px</dimen>
+    <dimen name="mail_inbox_send_button_margin_top">20px</dimen>
+    <dimen name="mail_inbox_send_button_margin_right">135px</dimen>
+    <dimen name="mail_inbox_mails_scroll_view_margin_left">50px</dimen>
+    <dimen name="mail_listitem_background_width">1800px</dimen>
+    <dimen name="mail_listitem_background_height">250px</dimen>
+    <dimen name="mail_listitem_background_padding_top">30px</dimen>
+    <dimen name="mail_inbox_left_indicator_margin_top">85px</dimen>
+    <dimen name="mail_inbox_left_indicator_margin_left">30px</dimen>
+    <dimen name="mail_inbox_listitem_container_width">1165px</dimen>
+    <dimen name="mail_inbox_listitem_container_height">180px</dimen>
+    <dimen name="mail_inbox_listitem_container_margin_top">30px</dimen>
+    <dimen name="mail_inbox_listitem_avatar_margin_left">100px</dimen>
+    <dimen name="mail_inbox_listitem_sender_name_margin_top">20px</dimen>
+    <dimen name="mail_inbox_listitem_sender_name_margin_left">60px</dimen>
+    <dimen name="mail_inbox_listitem_sender_name_max_width">850px</dimen>
+    <dimen name="mail_inbox_listitem_indicator_margin_right">50px</dimen>
+    <dimen name="mail_inbox_listitem_unread_indicator_margin_right">30px</dimen>
+    <dimen name="mail_inbox_listitem_unread_indicator_margin_top">10px</dimen>
+    <dimen name="mail_drawing_canvas_width">1439px</dimen>
+    <dimen name="mail_content_widget_width">1200px</dimen>
+    <dimen name="mail_content_widget_height">385px</dimen>
+    <dimen name="mail_content_widget_padding_top">30px</dimen>
+    <dimen name="mail_content_widget_indicator_margin_top">90px</dimen>
+    <dimen name="mail_content_widget_image_container_width">1175px</dimen>
+    <dimen name="mail_content_widget_image_container_height">355px</dimen>
+    <dimen name="mail_content_widget_image_width">365px</dimen>
+    <dimen name="mail_content_widget_image_height">280px</dimen>
+    <dimen name="mail_content_widget_image_margin_top">15px</dimen>
+    <dimen name="mail_content_widget_image_margin_left">45px</dimen>
+    <dimen name="mail_content_dialog_width">1580px</dimen>
+    <dimen name="mail_content_dialog_image_width">1440px</dimen>
+    <dimen name="mail_content_dialog_reply_button_margin_bottom">67px</dimen>
+    <dimen name="mail_choose_contact_widget_container_width">350px</dimen>
+    <dimen name="mail_choose_contact_widget_avatar_size">300px</dimen>
+    <dimen name="mail_choose_contact_widget_indicator_margin_top">225px</dimen>
+    <dimen name="mail_choose_contact_widget_indicator_margin_right">45px</dimen>
+    <dimen name="mail_choose_contact_widget_name_margin_top">20px</dimen>
+    <dimen name="mail_choose_contact_dialog_width">1568px</dimen>
+    <dimen name="mail_choose_contact_dialog_height">800px</dimen>
+    <dimen name="mail_choose_contact_dialog_title_margin_top">70px</dimen>
+    <dimen name="mail_choose_contact_dialog_contact_scroll_view_width">1560px</dimen>
+    <dimen name="mail_choose_contact_dialog_contact_scroll_view_margin_top">30px</dimen>
+    <dimen name="mail_choose_contact_dialog_button_margin_side">610px</dimen>
+    <dimen name="mail_choose_contact_dialog_button_margin_bottom">70px</dimen>
+    <dimen name="mail_compose_reply_info_container_margin_left">390px</dimen>
+    <dimen name="mail_compose_reply_info_avatar_size">135px</dimen>
+    <dimen name="mail_compose_reply_info_name_margin_left">25px</dimen>
+    <dimen name="mail_compose_reply_delete_button_margin_right">20px</dimen>
+    <dimen name="mail_reply_dialog_width">1091px</dimen>
+    <dimen name="mail_reply_dialog_height">749px</dimen>
+    <dimen name="mail_reply_dialog_title_margin_top">50px</dimen>
+    <dimen name="mail_reply_dialog_avatar_container_size">275px</dimen>
+    <dimen name="mail_reply_dialog_avatar_container_margin_top">20px</dimen>
+    <dimen name="mail_reply_dialog_avatar_indicator_margin_right">15px</dimen>
+    <dimen name="mail_reply_dialog_button_size">135px</dimen>
+    <dimen name="mail_reply_dialog_button_margin_bottom">60px</dimen>
+    <dimen name="mail_reply_dialog_button_margin_side">390px</dimen>
+    <dimen name="mail_sent_failed_dialog_icon_margin_top">95px</dimen>
+    <dimen name="mail_erase_all_dialog_width">726px</dimen>
+    <dimen name="mail_erase_all_dialog_height">414px</dimen>
+    <dimen name="mail_erase_all_dialog_title_margin_top">110px</dimen>
+    <dimen name="mail_erase_all_dialog_button_size">100px</dimen>
+    <dimen name="mail_erase_all_dialog_button_margin_side">250px</dimen>
+    <dimen name="mail_camera_container_width">800px</dimen>
+    <dimen name="mail_camera_container_height">750px</dimen>
+    <dimen name="mail_camera_container_margin_right">315px</dimen>
+    <dimen name="mail_camera_preview_container_width">640px</dimen>
+    <dimen name="mail_camera_preview_container_height">480px</dimen>
+    <dimen name="mail_camera_preview_container_margin_top">50px</dimen>
+    <dimen name="mail_camera_button_container_margin_top">550px</dimen>
+    <dimen name="mail_camera_button_margin_side">10px</dimen>
+    <dimen name="mail_sticker_widget_list_container_margin_right">185px</dimen>
+    <dimen name="mail_sticker_widget_list_container_width">1050px</dimen>
+    <dimen name="mail_sticker_widget_width">265px</dimen>
+    <dimen name="mail_sticker_widget_height">580px</dimen>
+    <dimen name="mail_sticker_widget_content_image_size">200px</dimen>
+    <dimen name="mail_sticker_widget_image_margin_top">45px</dimen>
+    <dimen name="mail_wallpaper_widget_image_width">247px</dimen>
+    <dimen name="mail_wallpaper_widget_image_height">194px</dimen>
+
+    <!-- EditText to bitmap -->
+    <dimen name="mail_mail_text_container_width">1125px</dimen>
+    <dimen name="mail_mail_text_container_height">825px</dimen>
+    <dimen name="mail_display_textview_width">580px</dimen>
+    <dimen name="mail_edit_edittext_width">820px</dimen>
+    <dimen name="mail_resize_button_margin_top_side">0px</dimen>
+    <dimen name="mail_resize_button_margin_bottom_side">20px</dimen>
+    <dimen name="mail_resize_button_margin_left_side">100px</dimen>
+    <dimen name="mail_confirm_button_margin_top_side">-75px</dimen>
+    <dimen name="mail_confirm_button_margin_left_side">20px</dimen>
+    <dimen name="mail_cancel_button_margin_left_side">400px</dimen>
+    <dimen name="mail_resize_button_margin_right_side">-100px</dimen>
+    <dimen name="mail_rotate_button_margin_left_side">-100px</dimen>
+    <dimen name="mail_et_margin">30px</dimen>
+    <dimen name="mail_et_width_margin">70px</dimen>
+    <dimen name="mail_confirm_button_size">135px</dimen>
+    <dimen name="mail_cancel_button_size">135px</dimen>
+    <dimen name="mail_rotate_button_size">127px</dimen>
+    <dimen name="mail_resize_button_size">127px</dimen>
+    <dimen name="mail_text_container_margin_top_side">405px</dimen>
+    <dimen name="mail_text_container_margin_bottom_side">0px</dimen>
+    <dimen name="mail_text_container_margin_left_side">435px</dimen>
+    <dimen name="mail_resize_button_position_margin_top_side">97px</dimen>
+    <dimen name="mail_resize_button_position_margin_right_side">40px</dimen>
+    <dimen name="mail_rotate_button_position_margin_right_side">-67px</dimen>
+    <dimen name="mail_input_views_min_height">45px</dimen>
+    <dimen name="mail_edittext_ini_height">310px</dimen>
+
+    <!-- Mail add text sticker cutting area -->
+    <dimen name="mail_cut_area_width">60px</dimen>
+    <dimen name="mail_cut_area_height">120px</dimen>
+
+    <!-- dialog -->
+    <dimen name="mail_sent_fail_button_bottom_margin">71px</dimen>
+
+</resources>

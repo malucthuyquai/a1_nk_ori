@@ -1,0 +1,39 @@
+<resources>
+
+
+    <style name="mail_primary_s">
+        <item name="android:textSize">24px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="mail_primary_m">
+        <item name="android:textSize">32px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="mail_primary_m_blue">
+        <item name="android:textSize">33px</item>
+        <item name="android:textColor">#479ED7</item>
+    </style>
+    
+    <style name="mail_primary_l2">
+        <item name="android:textSize">41px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="mail_primary_l">
+        <item name="android:textSize">46px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="mail_secondary_m">
+        <item name="android:textSize">37px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="mail_secondary_m_orange">
+        <item name="android:textSize">37px</item>
+        <item name="android:textColor">#FF8300</item>
+    </style>
+    
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mail_setup_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+
+    <TextView
+        android:id="@+id/friend_setup_step1_text"
+        style="@style/friend_primary_xl_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/friend_setup_text_margin_left"
+        android:layout_marginTop="@dimen/friend_setup_text_margin_top"
+        android:text="@string/friend_step_1" />
+
+    <TextView
+        android:id="@+id/friend_setup_create_name_text"
+        style="@style/friend_primary_l_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/friend_setup_step1_text"
+        android:layout_marginLeft="@dimen/friend_setup_text_margin_left"
+        android:layout_marginTop="@dimen/friend_setup_text_description_margin_top"
+        android:text="@string/friend_create_username" />
+
+    <RelativeLayout
+        android:id="@+id/friend_setup_next_btn"
+        android:layout_width="@dimen/friend_setup_next_width"
+        android:layout_height="@dimen/friend_setup_next_height"
+        android:layout_alignLeft="@+id/friend_setup_create_name_text"
+        android:layout_marginLeft="-9px"
+        android:layout_marginTop="@dimen/friend_setup_next_button_margin_top"
+        android:clickable="true" >
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/friend_setup_next_height_half"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/btn_signup_next_top" >
+        </View>
+
+        <View
+            android:id="@+id/v_bot"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/v_top"
+            android:background="@drawable/btn_signup_next_bot" >
+        </View>
+
+        <TextView
+            android:id="@+id/tv_next"
+            style="@style/friend_primary_m_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/friend_next" >
+        </TextView>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/friend_setup_user_name"
+        style="@style/friend_primary_l_2_dark"
+        android:layout_width="@dimen/friend_setup_user_name_width"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/friend_setup_text_margin_left"
+        android:layout_marginTop="@dimen/friend_setup_user_name_margin_top"
+        android:background="@drawable/edittext_bg"
+        android:padding="8dp"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/friend_setup_create_name_warning_text"
+        style="@style/friend_primary_m_2_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/friend_setup_user_name"
+        android:layout_marginLeft="@dimen/friend_setup_text_margin_left"
+        android:layout_marginTop="@dimen/friend_setup_warning_text_margin_top"
+        android:text="@string/friend_create_username_warning" />
+
+</RelativeLayout>

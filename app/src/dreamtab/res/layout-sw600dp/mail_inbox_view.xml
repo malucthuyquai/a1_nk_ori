@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDEDED" >
+
+    <RelativeLayout
+        android:id="@+id/inbox_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mail_inbox_bar_height"
+        android:background="#FFFFFF" >
+
+        <ImageView
+            android:id="@+id/inbox_bar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/mail_inbox_bar_back_margin_left"
+            android:contentDescription="@string/empty"
+            android:src="@drawable/mail_inbox_back"
+            android:visibility="invisible" />
+
+        <TextView
+            style="@style/mail_primary_m_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/mail_my_inbox"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mail_inbox_bar_shadow_height"
+            android:layout_alignParentBottom="true"
+            android:background="#DBDBDB" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/mail_inbox_listitem_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inbox_bar_container"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
+
+    <!-- Layout of mail content -->
+
+    <RelativeLayout
+        android:id="@+id/mail_inbox_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/inbox_bar_container"
+        android:visibility="invisible" >
+
+        <RelativeLayout
+            android:id="@+id/mail_sender_info_container"
+            android:layout_width="@dimen/mail_inbox_sender_info_container_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mail_inbox_sender_info_container_margin_left"
+            android:layout_marginTop="@dimen/mail_inbox_sender_info_container_margin_top" >
+
+            <ImageView
+                android:id="@+id/sender_avatar"
+                android:layout_width="@dimen/mail_inbox_sender_avatar_size"
+                android:layout_height="@dimen/mail_inbox_sender_avatar_size"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/chat_avatar_default" />
+
+            <TextView
+                android:id="@+id/sender_name"
+                style="@style/mail_secondary_m_orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sender_avatar"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:maxLines="3" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/mail_inbox_mails_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mail_inbox_mails_scroll_view_margin_left"
+            android:layout_toRightOf="@+id/mail_sender_info_container"
+            android:divider="@android:color/transparent"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" />
+    </RelativeLayout>
+
+</RelativeLayout>

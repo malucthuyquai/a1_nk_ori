@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dialog_padding_vertical"
+    android:paddingLeft="@dimen/dialog_padding"
+    android:paddingRight="@dimen/dialog_padding"
+    android:paddingTop="@dimen/dialog_padding_vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_block_title"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/dialog_blocked_friend_title"
+        android:textColor="@android:color/white"
+        android:textSize="24dp" >
+    </TextView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
+        android:background="@drawable/dialog_block_background"
+        android:clickable="true"
+        android:paddingBottom="16dp" >
+
+        <ListView
+            android:id="@+id/lv_blocked_friend"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/blocked_list_height"
+            android:layout_margin="@dimen/block_list_margin"
+            android:background="@drawable/dialog_block_list_background"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/white"
+            android:dividerHeight="1px"
+            android:paddingBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="4dp"
+            android:scrollbarStyle="insideInset"
+            android:scrollbarThumbVertical="@drawable/listview_vertical_thumb" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/tv_no_blocked_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/lv_blocked_friend"
+            android:layout_alignLeft="@+id/lv_blocked_friend"
+            android:layout_alignRight="@+id/lv_blocked_friend"
+            android:layout_alignTop="@+id/lv_blocked_friend"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="tv_no_blocked_friend"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:visibility="gone" >
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/lv_blocked_friend"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/dialog_block_confirm"
+            android:text="@android:string/ok"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" >
+        </Button>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </View>
+
+</LinearLayout>

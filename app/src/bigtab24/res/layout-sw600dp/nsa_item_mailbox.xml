@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/nsa_conversation_avatar"
+        android:layout_height="@dimen/nsa_conversation_avatar"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/chat_avatar_default" >
+    </ImageView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/nsa_conversation_avatar"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="@dimen/nsa_arrow_margin"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/nsa_chat_arrow_left" >
+    </ImageView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nsa_conversation_avatar"
+        android:layout_marginBottom="18dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/nsa_chat_bubble_left" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_mail_icon"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:singleLine="true"
+            android:text="@string/default_text"
+            android:textColor="@color/nsa_orange"
+            android:textSize="@dimen/nsa_text_size" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/iv_mail_icon"
+            android:layout_width="@dimen/nsa_mail_icon_side"
+            android:layout_height="@dimen/nsa_mail_icon_side"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:contentDescription="@string/empty"
+            android:src="@drawable/mail_indicator_unread" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_unread"
+            android:layout_width="@dimen/nsa_unread_icon_side"
+            android:layout_height="@dimen/nsa_unread_icon_side"
+            android:layout_alignRight="@+id/iv_mail_icon"
+            android:layout_alignTop="@+id/iv_mail_icon"
+            android:layout_marginRight="-14dp"
+            android:layout_marginTop="@dimen/nsa_mail_unread_top_margin"
+            android:background="@drawable/mail_unread_number_indicator"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/nsa_unread_text_size" >
+        </TextView>
+    </RelativeLayout>
+
+</LinearLayout>

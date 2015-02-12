@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/dialog_background_container"
+        android:layout_width="@dimen/notification_dialog_width"
+        android:layout_height="@dimen/notification_dialog_height"
+        android:background="#303B55" >
+
+        
+        <ImageView 
+            android:id="@+id/dialog_app_icon"
+            android:layout_width="@dimen/notification_dialog_icon_size"
+        	android:layout_height="@dimen/notification_dialog_icon_size"
+        	android:layout_centerVertical="true"
+        	android:layout_marginLeft="@dimen/notification_dialog_icon_margin_left"
+        	android:src="@drawable/ic_launcher"/>
+        
+        <TextView 
+            android:id="@+id/dialog_title"
+            android:layout_width="@dimen/notification_dialog_text_width"
+        	android:layout_height="wrap_content"
+        	android:layout_toRightOf="@+id/dialog_app_icon"
+        	android:layout_marginTop="@dimen/notification_dialog_text_margin_top"
+        	android:layout_marginLeft="@dimen/notification_dialog_text_margin_left"
+        	android:ellipsize="end"
+			android:singleLine="true"
+			android:scrollHorizontally="true"
+        	style="@style/notification_primary_s"/>
+        
+        <TextView 
+            android:id="@+id/dialog_content"
+            android:layout_width="@dimen/notification_dialog_text_width"
+        	android:layout_height="wrap_content"
+        	android:layout_toRightOf="@+id/dialog_app_icon"
+        	android:layout_below="@+id/dialog_title"
+        	android:layout_marginTop="@dimen/notification_dialog_content_margin_top"
+        	android:layout_marginLeft="@dimen/notification_dialog_text_margin_left"
+        	android:ellipsize="end"
+			android:singleLine="true"
+			android:scrollHorizontally="true"
+        	android:textStyle="bold"
+        	style="@style/notification_primary_m"/>
+
+        
+    </RelativeLayout>
+
+</LinearLayout>

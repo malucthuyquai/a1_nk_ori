@@ -1,0 +1,79 @@
+<resources>
+
+    
+    <style name="friend_primary_xxl">
+        <item name="android:textSize">87px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_xl_3">
+        <item name="android:textSize">78px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_xl_2">
+        <item name="android:textSize">64px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_xl_blue">
+        <item name="android:textSize">52px</item>
+        <item name="android:textColor">#479ED7</item>
+    </style>
+    
+    <style name="friend_primary_xl">
+        <item name="android:textSize">52px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_xl_gray">
+        <item name="android:textSize">52px</item>
+        <item name="android:textColor">#616161</item>
+    </style>
+    
+    <style name="friend_primary_l">
+        <item name="android:textSize">41px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_l_2">
+        <item name="android:textSize">45px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_l_2_dark">
+        <item name="android:textSize">45px</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    
+    <style name="friend_primary_l_gray">
+        <item name="android:textSize">41px</item>
+        <item name="android:textColor">#616161</item>
+    </style>
+    
+    <style name="friend_primary_l_cyan">
+        <item name="android:textSize">43px</item>
+        <item name="android:textColor">#00FFFF</item>
+    </style>
+    
+    <style name="friend_primary_m_2">
+        <item name="android:textSize">35px</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="friend_primary_m_2_blue">
+        <item name="android:textSize">35px</item>
+        <item name="android:textColor">#39A6CC</item>
+    </style>
+    
+    <style name="friend_primary_m_blue">
+        <item name="android:textSize">32px</item>
+        <item name="android:textColor">#39A6CC</item>
+    </style>
+    
+    <style name="friend_primary_m_red">
+        <item name="android:textSize">32px</item>
+        <item name="android:textColor">#FF0000</item>
+    </style>
+
+</resources>

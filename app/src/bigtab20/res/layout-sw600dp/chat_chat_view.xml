@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/image_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/chat_bar_sticker_container_height"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chat_bar_category_icon_height"
+            android:layout_alignParentBottom="true"
+            android:background="#D0D0D0" />
+
+        <HorizontalScrollView
+            android:id="@+id/image_icon_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/image_category_scroll_view"
+            android:layout_alignParentTop="true"
+            android:background="#F2F2F2"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:id="@+id/image_icon_list_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00007f" >
+
+                <TableLayout
+                    android:id="@+id/image_icon_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+                </TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:id="@+id/image_category_scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="none" >
+
+            <RelativeLayout
+                android:id="@+id/image_category_list_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TableLayout
+                    android:id="@+id/image_category_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+                </TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chat_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/device_screen_height"
+        android:background="#F2F2F2" >
+
+        <ScrollView
+            android:id="@+id/chat_message_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/chat_bar"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:id="@+id/chat_message_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2" >
+
+                <TableLayout
+                    android:id="@+id/chat_message_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+                </TableLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+        <ListView
+            android:id="@+id/chat_message_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/chat_bar"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="@dimen/message_box_divider_height"
+            android:listSelector="@android:color/transparent"
+            android:stackFromBottom="true" >
+        </ListView>
+
+        <RelativeLayout
+            android:id="@+id/chat_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chat_bar_height"
+            android:layout_alignParentBottom="true"
+            android:background="#777777" >
+
+            <Button
+                android:id="@+id/keyboard_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/chat_bar_item_margin_left"
+                android:background="@drawable/chat_btn_keyboard_selector" />
+
+            <Button
+                android:id="@+id/picBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/chat_bar_item_margin_left"
+                android:layout_toRightOf="@+id/keyboard_button"
+                android:background="@drawable/chat_btn_sticker_selector" />
+
+            <RelativeLayout
+                android:id="@+id/edit_text_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/chat_bar_item_margin_left"
+                android:layout_toRightOf="@+id/picBtn"
+                android:background="@drawable/chat_linebar" >
+
+                <EditText
+                    android:id="@+id/chatET"
+                    style="@style/chat_primary_l_gray_2"
+                    android:layout_width="@dimen/chat_bar_edit_text_width"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/chat_bar_edit_text_margin_left"
+                    android:background="@null"
+                    android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true" >
+                </EditText>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/sendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/chat_bar_item_margin_left"
+                android:layout_toRightOf="@+id/edit_text_container"
+                android:background="@drawable/chat_btn_send_selector" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

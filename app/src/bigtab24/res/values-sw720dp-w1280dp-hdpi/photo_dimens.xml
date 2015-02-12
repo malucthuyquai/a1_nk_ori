@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. 
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	
+	-->
+
+	<!-- this is for 240dp -->
+ 	<dimen name="photo_addphoto_button_margebottom">20dp</dimen>
+ 	<dimen name="photo_camera_mygallery_vbutton_margeleft">27dp</dimen>
+ 	
+ 	<dimen name="photo_inbox_nophototext_margetop">47dp</dimen> 	
+ 	<dimen name="photo_inbox_nophototext_textsize">30sp</dimen>
+ 	<dimen name="photo_inbox_updatetext_textsize">18sp</dimen>
+ 	
+ 	<dimen name="photo_mygallery_username_margetop">10dp</dimen>
+ 	<dimen name="photo_mygallery_username_textsize">30sp</dimen>
+ 	<dimen name="photo_mygallery_photonum_textsize">35dp</dimen>
+ 	<dimen name="photo_mygallery_phototext_textsize">20dp</dimen>
+ 	
+ 	<dimen name="photo_photowedgit_username_margetop">10dp</dimen>
+ 	<dimen name="photo_photowedgit_username_margeleft">10dp</dimen>
+ 	<dimen name="photo_photowedgit_username_margeright">147px</dimen>
+ 	<dimen name="photo_photowedgit_username_textsize">26sp</dimen>
+ 	<dimen name="photo_photowedgit_posttime_textsize">20sp</dimen>
+ 	
+ 	<dimen name="photo_cameragallery_gridview_spacing">7px</dimen>
+ 	<dimen name="photo_editphoto_itembg_sapcing">10px</dimen>
+ 	
+ 	<!-- sending dialog -->
+ 	<!-- textview, replace the sending img's words -->
+ 	<dimen name="sending_textview_margin_top">360px</dimen>
+    <dimen name="sending_textview_margin_left">140px</dimen>
+    <dimen name="sending_textview_dialog_context_textsize">60sp</dimen>
+ 	
+</resources>
