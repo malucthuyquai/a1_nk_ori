@@ -149,9 +149,6 @@ public class ApiBaseActivity extends Activity {
 
 		m_Activity = this;
 
-		// set log showing status
-		LOG.setShowLog(Utils.isShowLog(this));
-
 		LOG.V(TAG, "onCreate() - start");
 
 		// get intent extra
