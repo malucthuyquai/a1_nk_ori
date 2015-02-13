@@ -306,7 +306,7 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                 mGalleryButton.setEnabled(true);
 
 					/*boolean nowmode = mode.getBoolean("MODE", false);
-                    String logonUserKey = mode.getString("LOGON_USER_KEY", "");
+					String logonUserKey = mode.getString("LOGON_USER_KEY", "");
 					LOG.V(TAG, " nowmode = " + nowmode);
 
 					Intent intent = new Intent(mCtx, CameraEditPhotoActivity.class);
@@ -417,34 +417,33 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                         mCamera.release();
                         mCamera = null;
                     }
-
+				
 				/*boolean nowmode = mode.getBoolean("MODE", false);
-                String logonUserKey = mode.getString("LOGON_USER_KEY", "");
+				String logonUserKey = mode.getString("LOGON_USER_KEY", "");
 				LOG.V(TAG, " nowmode = " + nowmode);
 								
 				Intent intent = new Intent(mCtx, CameraGalleryActivity.class);
 				intent.putExtra(KEY_IS_MOMMY_MODE, nowmode);
 				intent.putExtra(KEY_LOGON_USER_KEY, logonUserKey);
 				startActivity(intent);		*/
+                    if (mCamera == null) {
+                        LOG.W(TAG, "mFragmentManager.getBackStackEntryCount() = "
+                                + mAct.mFragmentManager.getBackStackEntryCount());
+                        if (cameragalleryFragment != null) {
+                            LOG.I(TAG, "cameragalleryFragment != null ");
+                            if (cameragalleryFragment.isAdded()) {
+                                LOG.I(TAG, "cameragalleryFragment isadded !! ");
+                                return;
+                            }
 
+                            mAct.switchFragment(cameragalleryFragment,
+                                    PhotoParameter.FRAGMENTTAG_CAMERAGALLERY);
+                        } else {
 
-                    LOG.W(TAG, "mFragmentManager.getBackStackEntryCount() = "
-                            + mAct.mFragmentManager.getBackStackEntryCount());
-                    if (cameragalleryFragment != null) {
-                        LOG.I(TAG, "cameragalleryFragment != null ");
-                        if (cameragalleryFragment.isAdded()) {
-                            LOG.I(TAG, "cameragalleryFragment isadded !! ");
-                            return;
+                            cameragalleryFragment = new PhotoCameraGalleryFragment();
+                            mAct.switchFragment(cameragalleryFragment,
+                                    PhotoParameter.FRAGMENTTAG_CAMERAGALLERY);
                         }
-
-                        mAct.switchFragment(cameragalleryFragment,
-                                PhotoParameter.FRAGMENTTAG_CAMERAGALLERY);
-                    } else {
-
-                        cameragalleryFragment = new PhotoCameraGalleryFragment();
-                        mAct.switchFragment(cameragalleryFragment,
-                                PhotoParameter.FRAGMENTTAG_CAMERAGALLERY);
-
                     }
 
                     break;
@@ -754,8 +753,5 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
 
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-        // TODO Auto-generated method stub
-
     }
-
 }
