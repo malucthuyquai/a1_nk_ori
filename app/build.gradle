@@ -94,6 +94,13 @@ android {
             keyAlias "fuhu"
             keyPassword "pass\$1214"
         }
+
+        debug{
+            storeFile file("c:\\projects\\fuhu_android");
+            storePassword "pass\$1214"
+            keyAlias "fuhu"
+            keyPassword "pass\$1214"
+        }
     }
 
     buildTypes {

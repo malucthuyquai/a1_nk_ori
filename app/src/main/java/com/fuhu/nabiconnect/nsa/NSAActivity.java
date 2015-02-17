@@ -657,6 +657,7 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        setFriendBlockedState(getNSACurrentUserData().userKey, fd.userID, false);
                                         if (mFragmentFriend != null && mFragmentFriend.isVisible()) {
                                             mFragmentFriend.onFriendUnblocked(fd);
                                         }

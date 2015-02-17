@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!-- background image holder -->
+    <View
+        android:id="@+id/v_right"
+        android:layout_width="540dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/setup_grey_s">
+    </View>
+
+
+    <View
+        android:id="@+id/v_left"
+        android:layout_width="420dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/setup_blue">
+    </View>
+
+
+    <TextView
+        android:id="@+id/tv_hello"
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/friend_setup_title_1"
+        android:textColor="@android:color/white"
+        android:textSize="48dp">
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/tv_setup"
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_hello"
+        android:gravity="center"
+        android:text="@string/friend_setup_title_2"
+        android:textColor="@android:color/white"
+        android:textSize="32dp">
+    </TextView>
+
+    <ImageView
+        android:layout_width="420dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="24dp"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitEnd"
+        android:src="@drawable/nabi_avatar">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_create"
+        android:layout_marginBottom="28dp"
+        android:layout_toRightOf="@+id/v_left"
+        android:gravity="left"
+        android:paddingLeft="24dp"
+        android:text="@string/friend_step_1"
+        android:textColor="@android:color/white"
+        android:textSize="48dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/et_name"
+        android:layout_marginBottom="12dp"
+        android:layout_toRightOf="@+id/v_left"
+        android:gravity="left"
+        android:paddingLeft="24dp"
+        android:text="@string/friend_create_username"
+        android:textColor="@android:color/white"
+        android:textSize="32dp">
+    </TextView>
+
+    <RelativeLayout
+        android:id="@+id/rl_next"
+        android:layout_width="@dimen/friend_setup_next_width"
+        android:layout_height="@dimen/friend_setup_next_height"
+        android:layout_below="@+id/tv_warning"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_toRightOf="@+id/v_left"
+        android:clickable="true">
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/friend_setup_next_height_half"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/btn_signup_next_top">
+        </View>
+
+        <View
+            android:id="@+id/v_bot"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/v_top"
+            android:background="@drawable/btn_signup_next_bot">
+        </View>
+
+        <TextView
+            android:id="@+id/tv_next"
+            style="@style/friend_primary_m_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/friend_next">
+        </TextView>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_warning"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="48dp"
+        android:layout_toRightOf="@+id/v_left"
+        android:background="@drawable/edittext_bg"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="@android:color/black"
+        android:textSize="32dp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/v_left"
+        android:paddingLeft="24dp"
+        android:text="@string/friend_create_username_warning"
+        android:textColor="#39A6CC"
+        android:textSize="24dp">
+    </TextView>
+
+</RelativeLayout>

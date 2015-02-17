@@ -766,6 +766,16 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             @Override
             public void onClick(View v) {
 
+                if (mail_text_container.getVisibility() == View.VISIBLE) {
+                    // entering text
+                    return;
+                }
+
+                //remove sticker controls
+                for (StickerWidget widget : m_StickerList) {
+                    widget.hideControl();
+                }
+
                 if (!m_Activity.getNetworkManager().checkWifiProcess())
                     return;
 
@@ -1253,6 +1263,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                mail_text_container.setVisibility(View.INVISIBLE);
                 mail_text_second_container.setVisibility(View.INVISIBLE);
                 leaveSubItemBar();
                 etModifyed = false;
@@ -1369,7 +1380,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
     private void iniEdittextView() {
         mail_text_second_container.setVisibility(View.VISIBLE);
         Drawable dr = m_Activity.getResources().getDrawable(R.drawable.mail_sticker_frame);
-        mail_text_second_container.setBackground(dr);
+        mail_text_second_container.setBackgroundDrawable(dr);
         mail_text_container.setVisibility(View.VISIBLE);
         mail_edit_edittext.setVisibility(View.VISIBLE);
         mail_confirm_button.setVisibility(View.VISIBLE);
