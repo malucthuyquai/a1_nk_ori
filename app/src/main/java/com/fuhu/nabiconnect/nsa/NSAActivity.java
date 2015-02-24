@@ -846,6 +846,7 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
                 LOG.D(TAG, "callback: " + url);
                 if (data != null) {
                     try {
+                        LOG.D(TAG, data.toString(5));
                         ArrayList<FriendData> list = new ArrayList<FriendData>();
                         JSONArray array = data.getJSONArray("friends");
                         int len = array.length();
@@ -875,6 +876,16 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         callback.header("deviceEdition", com.fuhu.nabicontainer.util.NabiFunction.getEdition());
         callback.header("sessionKey", mParentSessionKey);
         callback.header("userId", mParentKey);
+
+        LOG.D(TAG, callback.getUrl());
+        LOG.D(TAG, "apiKey: " + mApiKey);
+        LOG.D(TAG, "deviceKey: " + com.fuhu.nabicontainer.util.Utils.getSerialId().trim());
+        LOG.D(TAG, "deviceType: " + com.fuhu.nabicontainer.util.Utils.getMODELID().trim());
+        LOG.D(TAG, "Android API Level: " + android.os.Build.VERSION.SDK_INT);
+        LOG.D(TAG, "deviceEdition: " + com.fuhu.nabicontainer.util.NabiFunction.getEdition());
+        LOG.D(TAG, "sessionKey: " + mParentSessionKey);
+        LOG.D(TAG, "userId: " + mParentKey);
+
         callback.method(AQuery.METHOD_GET);
         callback.type(JSONObject.class);
         aq.ajax(callback);
