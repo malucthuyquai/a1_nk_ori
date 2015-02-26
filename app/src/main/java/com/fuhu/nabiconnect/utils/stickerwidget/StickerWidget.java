@@ -185,7 +185,7 @@ public class StickerWidget extends ImageView {
 	/**
 	 * sets private int mIndex.
 	 * 
-	 * @param id
+	 * @param index
 	 */
 	public void setIndex(int index) {
 		this.mIndex = index;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <!-- Drawing Area -->
 
@@ -10,13 +10,13 @@
         android:layout_width="@dimen/mail_drawing_canvas_width"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:background="@drawable/mail_wallpaper_default" >
+        android:background="@drawable/mail_wallpaper_default">
 
         <com.fuhu.nabiconnect.mail.widget.PaintingView
             android:id="@+id/mail_painting_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"/>
     </RelativeLayout>
 
     <!-- EditText Layout -->
@@ -28,7 +28,8 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="@dimen/mail_text_container_margin_bottom_side"
         android:layout_marginLeft="@dimen/mail_text_container_margin_left_side"
-        android:layout_marginTop="@dimen/mail_text_container_margin_top_side" >
+        android:layout_marginTop="@dimen/mail_text_container_margin_top_side"
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/mail_resize_button"
@@ -37,7 +38,7 @@
             android:layout_marginLeft="@dimen/mail_resize_button_position_margin_right_side"
             android:layout_marginTop="@dimen/mail_resize_button_position_margin_top_side"
             android:background="@drawable/mail_sticker_resize_button"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <RelativeLayout
             android:id="@+id/mail_text_second_container"
@@ -49,7 +50,7 @@
             android:inputType="textMultiLine"
             android:isScrollContainer="true"
             android:minHeight="@dimen/mail_input_views_min_height"
-            android:visibility="invisible" >
+            android:visibility="invisible">
 
             <EditText
                 android:id="@+id/mail_edit_edittext"
@@ -68,7 +69,7 @@
                 android:maxLength="70"
                 android:minHeight="@dimen/mail_input_views_min_height"
                 android:textColor="@color/avatar_bg_orange"
-                android:visibility="invisible" />
+                android:visibility="invisible"/>
         </RelativeLayout>
 
         <Button
@@ -80,7 +81,7 @@
             android:layout_marginTop="@dimen/mail_confirm_button_margin_top_side"
             android:layout_toRightOf="@+id/mail_cancel_button"
             android:background="@drawable/mail_v"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/mail_cancel_button"
@@ -90,7 +91,7 @@
             android:layout_marginLeft="@dimen/mail_cancel_button_margin_left_side"
             android:layout_marginTop="@dimen/mail_confirm_button_margin_top_side"
             android:background="@drawable/mail_x"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/mail_rotate_button"
@@ -100,7 +101,7 @@
             android:layout_marginTop="@dimen/mail_resize_button_position_margin_top_side"
             android:layout_toRightOf="@+id/mail_text_second_container"
             android:background="@drawable/mail_sticker_rotate_button"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
     </RelativeLayout>
 
     <!-- Camera Layout -->
@@ -112,7 +113,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/mail_camera_container_margin_right"
-        android:visibility="invisible" >
+        android:visibility="invisible">
 
         <RelativeLayout
             android:id="@+id/camera_preview_container_boarder"
@@ -120,26 +121,26 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/mail_camera_preview_container_margin_top"
-            android:background="@drawable/mail_camera_preview_boarder" >
+            android:background="@drawable/mail_camera_preview_boarder">
 
             <TextureView
                 android:id="@+id/camera_preview_container"
                 android:layout_width="@dimen/mail_camera_preview_container_width"
                 android:layout_height="@dimen/mail_camera_preview_container_height"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"/>
 
             <RelativeLayout
                 android:id="@+id/self_timer_container"
                 android:layout_width="@dimen/mail_camera_preview_container_width"
                 android:layout_height="@dimen/mail_camera_preview_container_height"
                 android:layout_centerInParent="true"
-                android:visibility="invisible" >
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/self_timer_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
+                    android:layout_centerInParent="true"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -148,14 +149,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/mail_camera_button_container_margin_top" >
+            android:layout_marginTop="@dimen/mail_camera_button_container_margin_top">
 
             <Button
                 android:id="@+id/mail_camera_self_timer_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/mail_btn_camera_self_timer" />
+                android:background="@drawable/mail_btn_camera_self_timer"/>
 
             <Button
                 android:id="@+id/mail_camera_shutter_button"
@@ -163,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/mail_camera_button_margin_side"
                 android:layout_toRightOf="@+id/mail_camera_self_timer_button"
-                android:background="@drawable/mail_btn_camera_shutter" />
+                android:background="@drawable/mail_btn_camera_shutter"/>
 
             <Button
                 android:id="@+id/mail_switch_camera_button"
@@ -171,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/mail_camera_button_margin_side"
                 android:layout_toLeftOf="@+id/mail_camera_self_timer_button"
-                android:background="@drawable/mail_btn_switch_camera" />
+                android:background="@drawable/mail_btn_switch_camera"/>
         </RelativeLayout>
     </RelativeLayout>
 
@@ -185,24 +186,24 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/mail_sticker_widget_list_container_margin_right"
         android:background="@drawable/mail_sticker_bg"
-        android:visibility="invisible" >
+        android:visibility="invisible">
 
         <HorizontalScrollView
             android:id="@+id/mail_sticker_widget_scroll_view"
             android:layout_width="@dimen/mail_sticker_widget_list_container_width"
             android:layout_height="wrap_content"
-            android:scrollbars="none" >
+            android:scrollbars="none">
 
             <RelativeLayout
                 android:id="@+id/mail_sticker_widget_container"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TableLayout
                     android:id="@+id/mail_sticker_widget_table"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
                 </TableLayout>
             </RelativeLayout>
         </HorizontalScrollView>
@@ -218,7 +219,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/mail_inbox_send_button_margin_right"
         android:layout_marginTop="@dimen/mail_inbox_send_button_margin_top"
-        android:background="@drawable/mail_btn_send_composed_mail" />
+        android:background="@drawable/mail_btn_send_composed_mail"/>
 
     <!-- Delete replay mail Icon -->
 
@@ -230,7 +231,7 @@
         android:layout_marginRight="@dimen/mail_compose_reply_delete_button_margin_right"
         android:layout_marginTop="@dimen/mail_inbox_send_button_margin_top"
         android:layout_toLeftOf="@+id/mail_send_button"
-        android:background="@drawable/mail_btn_delete_reply" />
+        android:background="@drawable/mail_btn_delete_reply"/>
 
     <RelativeLayout
         android:id="@+id/mail_reply_info_container"
@@ -239,7 +240,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/mail_compose_reply_info_container_margin_left"
         android:layout_marginTop="@dimen/mail_inbox_send_button_margin_top"
-        android:layout_toLeftOf="@+id/mail_delete_reply_button" >
+        android:layout_toLeftOf="@+id/mail_delete_reply_button">
 
         <ImageView
             android:id="@+id/mail_reply_info_receiver_avatar"
@@ -247,7 +248,7 @@
             android:layout_height="@dimen/mail_compose_reply_info_avatar_size"
             android:layout_alignParentLeft="true"
             android:contentDescription="@string/empty"
-            android:src="@drawable/chat_avatar_default" />
+            android:src="@drawable/chat_avatar_default"/>
 
         <TextView
             android:id="@+id/mail_reply_info_receiver_name"
@@ -259,7 +260,7 @@
             android:layout_toRightOf="@+id/mail_reply_info_receiver_avatar"
             android:ellipsize="end"
             android:paddingRight="8dp"
-            android:singleLine="true" />
+            android:singleLine="true"/>
     </RelativeLayout>
 
     <!-- Mail Effect Bar -->
@@ -267,7 +268,7 @@
     <RelativeLayout
         android:id="@+id/mail_effect_bar_container"
         android:layout_width="@dimen/mail_effect_bar_container_width"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/mail_effect_bar_switch"
@@ -277,13 +278,13 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="@dimen/mail_effect_bar_switch_margin_top"
             android:src="@drawable/mail_btn_back"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <RelativeLayout
             android:id="@+id/mail_effect_bar"
             android:layout_width="@dimen/mail_effect_bar_width"
             android:layout_height="match_parent"
-            android:background="#F6F5F0" >
+            android:background="#F6F5F0">
 
             <!-- List of Mail Effect Button -->
 
@@ -292,7 +293,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:orientation="vertical" >
+                android:orientation="vertical">
             </TableLayout>
 
             <!-- Scroll view of Mail Effect sub-items -->
@@ -302,19 +303,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                android:visibility="invisible" >
+                android:visibility="invisible">
 
                 <RelativeLayout
                     android:id="@+id/mail_effect_subitems_container"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TableLayout
                         android:id="@+id/mail_effect_subitems_table"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
                     </TableLayout>
                 </RelativeLayout>
             </ScrollView>

@@ -26,7 +26,7 @@
         android:paddingTop="12dp"
         android:text="@string/dialog_blocked_friend_title"
         android:textColor="@android:color/white"
-        android:textSize="32sp"
+        android:textSize="24sp"
         android:textStyle="bold" >
     </TextView>
 
@@ -65,7 +65,7 @@
                 android:background="@drawable/dialog_block_cancel"
                 android:text="@android:string/cancel"
                 android:textColor="@android:color/white"
-                android:textSize="28sp" >
+                android:textSize="24sp" >
             </Button>
 
             <Button
@@ -76,7 +76,7 @@
                 android:background="@drawable/dialog_block_confirm"
                 android:text="@string/confirm"
                 android:textColor="@android:color/white"
-                android:textSize="28sp" >
+                android:textSize="24sp" >
             </Button>
         </LinearLayout>
     </LinearLayout>

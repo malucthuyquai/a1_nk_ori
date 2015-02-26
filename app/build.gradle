@@ -1,10 +1,83 @@
 apply plugin: 'com.android.application'
-// use build type to indicate server
-// use product flavor to determine device type
-android {
-    // up this counter if you are making more than one release in the same day
-    final int REVISE_NO = 1;
 
+// create class to hold version properties for build flavors
+class Info {
+    // up this value if making more than 1 release in one day
+    final public static int REVISE_NO = 1;
+
+    /** used in apk naming */
+    final private static String PROJECT_NAME = "nabiKonnect"
+
+    // should not need to change these
+    final private static int YEAR = Calendar.getInstance().get(Calendar.YEAR) - 1911;
+    final private static int MONTH = Calendar.getInstance().get(Calendar.MONTH) + 1;
+    final private static int DAY = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+    // format {project_name}-{device_name}-{year}-{month}-{day}-{revise_no}-{server}.apk
+    final private static String APK_NAME_FORMAT = "%s-%s-%03d-%02d-%02d-%02d-%s.apk";
+
+    // {year}{month}{day}{revise_no}
+    final private static String VERSION_CODE_FORMAT = "%03d%02d%02d%02d";
+
+    // {year}{month}{day}{revise_no}{server}
+    final private static String VERSION_NAME_FORMAT = "%03d%02d%02d%02d%s";
+
+    /** actual field that will be assigned and used */
+    public String apk_name = "";
+    public int version_code = 0;
+    public String version_name = "";
+    public String device = "";
+    public String server = "";
+    public String mani_server = "";
+    public String meta_server = ""
+
+    /** shared constant fields */
+
+    /** used in apk naming */
+    final public static String DEVICE_DT8 = "DT8_US";
+    final public static String DEVICE_BT20 = "SD20_US";
+    final public static String DEVICE_BT24 = "SD24_US";
+    final public static String DEVICE_N2 = "N2_US";
+    final public static String DEVICE_N2S = "N2S_US";
+    final public static String DEVICE_JRS = "JrS_US";
+
+    /** used in apk naming */
+    final public static String APK_SERVER_PROD = "prd";
+    final public static String APK_SERVER_PROD_LOG = "prd_log";
+    final public static String APK_SERVER_STG = "stg";
+    final public static String APK_SERVER_DEV = "dev";
+
+    /** used in manifest version name */
+    final public static String MANI_SERVER_PROD = "";
+    final public static String MANI_SERVER_PROD_LOG = "prod_log";
+    final public static String MANI_SERVER_STG = "stg";
+    final public static String MANI_SERVER_DEV = "dev";
+
+    /** used in manifest meta data */
+    final public static String META_SERVER_PROD = "prod";
+    final public static String META_SERVER_PROD_LOG = "prod1";
+    final public static String META_SERVER_STG = "staging";
+    final public static String META_SERVER_DEV = "dev";
+
+    public String createApkName(String device, String serverPostfix) {
+        apk_name = String.format(APK_NAME_FORMAT, PROJECT_NAME, device, YEAR, MONTH, DAY, REVISE_NO, serverPostfix);
+        return apk_name;
+    }
+
+    public String createVersionName(String serverPostfix) {
+        version_name = String.format(VERSION_NAME_FORMAT, YEAR, MONTH, DAY, REVISE_NO, serverPostfix);
+        return version_name;
+    }
+
+    public int createVersionCode() {
+        version_code = Integer.valueOf(String.format(VERSION_CODE_FORMAT, YEAR, MONTH, DAY, REVISE_NO));
+        return version_code;
+    }
+
+    public Info() {};
+}
+
+android {
     compileSdkVersion 17
     buildToolsVersion "21.1.2"
 
@@ -21,40 +94,107 @@ android {
             keyAlias "fuhu"
             keyPassword "pass\$1214"
         }
+
+        debug{
+            storeFile file("c:\\projects\\fuhu_android");
+            storePassword "pass\$1214"
+            keyAlias "fuhu"
+            keyPassword "pass\$1214"
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig = signingConfigs.release
+            zipAlignEnabled = true;
         }
     }
 
+    productFlavors.whenObjectAdded { flavor ->
+        flavor.extensions.create("info", Info);
+        // this creates an extension object called "info" for each product flavor
+    }
+
+    flavorDimensions "device", "server"
+
     productFlavors {
+
+        //Server Type
+        prd {
+            flavorDimension "server"
+            proguardFile 'proguard-project.txt'
+            info.server = Info.APK_SERVER_PROD;
+            info.mani_server = Info.MANI_SERVER_PROD;
+            info.meta_server = Info.META_SERVER_PROD;
+        }
+
+        prd_log {
+            flavorDimension "server"
+            proguardFile 'no-proguard-project.txt'
+            info.server = Info.APK_SERVER_PROD_LOG;
+            info.mani_server = Info.MANI_SERVER_PROD_LOG;
+            info.meta_server = Info.META_SERVER_PROD_LOG;
+        }
+
+        stg {
+            flavorDimension "server"
+            proguardFile 'no-proguard-project.txt'
+            info.server = Info.APK_SERVER_STG;
+            info.mani_server = Info.MANI_SERVER_STG;
+            info.meta_server = Info.META_SERVER_STG;
+        }
+
+        dev {
+            flavorDimension "server"
+            proguardFile 'no-proguard-project.txt'
+            info.server = Info.APK_SERVER_DEV;
+            info.mani_server = Info.MANI_SERVER_DEV;
+            info.meta_server = Info.META_SERVER_DEV;
+        }
+
+        //Machine Type
+        //1920x1200 240 hdpi
         dreamtab {
-            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
-            versionName = versionCode + "_andoridStudio"
+            //_DT8_US_
+            flavorDimension "device"
+            info.device = Info.DEVICE_DT8;
         }
 
-        nabitwo {
-            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
-        }
-
-        nabitwos {
-            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
-        }
-
-        juniors {
-            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
-        }
-
+        //1600x900 213 tvdpi
         bigtab20 {
-            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+            //_SD20_US_
+            flavorDimension "device"
+            info.device = Info.DEVICE_BT20;
         }
 
+        //1920x1080 240 hdpi
         bigtab24 {
-            versionCode = Integer.valueOf(getVersionCode(REVISE_NO));
+            //_SD24_US_
+            flavorDimension "device"
+            info.device = Info.DEVICE_BT24;
+        }
+
+        //1280x800 213 tvdpi
+        nabitwos {
+            //_N2S_US_
+            flavorDimension "device"
+            info.device = Info.DEVICE_N2S;
+        }
+
+        //1024x600 160 mdpi
+        nabitwo {
+            //_N2_US_
+            flavorDimension "device"
+            info.device = Info.DEVICE_N2;
+        }
+
+        //800x480 186 mdpi
+        juniors {
+            //_NJR_US_
+            flavorDimension "device"
+            info.device = Info.DEVICE_JRS;
         }
     }
 
@@ -70,7 +210,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:support-v4:21.0.3'
     compile files('libs/android-query-full.0.26.8.jar')
     compile files('libs/apache-mime4j-0.6.jar')
     compile files('libs/cmrLib.jar')
@@ -84,10 +224,71 @@ dependencies {
     compile files('libs/ND_NS_104012301.jar')
 }
 
-def String getVersionCode(int reviseNo) {
-    Calendar cal = Calendar.getInstance();
-    int year = cal.get(Calendar.YEAR) - 1911;
-    int month = cal.get(Calendar.MONTH) + 1;
-    int day = cal.get(Calendar.DAY_OF_MONTH);
-    return String.format("%03d%02d%02d%02d", year, month, day, reviseNo);
+// ===== manifest tweaking =====
+android.applicationVariants.all { variant ->
+    variant.outputs.get(0).processManifest.doLast {
+        def manifestFile = "${buildDir}/intermediates/manifests/full/${variant.dirName}/AndroidManifest.xml"
+
+        def parser = new groovy.util.XmlParser(false, true)
+        def ns = new groovy.xml.Namespace('http://schemas.android.com/apk/res/android', 'ns')
+        def rootNode = parser.parse(manifestFile)
+        def attributes = rootNode.attributes()
+
+        //update launcher icon - only if releasing MGA version
+//        def serverType = variant.productFlavors.get(0).name
+//        def machineType = variant.productFlavors.get(1).name
+//        def application = rootNode.get('application')[0]
+//        def applicationAtt = application.attributes()
+//        if (machineType.contains('MGA')) {
+//            applicationAtt[ns.icon] = '@drawable/mga_icon'
+//        } else {
+//            applicationAtt[ns.icon] = '@drawable/icon'
+//        }
+
+        // update meta-data, versionCode & versionName
+        // productFlavors[0] = device
+        // productFlavors[1] = server
+        Info server_info = variant.productFlavors.get(1).info;
+
+        def metaData = rootNode.get('application')[0].get('meta-data')[0]
+        def metaAtt = metaData.attributes()
+        metaAtt[ns.value] = server_info.meta_server;
+        println(metaAtt[ns.value]);
+
+        def versionCode = server_info.createVersionCode();
+        attributes[ns.versionCode] = versionCode;
+        println(attributes[ns.versionCode]);
+
+        def versionName = server_info.createVersionName(server_info.mani_server);
+        attributes[ns.versionName] = versionName;
+        println(attributes[ns.versionName]);
+
+        // write AndroidManifest
+        def writer = new groovy.io.GroovyPrintWriter(manifestFile)
+        writer.println('<?xml version="1.0" encoding="UTF-8"?>')
+        def xmlWriter = new groovy.util.XmlNodePrinter(writer)
+        xmlWriter.setPreserveWhitespace(false)
+        xmlWriter.setNamespaceAware(true)
+        xmlWriter.print(rootNode)
+
+        variant.outputs.get(0).processResources.manifestFile = file(manifestFile)
+
+        println "manifest tweak end"
+        println "server type is ${metaAtt[ns.value]}"
+        println "ns.versionCode : " + attributes[ns.versionCode]
+        println "ns.versionName : " + attributes[ns.versionName]
+    }
+    // rename out apk file
+    renameApk(variant)
+}
+
+def renameApk(variant) {
+    // productFlavors[0] = device
+    // productFlavors[1] = server
+    Info device_info = variant.productFlavors.get(0).info;
+    Info server_info = variant.productFlavors.get(1).info;
+    def oldFile = variant.outputs.get(0).outputFile
+    def newFile = device_info.createApkName(device_info.device, server_info.server);
+    println "final apk name: " + newFile;
+    variant.outputs.get(0).outputFile = new File(oldFile.parent, newFile);
 }

@@ -15,7 +15,7 @@
         android:singleLine="true"
         android:text="tv_name"
         android:textColor="@android:color/white"
-        android:textSize="28sp" >
+        android:textSize="20sp" >
     </TextView>
 
     <Button
@@ -26,7 +26,7 @@
         android:background="@drawable/dialog_block_unblock"
         android:text="btn_unblock"
         android:textColor="@android:color/white"
-        android:textSize="28sp" >
+        android:textSize="20sp" >
     </Button>
 
 </LinearLayout>

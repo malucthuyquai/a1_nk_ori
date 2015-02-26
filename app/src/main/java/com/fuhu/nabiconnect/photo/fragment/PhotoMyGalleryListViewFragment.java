@@ -387,6 +387,9 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
     }
 
     private void SetPhotoWedgitData(ArrayList<SharedPhotoData> DataList) {
+        if (DataList == null || DataList.isEmpty()) {
+            return;
+        }
 
         for (SharedPhotoData spdata : DataList) {
 
@@ -395,7 +398,7 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
             String photoId = spdata.id;
             String posttime = ChangePhotoTimeFormatAndCalculateToString(spdata.createdTime);
             String sharetouserid = null;
-            if (!spdata.m_ToList.isEmpty())
+            if (spdata.m_ToList != null && !spdata.m_ToList.isEmpty())
                 sharetouserid = spdata.m_ToList.get(0).id;
 
 
