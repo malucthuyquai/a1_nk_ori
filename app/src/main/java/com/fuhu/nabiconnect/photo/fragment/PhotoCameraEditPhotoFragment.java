@@ -1013,9 +1013,13 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
 
     final Runnable runnable_dismiss = new Runnable() {
         public void run() {
+
             m_PhotoSendingAnimationDialog.dismiss();
             m_ChooseContactDialog.dismiss();
 
+            if (!PhotoCameraEditPhotoFragment.this.isResumed()) {
+                return;
+            }
 
             LOG.W(TAG, "mFragmentManager.getBackStackEntryCount() = " + PhotoActFragmentManager.getBackStackEntryCount());
             if (PhotoActFragmentManager.getBackStackEntryCount() > 1) {
