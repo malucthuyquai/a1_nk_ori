@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <View
+        android:id="@+id/v_mid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true">
+    </View>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/v_mid"
+        android:background="@drawable/setup_blue">
+    </View>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/v_mid"
+        android:background="@drawable/setup_grey_s">
+    </View>
+
+    <!-- right margin set to -60dp to allow avatar's hand to reach over the right half -->
+
+    <LinearLayout
+        android:id="@+id/ll_welcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/v_mid"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- right margin set to 30dp to offset parent's setting to remain center -->
+
+        <TextView
+            android:id="@+id/tv_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/friend_setup_title_1"
+            android:textColor="@android:color/white"
+            android:textSize="28dp">
+        </TextView>
+
+        <!-- right margin set to 30dp to offset parent's setting to remain center -->
+
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/friend_setup_title_2"
+            android:textColor="@android:color/white"
+            android:textSize="24dp">
+        </TextView>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/ll_welcome"
+        android:layout_gravity="center|right"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="-24dp"
+        android:layout_marginTop="18dp"
+        android:layout_toLeftOf="@+id/tv_warning"
+        android:contentDescription="@string/empty"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nabi_avatar">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_step1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_create"
+        android:layout_alignLeft="@+id/tv_warning"
+        android:layout_marginBottom="6dp"
+        android:text="@string/friend_step_1"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"/>
+
+    <TextView
+        android:id="@+id/tv_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/et_name"
+        android:layout_alignLeft="@+id/tv_warning"
+        android:layout_marginBottom="12dp"
+        android:text="@string/friend_create_username"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_next"
+        android:layout_width="@dimen/friend_setup_next_width"
+        android:layout_height="@dimen/friend_setup_next_height"
+        android:layout_alignLeft="@+id/tv_warning"
+        android:layout_below="@+id/tv_warning"
+        android:layout_marginLeft="-9px"
+        android:layout_marginTop="48dp"
+        android:clickable="true">
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/friend_setup_next_height_half"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/btn_signup_next_top">
+        </View>
+
+        <View
+            android:id="@+id/v_bot"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/v_top"
+            android:background="@drawable/btn_signup_next_bot">
+        </View>
+
+        <TextView
+            android:id="@+id/tv_next"
+            style="@style/friend_primary_m_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/friend_next">
+        </TextView>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_name"
+        style="@style/friend_primary_l_2_dark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_warning"
+        android:layout_alignLeft="@+id/tv_warning"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="48dp"
+        android:background="@drawable/edittext_bg"
+        android:imeOptions="flagNoExtractUi"
+        android:padding="8dp"
+        android:singleLine="true">
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="28dp"
+        android:layout_toRightOf="@+id/v_mid"
+        android:singleLine="true"
+        android:text="@string/friend_create_username_warning"
+        android:textColor="#39A6CC"
+        android:textSize="16dp"/>
+
+</RelativeLayout>
