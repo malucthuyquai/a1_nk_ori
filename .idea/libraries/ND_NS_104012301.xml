@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/app/libs/ND_NS_104012301.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/app/libs/ND_NS_104012301.jar!/" />
+    </SOURCES>
   </library>
 </component>
