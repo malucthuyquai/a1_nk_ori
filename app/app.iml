@@ -8,11 +8,11 @@
     </facet>
     <facet type="android" name="Android">
       <configuration>
-        <option name="SELECTED_BUILD_VARIANT" value="dreamtabStgRelease" />
+        <option name="SELECTED_BUILD_VARIANT" value="dreamtabPrd_logRelease" />
         <option name="SELECTED_TEST_ARTIFACT" value="_android_test_" />
-        <option name="ASSEMBLE_TASK_NAME" value="assembleDreamtabStgRelease" />
-        <option name="COMPILE_JAVA_TASK_NAME" value="compileDreamtabStgReleaseSources" />
-        <option name="SOURCE_GEN_TASK_NAME" value="generateDreamtabStgReleaseSources" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleDreamtabPrd_logRelease" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileDreamtabPrd_logReleaseSources" />
+        <option name="SOURCE_GEN_TASK_NAME" value="generateDreamtabPrd_logReleaseSources" />
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
@@ -22,29 +22,29 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/build/intermediates/classes/dreamtabstg/release" />
+    <output url="file://$MODULE_DIR$/build/intermediates/classes/dreamtabprd_log/release" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/dreamtabstg/release" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/dreamtabstg/release" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/dreamtabstg/release" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/dreamtabstg/release" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/dreamtabstg/release" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/dreamtabstg/release" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/assets" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStgRelease/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/assets" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabStg/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/dreamtabprd_log/release" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/dreamtabprd_log/release" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/dreamtabprd_log/release" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/dreamtabprd_log/release" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/dreamtabprd_log/release" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/dreamtabprd_log/release" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_logRelease/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dreamtabPrd_log/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/dreamtab/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/dreamtab/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/dreamtab/assets" type="java-resource" />
@@ -59,20 +59,20 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDreamtab/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDreamtab/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestDreamtab/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/assets" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/stg/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestStg/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/prd_log/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestPrd_log/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/release/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/release/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/release/assets" type="java-resource" />
