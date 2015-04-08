@@ -479,11 +479,11 @@ public class PhotoMyGalleryFragment extends PhotoBaseFragment implements
         LOG.I(TAG, "delete photo from database success is = " + Is);
 
         LOG.I(TAG, "when delete photo, is parent mode = " + mAct.IsMommyMode);
-        if (mAct.IsMommyMode) {
-            mAct.NSADeletePhoto(UserId, targetphotoId);
-        } else {
+        //if (mAct.IsMommyMode) {
+            //mAct.NSADeletePhoto(UserId, targetphotoId);
+        //} else {
             mAct.DeleteOwnPhoto(targetphotoId);
-        }
+        //}
 
     }
 

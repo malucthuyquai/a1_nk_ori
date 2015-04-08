@@ -23,6 +23,7 @@ import com.fuhu.data.FriendData;
 import com.fuhu.data.InboxesData;
 import com.fuhu.data.MailData;
 import com.fuhu.data.OutboxesData;
+import com.fuhu.data.ReceivedPhotoData;
 import com.fuhu.data.UserData;
 import com.fuhu.data.conversationData;
 import com.fuhu.data.messageData;
@@ -39,6 +40,7 @@ import com.fuhu.nabiconnect.nsa.fragment.FragmentNSA;
 import com.fuhu.nabiconnect.nsa.fragment.FragmentNSA.NSAEventListener;
 import com.fuhu.nabiconnect.nsa.fragment.FragmentPhoto;
 import com.fuhu.nabiconnect.nsa.util.ApiHelper;
+import com.fuhu.nabiconnect.nsa.util.NSAPhotoUtil;
 import com.fuhu.nabiconnect.nsa.util.NSAUtil;
 import com.fuhu.nabiconnect.utils.DatabaseAdapter;
 import com.fuhu.nabiconnect.utils.LibraryUtils;
@@ -49,6 +51,7 @@ import com.fuhu.ndnslibsoutstructs.getInboxes_outObj;
 import com.fuhu.ndnslibsoutstructs.getMail_outObj;
 import com.fuhu.ndnslibsoutstructs.getOutboxes_outObj;
 import com.fuhu.ndnslibsoutstructs.getOutgoingMail_outObj;
+import com.fuhu.ndnslibsoutstructs.getSharedAndReceivedPhotos_outObj;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Header;
@@ -70,28 +73,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
 
     // TODO: remove before release
     final public static boolean DEBUG = false;
     final private static boolean DB_DUMP = false;
-    private int count = 0;
-
-    final private String TAG = NSAActivity.class.getSimpleName();
-    final private int LOGIN_WHAT = 1;
-    final private long LOGIN_DELAY = 1000;
-
-    /**
-     * used only in chat history delete
-     */
-    final private String KEY_PARENT_KEY = "parentKey";
-    private String mApiKey;
-    private String mApiHost;
-
-    private String mParentKey;
-    private String mParentSessionKey;
-
     public static int TOP_VIEW_HEIGHT;
     public static int MID_VIEW_HEIGHT;
     public static int BOT_VIEW_HEIGHT;
@@ -99,14 +87,34 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
      * maps kid id to kid userkey
      */
     private static HashMap<String, String> mKidKeys = new HashMap<String, String>();
-
+    final private String TAG = NSAActivity.class.getSimpleName();
+    final private int LOGIN_WHAT = 1;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message m) {
+            if (m.what == LOGIN_WHAT && this.hasMessages(LOGIN_WHAT)) {
+                // do nothing and execute the latter one
+            } else {
+                Kid kid = (Kid) m.obj;
+                childLogin(kid.getKidId(), false);
+            }
+        }
+    };
+    final private long LOGIN_DELAY = 1000;
+    /**
+     * used only in chat history delete
+     */
+    final private String KEY_PARENT_KEY = "parentKey";
+    private int count = 0;
+    private String mApiKey;
+    private String mApiHost;
+    private String mParentKey;
+    private String mParentSessionKey;
     private AQuery aq;
-
     /**
      * used to hold last clicked tab
      */
     private ImageView iv_prev = null;
-
     /**
      * Fragments
      */
@@ -115,20 +123,83 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
     private FragmentChat mFragmentChat;
     private FragmentMail mFragmentMail;
     private FragmentPhoto mFragmentPhoto;
-    private FragmentMailViewer mFragmentMailViewer;
+    private View.OnClickListener menu_ocl = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.iv_debug) {
+                try {
+                    LOG.D(TAG, "versionName: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
+                    LOG.D(TAG, "versionCode: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
+                    LOG.D(TAG, "server: " + getPackageManager().getApplicationInfo(getPackageName(),
+                            PackageManager.GET_META_DATA).metaData.getString("server"));
+                } catch (NameNotFoundException e) {
+                    e.printStackTrace();
+                    return;
+                }
+                if (DB_DUMP) {
+                    if (count < 9) {
+                        count++;
+                    } else {
+                        DatabaseAdapter.getInstance(NSAActivity.this).dumpDatabase();
+                        count = 0;
+                    }
+                }
+                return;
+            }
 
+            int id = v.getId();
+            if (iv_prev.getId() == id) {
+                return;
+            } else {
+                switch (id) {
+                    case R.id.iv_friend:
+                        mFragmentFriend = null;
+                        mFragmentFriend = new FragmentFriend();
+                        switchFragment(mFragmentFriend);
+                        break;
+                    case R.id.iv_chat:
+                        mFragmentChat = null;
+                        mFragmentChat = new FragmentChat();
+                        switchFragment(mFragmentChat);
+                        break;
+                    case R.id.iv_mail:
+                        mFragmentMail = null;
+                        mFragmentMail = new FragmentMail();
+                        switchFragment(mFragmentMail);
+                        break;
+                    case R.id.iv_photo:
+                        mFragmentPhoto = null;
+                        mFragmentPhoto = new FragmentPhoto();
+                        switchFragment(mFragmentPhoto);
+                        break;
+                }
+                iv_prev.setSelected(false);
+                v.setSelected(true);
+                iv_prev = (ImageView) v;
+            }
+        }
+    };
+    private FragmentMailViewer mFragmentMailViewer;
     /**
      * local flag
      */
     private boolean onCreate = false;
-
     private DatabaseAdapter db;
-
     /**
      * blocked friend cache
      */
     private ArrayList<FriendData> mFriendBuffer = new ArrayList<FriendData>();
     private HashMap<String, HashMap<String, Boolean>> mBlockedMap = new HashMap<String, HashMap<String, Boolean>>();
+    private FragmentMailbox mFragmentMailbox;
+    private ArrayList<Kid> mFakeKidList = new ArrayList<Kid>();
+    private Kid mFakeKid;
+    private Comparator<FriendData> mFriendComparator = new Comparator<FriendData>() {
+
+        @Override
+        public int compare(FriendData lhs, FriendData rhs) {
+            return lhs.userID.compareTo(rhs.userID);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,62 +263,11 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         super.onBackPressed();
     }
 
-    private View.OnClickListener menu_ocl = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v.getId() == R.id.iv_debug) {
-                try {
-                    LOG.D(TAG, "versionName: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
-                    LOG.D(TAG, "versionCode: " + getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
-                    LOG.D(TAG, "server: " + getPackageManager().getApplicationInfo(getPackageName(),
-                            PackageManager.GET_META_DATA).metaData.getString("server"));
-                } catch (NameNotFoundException e) {
-                    e.printStackTrace();
-                    return;
-                }
-                if (DB_DUMP) {
-                    if (count < 9) {
-                        count++;
-                    } else {
-                        DatabaseAdapter.getInstance(NSAActivity.this).dumpDatabase();
-                        count = 0;
-                    }
-                }
-                return;
-            }
-
-            int id = v.getId();
-            if (iv_prev.getId() == id) {
-                return;
-            } else {
-                switch (id) {
-                    case R.id.iv_friend:
-                        mFragmentFriend = null;
-                        mFragmentFriend = new FragmentFriend();
-                        switchFragment(mFragmentFriend);
-                        break;
-                    case R.id.iv_chat:
-                        mFragmentChat = null;
-                        mFragmentChat = new FragmentChat();
-                        switchFragment(mFragmentChat);
-                        break;
-                    case R.id.iv_mail:
-                        mFragmentMail = null;
-                        mFragmentMail = new FragmentMail();
-                        switchFragment(mFragmentMail);
-                        break;
-                    case R.id.iv_photo:
-                        mFragmentPhoto = null;
-                        mFragmentPhoto = new FragmentPhoto();
-                        switchFragment(mFragmentPhoto);
-                        break;
-                }
-                iv_prev.setSelected(false);
-                v.setSelected(true);
-                iv_prev = (ImageView) v;
-            }
-        }
-    };
+	/*
+     * ======================================================================
+	 * NSAEventListener methods
+	 * ======================================================================
+	 */
 
     private void switchFragment(Fragment fragment) {
         mFragmentManager.popBackStack();
@@ -262,8 +282,6 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         }
         ft.commit();
     }
-
-    private FragmentMailbox mFragmentMailbox;
 
     public void showMailbox(FragmentMailbox fragment, boolean addToBackStack) {
         mFragmentMailbox = fragment;
@@ -290,12 +308,6 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         }
     }
 
-	/*
-     * ======================================================================
-	 * NSAEventListener methods
-	 * ======================================================================
-	 */
-
     @Override
     public UserData getUserData() {
         if (NSAActivity.DEBUG) {
@@ -305,9 +317,6 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
             return getNSACurrentUserData();
         }
     }
-
-    private ArrayList<Kid> mFakeKidList = new ArrayList<Kid>();
-    private Kid mFakeKid;
 
     @Override
     public ArrayList<Kid> getKidList() {
@@ -586,9 +595,11 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
     public void loadAllPhoto(long since, long until, long limit, boolean showDialog) {
         UserData data = getNSACurrentUserData();
         if (data != null) {
-            getAllPhoto(data.userKey, since, until, limit, showDialog);
+//            getAllPhoto(data.userKey, since, until, limit, showDialog);
+            getNSAPhoto(data.userKey, since, until, limit, showDialog);
         } else if (DEBUG) {
-            getAllPhoto(null, 0, 0, 0, false);
+            getNSAPhoto(null, 0, 0, 0, false);
+            //getAllPhoto(null, 0, 0, 0, false);
         }
     }
 
@@ -727,19 +738,6 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         }
     }
 
-    @Override
-    public void setFriendBlockedState(String userKey, String friendKey, boolean blocked) {
-        if (!mBlockedMap.containsKey(userKey)) {
-            return;
-        }
-        mBlockedMap.get(userKey).put(friendKey, blocked);
-    }
-
-    @Override
-    public NabiNotificationManager getNotificationManager() {
-        return super.getNabiNotificationManager();
-    }
-
 	/*
      * ======================================================================
 	 * end NSAEventListener methods
@@ -772,6 +770,19 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
     // super.accountNeedsCreate(data);
     // callDialogForAskCreateUserName(true);
     // }
+
+    @Override
+    public void setFriendBlockedState(String userKey, String friendKey, boolean blocked) {
+        if (!mBlockedMap.containsKey(userKey)) {
+            return;
+        }
+        mBlockedMap.get(userKey).put(friendKey, blocked);
+    }
+
+    @Override
+    public NabiNotificationManager getNotificationManager() {
+        return super.getNabiNotificationManager();
+    }
 
     @Override
     public void onParentLogin(UserData data) {
@@ -1252,6 +1263,128 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         aq.ajax(callback);
     }
 
+    private void getNSAPhoto(final String userKey, long since, long until, long limit, boolean showDialog) {
+        AjaxCallback<JSONObject> callback = new AjaxCallback<JSONObject>() {
+            @Override
+            public void callback(String requestUrl, JSONObject data, AjaxStatus ajaxStatus) {
+                LOG.D(TAG, "callback: " + requestUrl);
+                if (data != null) {
+                    LOG.D(TAG, "data: " + data.toString());
+
+                    getSharedAndReceivedPhotos_outObj outObj = new getSharedAndReceivedPhotos_outObj();
+                    outObj.mUserKey = userKey;
+                    ArrayList<ReceivedPhotoData> pdta = new ArrayList<ReceivedPhotoData>();
+                    try {
+                        Iterator<?> keys2 = data.keys();
+                        while (keys2.hasNext()) {
+                            String key2 = (String) keys2.next();
+                            if (key2.equals("data")) {
+                                JSONArray jArray = data.getJSONArray("data");
+                                for (int i = 0; i < jArray.length(); i++) {
+                                    JSONObject achobj = jArray.getJSONObject(i);
+
+                                    if (achobj.has("id") == false || achobj.has("createTime") == false) {
+                                        onGetAllPhoto.raise(false, data);
+                                        return;
+                                    }
+                                    ReceivedPhotoData pd = new ReceivedPhotoData();
+                                    String id = "";
+                                    String tl = "";
+                                    String url = "";
+                                    String fn = "";
+                                    long fid = 0;
+                                    long ct = 0;
+                                    String aurl = "";
+                                    String size = "";
+                                    String tnurl = "";
+                                    String tnsize = "";
+                                    String status = "";
+                                    if (achobj.has("id")) {
+                                        id = achobj.getLong("id") + "";
+                                    }
+                                    if (achobj.has("title")) {
+                                        tl = achobj.getString("title");
+                                    }
+                                    if (achobj.has("url")) {
+                                        url = achobj.getString("url");
+                                    }
+                                    if (achobj.has("fromName")) {
+                                        fn = achobj.getString("fromName");
+                                    }
+                                    if (achobj.has("fromId")) {
+                                        fid = achobj.getLong("fromId");
+                                    }
+                                    if (achobj.has("createTime")) {
+                                        ct = achobj.getLong("createTime");
+                                    }
+                                    if (achobj.has("fromAvatarUrl")) {
+                                        aurl = achobj.getString("fromAvatarUrl");
+                                    }
+                                    if (achobj.has("size")) {
+                                        size = achobj.getString("size");
+                                    }
+                                    if (achobj.has("url_tn")) {
+                                        tnurl = achobj.getString("url_tn");
+                                    }
+                                    if (achobj.has("size_tn")) {
+                                        tnsize = achobj.getString("size_tn");
+                                    }
+                                    if (achobj.has("status")) {
+                                        status = achobj.getString("status");
+                                    }
+                                    pd.SetPhotoData(id, tl, url, fn, fid, ct, aurl, size, tnurl, tnsize, status);
+                                    pdta.add(pd);
+                                }
+                            } else if (key2.equals("paging")) {
+                                JSONObject jsonObject3 = (JSONObject) data.get("paging");
+                                if (jsonObject3.has("previous") && jsonObject3.has("next")) {
+                                    outObj.SetNextPageURL(jsonObject3.getString("next"));
+                                    outObj.SetPreviousPageURL(jsonObject3.getString("previous"));
+                                } else {
+                                    onGetAllPhoto.raise(false, data);
+                                    return;
+                                }
+                            }
+                        }
+                        outObj.addData(pdta);
+                        onGetAllPhoto.raise(true, outObj);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        String url = mApiHost + "/photouser/" + userKey + "/photos?fields=";
+        int count = 0;
+        ArrayList<String> fields = NSAPhotoUtil.getAllPhotoQueryField();
+        for (String s : fields) {
+            url += s;
+            if (++count < fields.size()) {
+                url += ",";
+            } else {
+                if (since > 0 && until == 0) {
+                    url += "&since=" + since;
+                } else if (until > 0 && since == 0) {
+                    url += "&until=" + until;
+                }
+                url += "&limit=" + limit;
+            }
+        }
+
+        callback.url(url);
+        callback.header("apiKey", mApiKey);
+        callback.header("deviceKey", com.fuhu.nabicontainer.util.Utils.getSerialId().trim());
+        callback.header("deviceType", com.fuhu.nabicontainer.util.Utils.getMODELID().trim());
+        callback.header("androidVersion", "Android API Level: " + android.os.Build.VERSION.SDK_INT);
+        callback.header("deviceEdition", com.fuhu.nabicontainer.util.NabiFunction.getEdition());
+        callback.header("sessionKey", mParentSessionKey);
+        callback.header("userId", mParentKey);
+        callback.method(AQuery.METHOD_GET);
+        callback.type(JSONObject.class);
+        aq.ajax(callback);
+    }
+
     private void refreshFragment() {
         refreshFriendList();
     }
@@ -1267,18 +1400,6 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
             mFragmentPhoto.setViewHeight();
         }
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message m) {
-            if (m.what == LOGIN_WHAT && this.hasMessages(LOGIN_WHAT)) {
-                // do nothing and execute the latter one
-            } else {
-                Kid kid = (Kid) m.obj;
-                childLogin(kid.getKidId(), false);
-            }
-        }
-    };
 
     /**
      * called only once in onCreate()
@@ -1301,12 +1422,4 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
             mApiHost = "http://" + LibraryUtils.STAGING_BASE_URL;
         }
     }
-
-    private Comparator<FriendData> mFriendComparator = new Comparator<FriendData>() {
-
-        @Override
-        public int compare(FriendData lhs, FriendData rhs) {
-            return lhs.userID.compareTo(rhs.userID);
-        }
-    };
 }

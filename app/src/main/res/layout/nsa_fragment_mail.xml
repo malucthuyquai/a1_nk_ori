@@ -4,17 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/nsa_bg"
-    android:scrollbars="none" >
+    android:scrollbars="none"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        >
 
         <RelativeLayout
             android:id="@+id/rl_gallery"
             android:layout_width="match_parent"
-            android:layout_height="0dp" >
+            android:layout_height="0dp"
+            >
 
             <com.fuhu.nabiconnect.nsa.view.NSAGallery
                 android:id="@+id/gl_kids"
@@ -23,7 +26,8 @@
                 android:layout_above="@+id/tv_name"
                 android:layout_marginTop="@dimen/nsa_gallery_top_margin"
                 android:spacing="-15dp"
-                android:unselectedAlpha="1" >
+                android:unselectedAlpha="1"
+                >
             </com.fuhu.nabiconnect.nsa.view.NSAGallery>
 
             <TextView
@@ -31,12 +35,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/nsa_kid_name_bot_margin"
                 android:ellipsize="end"
                 android:gravity="center_horizontal"
                 android:singleLine="true"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/nsa_kid_name_size" >
+                android:textSize="@dimen/nsa_kid_name_size"
+                >
             </TextView>
 
             <ImageView
@@ -47,7 +52,8 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/empty"
                 android:scaleType="fitCenter"
-                android:src="@drawable/nsa_btn_left" >
+                android:src="@drawable/nsa_btn_left"
+                >
             </ImageView>
 
             <ImageView
@@ -58,14 +64,16 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/empty"
                 android:scaleType="fitCenter"
-                android:src="@drawable/nsa_btn_right" >
+                android:src="@drawable/nsa_btn_right"
+                >
             </ImageView>
         </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/ll_mid"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/nsa_mid_height" >
+            android:layout_height="@dimen/nsa_mid_height"
+            >
 
             <ImageView
                 android:id="@+id/iv_inbox"
@@ -76,7 +84,8 @@
                 android:background="@drawable/nsa_mailbox_bg"
                 android:contentDescription="@string/empty"
                 android:scaleType="fitCenter"
-                android:src="@drawable/nsa_inbox_bg" >
+                android:src="@drawable/nsa_inbox_bg"
+                >
             </ImageView>
 
             <ImageView
@@ -88,7 +97,8 @@
                 android:background="@drawable/nsa_mailbox_bg"
                 android:contentDescription="@string/empty"
                 android:scaleType="fitCenter"
-                android:src="@drawable/nsa_outbox_bg" >
+                android:src="@drawable/nsa_outbox_bg"
+                >
             </ImageView>
         </LinearLayout>
 
@@ -101,7 +111,8 @@
             android:listSelector="@android:color/transparent"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
-            android:scrollbars="none" >
+            android:scrollbars="none"
+            >
         </ListView>
     </LinearLayout>
 

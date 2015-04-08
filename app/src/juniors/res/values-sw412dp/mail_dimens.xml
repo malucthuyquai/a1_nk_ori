@@ -11,7 +11,7 @@
     <dimen name="mail_inbox_sender_info_container_margin_top">14px</dimen>
     <dimen name="mail_inbox_sender_info_container_margin_left">35px</dimen>
     <dimen name="mail_inbox_sender_avatar_size">120px</dimen>
-    <dimen name="mail_inbox_send_button_margin_top">15px</dimen>
+    <dimen name="mail_inbox_send_button_margin_top">7px</dimen>
     <dimen name="mail_inbox_send_button_margin_right">72px</dimen>
     <dimen name="mail_inbox_mails_scroll_view_margin_left">27px</dimen>
     <dimen name="mail_listitem_background_width">959px</dimen>
