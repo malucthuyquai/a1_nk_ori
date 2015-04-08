@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/nsa_kid_name_bot_margin"
                 android:ellipsize="end"
                 android:gravity="center_horizontal"
                 android:singleLine="true"
