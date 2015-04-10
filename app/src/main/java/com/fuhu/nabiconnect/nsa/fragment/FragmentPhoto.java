@@ -165,8 +165,21 @@ public class FragmentPhoto extends FragmentNSA {
         @Override
         public void onEvent(ApiEvent event, boolean isSuccess, Object obj) {
             if (isSuccess) {
+                if (obj instanceof String) {
+                    // returned empty set, clear local cache
+                    LOG.D(TAG, "obj: " + obj.toString());
+                    int affectedRows = db.deleteAllPhoto(obj.toString());
+                    LOG.D(TAG, "affected rows: " + affectedRows);
+                    mPhotos.clear();
+                    regroupPhotos();
+                    mLvPhoto.post(mRefreshPhotobox);
+                    return;
+                }
+
                 getSharedAndReceivedPhotos_outObj data = (getSharedAndReceivedPhotos_outObj) obj;
                 addBlockFlag(data);
+                LOG.D(TAG, "updating data for: " + data.mUserKey);
+                // 04-10 15:29:52.810: D/FragmentPhoto(12411): updating data for: 1480835548493907065
                 db.updateAllPhoto(data.mUserKey, data, showingLocalHistory);
                 if (mCallback.checkDataOwnership(data.mUserKey)) {
                     mBuffer.addAll(data.getPhotos());
@@ -211,6 +224,11 @@ public class FragmentPhoto extends FragmentNSA {
         @Override
         public void onClick(View v) {
             ReceivedPhotoData data = (ReceivedPhotoData) v.getTag();
+            if(data == null){
+                LOG.E(TAG, "received photo data is null, check view has tag set");
+                mCallback.showErrorDialog(false);
+                return;
+            }
             if (v.isSelected()) {
                 // already pressed once, ok to delete
 
@@ -224,7 +242,7 @@ public class FragmentPhoto extends FragmentNSA {
                 }
 
                 // check which api to call
-                if (Long.toString(data.fromId).equals(mCallback.getUserData().userKey)) {
+                if (Long.toString(data.fromId).equals(userData.userKey)) {
                     if (mDeletePool.add(data.id)) {
                         // photo that we sent out, delete it completely
                         mCallback.deleteSharedPhoto(data.id, mHandler);
@@ -349,9 +367,9 @@ public class FragmentPhoto extends FragmentNSA {
                     mPhotos.addAll(0, mBuffer);
                 }
                 regroupPhotos();
-                mLVAdapter.notifyDataSetChanged();
                 mBuffer.clear();
             }
+            mLVAdapter.notifyDataSetChanged();
             loadFinished = true;
             mShouldLoadHistory = true;
             sv_root.setScrollY(scrollPos);

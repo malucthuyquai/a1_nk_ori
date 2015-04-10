@@ -549,6 +549,7 @@ public class FragmentFriend extends FragmentNSA {
         fd.deleted = false;
         mGridViewAdapter.notifyDataSetChanged();
         mCallback.setFriendBlockedState(getUserKey(), fd.userID, false);
+        db.unblockFriend(getUserKey(), fd.userID);
     }
 
     private BlockedFriendConfirmDialog mConfirmDialog;

@@ -149,8 +149,7 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
 
                 break;
             case 1280:
-
-                MyGallery_PhotoWidgetWidth = 350; // nabi XD is 400
+                MyGallery_PhotoWidgetWidth = 372; // nabi XD is 400
                 TopProgressHeight = 25;
                 MyGallery_PhotoWidgetMargeParam = 5;
 
