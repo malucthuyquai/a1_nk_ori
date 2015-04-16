@@ -192,7 +192,6 @@ public class FragmentPhoto extends FragmentNSA {
                 mLvPhoto.post(mRefreshPhotobox);
             } else {
                 loadFinished = true;
-                LOG.E(TAG, "photo delete failed");
                 int y = sv_root.getScrollY();
                 mLVAdapter.notifyDataSetChanged();
                 sv_root.setScrollY(y);
@@ -424,6 +423,7 @@ public class FragmentPhoto extends FragmentNSA {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            int y = sv_root.getScrollY();
             mBuffer.clear();
             mPhotos.clear();
             mPhotoGroups.clear();
@@ -433,7 +433,6 @@ public class FragmentPhoto extends FragmentNSA {
             ll_right.setVisibility(View.GONE);
             String userKey = getUserKey();
             mBuffer.addAll(db.getAllPhoto(userKey));
-            int y = sv_root.getScrollY();
 
             if (mBuffer.size() > 0) {
                 showingLocalHistory = true;
@@ -443,13 +442,13 @@ public class FragmentPhoto extends FragmentNSA {
                 // loadFinished = true;
                 // mShouldLoadHistory = true;
             }
-            sv_root.setScrollY(y);
             mImageAdapter.setSelectItem(position);
             mGlKids.setSelection(position);
             mTvName.setText(mKids.get(position).getkidName());
             mCallback.onKidChanged(mKids.get(position));
             mImageAdapter.notifyDataSetChanged();
             mLVAdapter.notifyDataSetChanged();
+            sv_root.setScrollY(y);
         }
 
         @Override

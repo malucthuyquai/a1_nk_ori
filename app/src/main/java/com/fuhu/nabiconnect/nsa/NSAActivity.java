@@ -1263,7 +1263,7 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         aq.ajax(callback);
     }
 
-    private void getNSAPhoto(final String userKey, long since, long until, long limit, boolean showDialog) {
+    private void getNSAPhoto(final String userKey, final long since, final long until, long limit, boolean showDialog) {
         AjaxCallback<JSONObject> callback = new AjaxCallback<JSONObject>() {
             @Override
             public void callback(String requestUrl, JSONObject data, AjaxStatus ajaxStatus) {
@@ -1283,10 +1283,15 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
                                 for (int i = 0; i < jArray.length(); i++) {
                                     JSONObject achobj = jArray.getJSONObject(i);
 
-                                    if(achobj.length() == 0){
+                                    if (achobj.length() == 0) {
                                         // empty object
-                                        onGetAllPhoto.raise(true, userKey);
-                                        return;
+                                        if (since > 0 || until > 0) {
+                                            // no new photo or no more history photo, no need to notify
+                                            return;
+                                        } else {
+                                            onGetAllPhoto.raise(true, userKey);
+                                            return;
+                                        }
                                     }
 
                                     if (achobj.has("id") == false || achobj.has("createTime") == false) {

@@ -604,6 +604,7 @@ public class FragmentFriend extends FragmentNSA {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            int y = sv_root.getScrollY();
             aq.id(R.id.iv_add_friend).invisible();
             aq.id(R.id.iv_blocked_friend).invisible();
             mFriends.clear();
@@ -624,15 +625,13 @@ public class FragmentFriend extends FragmentNSA {
             Collections.sort(mFriends, mFriendComparator);
             // move parent to first spot
             moveParentToFront(mFriends);
-            int y = sv_root.getScrollY();
             mGridViewAdapter.notifyDataSetChanged();
-            sv_root.setScrollY(y);
             mImageAdapter.setSelectItem(position);
             mGlKids.setSelection(position);
             mTvName.setText(mKids.get(position).getkidName());
             mCallback.onKidChanged(mKids.get(position));
             mImageAdapter.notifyDataSetChanged();
-            // sv_root.setScrollY(0);
+            sv_root.setScrollY(y);
         }
 
         @Override
