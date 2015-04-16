@@ -627,11 +627,11 @@ public class PhotoInBoxFragment extends PhotoBaseFragment implements OnTaskCompl
                         LOG.I(TAG, "delete photo from database success is = " + Is);
 
                         LOG.I(TAG, "when delete photo, is parent mode = " + mAct.IsMommyMode);
-                        if (mAct.IsMommyMode) {
-                            mAct.NSADeleteReceivedPhoto(UserId, targetphotoId);
-                        } else {
+//                        if (mAct.IsMommyMode) {
+//                            mAct.NSADeleteReceivedPhoto(UserId, targetphotoId);
+//                        } else {
                             mAct.DeletePhoto(UserId, targetphotoId);    //delete photo from server
-                        }
+//                        }
 
                     } else {
 

@@ -678,6 +678,13 @@ public class DatabaseAdapter {
                 userKey, friendKey}) == 1;
     }
 
+    public boolean unblockFriend(String userKey, String friendKey){
+        ContentValues values = new ContentValues();
+        values.put(KEY_BLOCKED, UNBLOCKED);
+        return db.update(TABLE_FRIEND, values, KEY_USER_KEY + " = ? AND " + KEY_FRIEND_KEY + " = ?", new String[]{
+                userKey, friendKey}) == 1;
+    }
+
     /****************
      * CONVERSATION *
      ****************/
@@ -1728,6 +1735,10 @@ public class DatabaseAdapter {
         } else {
             return false;
         }
+    }
+
+    public int deleteAllPhoto(String userKey) {
+        return db.delete(TABLE_PHOTO, KEY_USER_KEY + " = ?", new String[]{userKey});
     }
 
     /**

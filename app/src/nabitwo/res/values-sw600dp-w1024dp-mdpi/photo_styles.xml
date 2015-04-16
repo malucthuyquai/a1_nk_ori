@@ -188,8 +188,8 @@
     </style>
     
     <style name="photolayout_popup_button">
-        <item name="android:layout_width">95px</item>     <!-- 95px 63dp-->
-        <item name="android:layout_height">95px</item>
+        <item name="android:layout_width">52dp</item>     <!-- 95px 63dp-->
+        <item name="android:layout_height">52dp</item>
     </style>
     
     <style name="photolayout_editphoto_tapbutton">

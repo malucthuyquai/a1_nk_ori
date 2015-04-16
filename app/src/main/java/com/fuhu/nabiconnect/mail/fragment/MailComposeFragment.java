@@ -33,6 +33,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
@@ -42,6 +43,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -111,7 +113,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
     private TableLayout m_EffectSubItemTable;
     private ImageView m_EffectSubMenuSwitch;
     private EffectManager m_EffectManager;
-    private RelativeLayout m_DrawingCanvas;
+    private FrameLayout m_DrawingCanvas;
     private Button m_SendMailButton;
     private ChooseContactDialog m_ChooseContactDialog;
     private EraseAllDialog m_EraseAllDialog;
@@ -323,10 +325,39 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             Bitmap previewBitmap = m_CameraPreviewView.getBitmap();
 
             if (previewBitmap != null) {
-                LOG.V(TAG, "Bitmap width :" + previewBitmap.getWidth() + " , height :" + previewBitmap.getHeight());
-                // m_TakenPicture.setImageBitmap(previewBitmap);
-                // add sticker
-                addStickerIntoCenter(previewBitmap);
+                LOG.E(TAG, "Bitmap width :" + previewBitmap.getWidth() + " , height :" + previewBitmap.getHeight());
+
+                /** button size */
+//                TypedValue value = new TypedValue();
+//                getResources().getValue(R.dimen.sticker_widget_button_side, value, true);
+
+                /** hosting canvas */
+//                int containerHeight = m_DrawingCanvas.getHeight();
+//                LOG.E(TAG, "container height: " + containerHeight);
+
+                /** check if image diagonal + 4 * buttonSide will exceed screen height */
+//                int diagonal = (int) Math.round(Math.sqrt(previewBitmap.getWidth() * previewBitmap.getWidth() + previewBitmap.getHeight() * previewBitmap.getHeight()));
+//                if (diagonal + 4 * value.getFloat() > containerHeight) {
+//                    LOG.E(TAG, "image is too large");
+                    // image is too large
+//                    float ratio = (diagonal + 4 * value.getFloat()) / containerHeight;
+
+//                    while (diagonal / ratio + 4 * value.getFloat() > containerHeight) {
+//                        ratio /= 0.98f;
+//                        LOG.E(TAG, "ratio is now: " + ratio);
+//                    }
+
+//                    LOG.E(TAG, "ratio: " + ratio);
+//                    Bitmap thumbnail = Bitmap.createScaledBitmap(previewBitmap, Math.round(previewBitmap.getWidth() / ratio), Math.round(previewBitmap.getHeight() / ratio), false);
+
+//                    LOG.E(TAG, "thumbnail width: " + thumbnail.getWidth());
+//                    LOG.E(TAG, "thumbnail height: " + thumbnail.getHeight());
+
+//                    previewBitmap.recycle();
+//                    addStickerIntoCenter(thumbnail);
+//                } else {
+                    addStickerIntoCenter(previewBitmap);
+//                }
             }
 
             // restart preview
@@ -685,7 +716,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
         m_EffectSubItemContainer = (ScrollView) getView().findViewById(R.id.mail_effect_subitems_scroll_view);
         m_EffectSubItemTable = (TableLayout) getView().findViewById(R.id.mail_effect_subitems_table);
         m_EffectSubMenuSwitch = (ImageView) getView().findViewById(R.id.mail_effect_bar_switch);
-        m_DrawingCanvas = (RelativeLayout) getView().findViewById(R.id.mail_drawing_canvas_container);
+        m_DrawingCanvas = (FrameLayout) getView().findViewById(R.id.mail_drawing_canvas_container);
         m_SendMailButton = (Button) getView().findViewById(R.id.mail_send_button);
         m_MailPaintingView = (PaintingView) getView().findViewById(R.id.mail_painting_view);
         m_CameraContainer = (RelativeLayout) getView().findViewById(R.id.mail_camera_container);
@@ -986,9 +1017,10 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
     }
 
     private void addStickerIntoCenter(Bitmap bitmap, boolean showStickerControl) {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        params.gravity = Gravity.CENTER;
         addSticker(bitmap, showStickerControl, params);
     }
 
@@ -999,7 +1031,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
      * addSticker(Bitmap bitmap, boolean showStickerControl) {
      * addSticker(bitmap, showStickerControl, null); }
      */
-    private void addSticker(Bitmap bitmap, boolean showStickerControl, RelativeLayout.LayoutParams params) {
+    private void addSticker(Bitmap bitmap, boolean showStickerControl, FrameLayout.LayoutParams params) {
         if (m_StickerList == null)
             m_StickerList = new ArrayList<StickerWidget>();
 
@@ -1040,7 +1072,8 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             return;
 
         // create bitmap and send
-        Bitmap bitmap = getrlLayoutBitmap(m_DrawingCanvas, m_DrawingCanvas.getWidth(), m_DrawingCanvas.getHeight());
+//        Bitmap bitmap = getrlLayoutBitmap(m_DrawingCanvas, m_DrawingCanvas.getWidth(), m_DrawingCanvas.getHeight());
+        Bitmap bitmap = getFLLayoutBitmap(m_DrawingCanvas, m_DrawingCanvas.getWidth(), m_DrawingCanvas.getHeight());
         Bitmap thumbnailBitmap = Bitmap.createScaledBitmap(bitmap, m_MailThumbnailWidth, m_MailThumbnailHeight, false);
 
         // m_Activity.sendMail(m_Activity.getCurrentUserData().userKey, idList,
@@ -1368,7 +1401,16 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
         return returnBitmap;
     }
 
-    private Bitmap getrlLayoutBitmap(RelativeLayout rl_v, int w, int h) {
+//    private Bitmap getrlLayoutBitmap(FrameLayout rl_v, int w, int h) {
+//        rl_v.measure(MeasureSpec.makeMeasureSpec(w, MeasureSpec.EXACTLY),
+//                MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY));
+//        Bitmap allLayoutBitmap = Bitmap.createBitmap(rl_v.getWidth(), rl_v.getHeight(), Config.ARGB_8888);
+//        Canvas rlCanvas = new Canvas(allLayoutBitmap);
+//        rl_v.draw(rlCanvas);
+//        return allLayoutBitmap;
+//    }
+
+    private Bitmap getFLLayoutBitmap(FrameLayout rl_v, int w, int h) {
         rl_v.measure(MeasureSpec.makeMeasureSpec(w, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY));
         Bitmap allLayoutBitmap = Bitmap.createBitmap(rl_v.getWidth(), rl_v.getHeight(), Config.ARGB_8888);
