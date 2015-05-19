@@ -163,6 +163,20 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                 pre = cw;
             }
         }
+
+        //set preview size
+        cw = pre = 0;
+        CameraParameters.setPreviewSize(DEFAULT_CAMERA_PICTURE_WIDTH, DEFAULT_CAMERA_PICTURE_HEIGHT);
+        for(Size cs : CameraParameters.getSupportedPreviewSizes()){
+            if ((cs.width * 3 / 4) == cs.height && cs.width < 2100 && cs.width > 640) { // width : height = 4:3
+                cw = cs.width;
+                if(cw > pre){
+                    CameraParameters.setPreviewSize(cs.width, cs.height);
+                    LOG.W(TAG, "set preview size width = " + cs.width + "  height = " + cs.height);
+                }
+                pre = cw;
+            }
+        }
     }
 
     private void SetGalleryButton(String path) {

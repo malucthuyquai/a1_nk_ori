@@ -22,6 +22,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.SurfaceTexture;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -356,7 +357,8 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 //                    previewBitmap.recycle();
 //                    addStickerIntoCenter(thumbnail);
 //                } else {
-                    addStickerIntoCenter(previewBitmap);
+                    //addStickerIntoCenter(previewBitmap);
+                    addPhotoStickerIntoCenter(previewBitmap);
 //                }
             }
 
@@ -365,6 +367,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
             // change to none effect
             m_EffectManager.clearEffect();
+            m_CameraShutterButton.setClickable(true);
         }
 
     };
@@ -799,7 +802,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
                 if (mail_text_container.getVisibility() == View.VISIBLE) {
                     // entering text
-                    return;
+                    //return;
+                    //let mail can be sent
+                    mail_cancel_button.performClick();
                 }
 
                 //remove sticker controls
@@ -831,6 +836,7 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
             @Override
             public void onClick(View v) {
+                m_CameraShutterButton.setClickable(false);
                 takePicture();
             }
         });
@@ -1004,9 +1010,13 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
                     }
                 }
             }
-        }, false);
+        }, false, StickerWidget.WIDGET_TYPE_TEXT);
+        //}, false);
         sw.setIndex(m_StickerCounter);
         sw.setMinScale(1f / 1.5f);
+        //sw.setMaxScale(2f);
+        sw.setScale(1f);
+
         m_StickerCounter++;
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
@@ -1055,6 +1065,55 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
             }
         }, showStickerControl);
+
+        // add index for each sticker
+        sw.setIndex(m_StickerCounter);
+        m_StickerCounter++;
+
+        if (params != null)
+            m_DrawingCanvas.addView(sw, params);
+        else
+            m_DrawingCanvas.addView(sw);
+        m_StickerList.add(sw);
+    }
+
+    private void addPhotoStickerIntoCenter(Bitmap bitmap) {
+        addPhotoStickerIntoCenter(bitmap, true);
+    }
+
+    private void addPhotoStickerIntoCenter(Bitmap bitmap, boolean showStickerControl) {
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT);
+//        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        params.gravity = Gravity.CENTER;
+        addPhotoSticker(bitmap, showStickerControl, params);
+    }
+
+    private void addPhotoSticker(Bitmap bitmap, boolean showStickerControl, FrameLayout.LayoutParams params) {
+        if (m_StickerList == null)
+            m_StickerList = new ArrayList<StickerWidget>();
+
+        // add sticker
+        StickerWidget sw = new StickerWidget(m_Activity, bitmap, new StickerButtonListener() {
+
+            @Override
+            public void onClick(StickerWidget sw) {
+                m_DrawingCanvas.removeView(sw);
+                m_StickerList.remove(sw);
+            }
+
+            @Override
+            public void onGainFocus(int index) {
+                // hide other stickers
+                for (StickerWidget widget : m_StickerList) {
+                    if (widget.getIndex() != index) {
+                        widget.hideControl();
+                    }
+                }
+
+            }
+        //}, showStickerControl);
+        }, showStickerControl,StickerWidget.WIDGET_TYPE_PHOTO);
 
         // add index for each sticker
         sw.setIndex(m_StickerCounter);
@@ -1369,17 +1428,37 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
         Bitmap tempTextBitmap;
         // tempTextBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 
-        int width = et.getWidth();
+        int desireTextCount = 0;
+        int desireSize = 0;
+
+        String txt = et.getText().toString();
+        String[] txtArr = txt.split("\n");
+        for(String str : txtArr){
+            if(str.length() >= 18){
+                desireTextCount = 18;
+                break;
+            }else{
+                if(str.length() > desireTextCount){
+                    desireTextCount = str.length();
+                }
+            }
+        }
+
+        desireSize = (int)(et.getTextSize()*18/27);
+
+        //int width = et.getWidth();
+        int width = desireTextCount * desireSize;
         int height = et.getHeight();
 
         tempTextBitmap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
 
         // to make a square bitmap
         if (width >= height) {
-            returnBitmap = Bitmap.createBitmap(width + 2 * padding, width + 2 * padding, Config.ARGB_8888);
-
-        } else {
-            returnBitmap = Bitmap.createBitmap(height + 2 * padding, height + 2 * padding, Config.ARGB_8888);
+            //returnBitmap = Bitmap.createBitmap(width + 2 * padding, width + 2 * padding, Config.ARGB_8888);
+            returnBitmap = Bitmap.createBitmap(width, width, Config.ARGB_8888);
+       } else {
+            //returnBitmap = Bitmap.createBitmap(height + 2 * padding, height + 2 * padding, Config.ARGB_8888);
+            returnBitmap = Bitmap.createBitmap(height , height, Config.ARGB_8888);
         }
 
         Canvas returnCanvas = new Canvas(returnBitmap);

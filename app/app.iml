@@ -117,19 +117,19 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 17 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="nabi-container-103031801-DT" level="project" />
-    <orderEntry type="library" exported="" name="httpmime-4.3.2" level="project" />
-    <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
-    <orderEntry type="library" exported="" name="httpcore-4.3.1" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="android-query-full.0.26.8" level="project" />
-    <orderEntry type="library" exported="" name="google-play-services" level="project" />
-    <orderEntry type="library" exported="" name="ND_NS_104012301" level="project" />
-    <orderEntry type="library" exported="" name="nabi-library-1030080601-temp" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="apache-mime4j-0.6" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="nabi-library-1030080601-temp" level="project" />
+    <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
     <orderEntry type="library" exported="" name="cmrLib" level="project" />
     <orderEntry type="library" exported="" name="httpclient-4.3.2" level="project" />
+    <orderEntry type="library" exported="" name="httpmime-4.3.2" level="project" />
+    <orderEntry type="library" exported="" name="nabi-container-103031801-DT" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="httpcore-4.3.1" level="project" />
+    <orderEntry type="library" exported="" name="ND_NS_104012301" level="project" />
+    <orderEntry type="library" exported="" name="google-play-services" level="project" />
   </component>
 </module>
 

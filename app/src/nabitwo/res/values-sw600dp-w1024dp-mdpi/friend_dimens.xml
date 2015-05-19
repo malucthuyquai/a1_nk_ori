@@ -79,9 +79,9 @@
     <dimen name="friend_dialog_code_container_margin_left">128px</dimen>
     <dimen name="friend_dialog_description_text_margin_top">33px</dimen>
     <dimen name="friend_dialog_text_width">69px</dimen>
-    <dimen name="friend_dialog_button_margin_bottom">16px</dimen>
+    <dimen name="friend_dialog_button_margin_bottom">35px</dimen><!-- 16px -->
     <dimen name="friend_dialog_button_margin_side">275px</dimen>
-    <dimen name="friend_request_sent_button_bottom_margin">16px</dimen>
+    <dimen name="friend_request_sent_button_bottom_margin">35px</dimen><!-- 16px -->
 
     <!-- setup views -->
     <dimen name="friend_setup_text_margin_top">48px</dimen>

@@ -46,9 +46,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
             android:text="@string/friend_setup_title_1"
             android:textColor="@android:color/white"
-            android:textSize="64sp" ><!-- 64dp -->
+            android:textSize="45sp" >
         </TextView>
 
         <!-- right margin set to 30dp to offset parent's setting to remain center -->
@@ -60,14 +61,14 @@
             android:layout_marginRight="30dp"
             android:text="@string/friend_setup_title_2"
             android:textColor="@android:color/white"
-            android:textSize="54sp" ><!-- 54dp -->
+            android:textSize="34sp" >
         </TextView>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|right"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="4dp"
             android:contentDescription="@string/empty"
             android:src="@drawable/nabi_avatar" >
         </ImageView>

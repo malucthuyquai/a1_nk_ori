@@ -11,6 +11,7 @@ import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -795,9 +796,19 @@ public class FriendMainFragment extends Fragment {
 				// load avatar
 				final String avatarUrl = friendData.AvatarUrl.replace("https", "http");
 				aq.id(holder.m_AvatarImageView).tag(AQuery.TAG_1, avatarUrl);
+
+                final String urlForCache = avatarUrl.substring(0,avatarUrl.indexOf("?"));
+                /*
 				if (BitmapAjaxCallback.getMemoryCached(friendData.userID, FragmentNSA.AVATAR_TARGET_WIDTH) != null) {
+                 */
+                if (BitmapAjaxCallback.getMemoryCached(urlForCache, FragmentNSA.AVATAR_TARGET_WIDTH) != null) {
+                    /*
 					holder.m_AvatarImageView.setImageBitmap(BitmapAjaxCallback.getMemoryCached(friendData.userID,
 							FragmentNSA.AVATAR_TARGET_WIDTH));
+                     */
+
+                    holder.m_AvatarImageView.setImageBitmap(BitmapAjaxCallback.getMemoryCached(urlForCache,
+                            FragmentNSA.AVATAR_TARGET_WIDTH));
 				} else {
 					// fetch newest from network
 					final Bitmap cache = m_DatabaseAdapter.getFriendAvatar(m_UserData.userKey, friendData.userID,
@@ -809,7 +820,10 @@ public class FriendMainFragment extends Fragment {
 							if (bmp != null) {
 								// save once download is finished
 								m_DatabaseAdapter.saveAvatarAsync(m_UserData.userKey, friendData.userID, bmp);
+                                /*
 								this.memPut(friendData.userID, bmp);
+                                 */
+                                this.memPut(urlForCache, bmp);
 								if (imageView.getTag(AQuery.TAG_1).equals(avatarUrl)) {
 									if (hasCache) {
 										imageView.setImageBitmap(bmp);

@@ -386,20 +386,27 @@ public class ChatActivity extends ApiBaseActivity implements IOnMainBarItemSelec
 	@Override
 	public void loginUserSuccess(UserData data) {
 		super.loginUserSuccess(data);
-		FragmentManager fm = getFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		if (!m_MainBarFrag.isVisible()) {
-			ft.replace(R.id.left_fragment_container, m_MainBarFrag, "leftfragment");
-		}
-		if (!m_ContactFrag.isVisible()) {
-			if (!m_ChatFrag.isVisible()) {
-				// if currently in chat room, stay
-				// otherwise, show contact fragment
-				ft.replace(R.id.right_fragment_container, m_ContactFrag, "rightfragment");
-				// ft.addToBackStack(null);
-			}
-		}
-		ft.commit();
+        try {
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            if (!m_MainBarFrag.isVisible()) {
+                ft.replace(R.id.left_fragment_container, m_MainBarFrag, "leftfragment");
+            }
+            if (!m_ContactFrag.isVisible()) {
+                if (!m_ChatFrag.isVisible()) {
+                    // if currently in chat room, stay
+                    // otherwise, show contact fragment
+                    ft.replace(R.id.right_fragment_container, m_ContactFrag, "rightfragment");
+                    // ft.addToBackStack(null);
+                }
+            }
+            //ft.commit();
+            ft.commitAllowingStateLoss();
+        }catch (Exception e){
+            e.printStackTrace();
+            this.showGeneralWarningDialog();
+            finish();
+        }
 	}
 
 	@Override

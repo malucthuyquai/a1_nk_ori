@@ -19,6 +19,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.log.LOG;
 
 public class StickerWidget extends ImageView {
 
@@ -125,6 +126,16 @@ public class StickerWidget extends ImageView {
     public StickerWidget(Context context, Bitmap image, StickerButtonListener listener, boolean showFullMenu) {
         this(context, image, listener);
         mShouldDrawFullBackground = showFullMenu;
+    }
+
+    public static final int WIDGET_TYPE_STICKER = 0;
+    public static final int WIDGET_TYPE_TEXT = 1;
+    public static final int WIDGET_TYPE_PHOTO = 2;
+    int mWidgetType = WIDGET_TYPE_STICKER;
+    public StickerWidget(Context context, Bitmap image, StickerButtonListener listener, boolean showFullMenu, int WidgetType) {
+        this(context, image, listener);
+        mShouldDrawFullBackground = showFullMenu;
+        mWidgetType = WidgetType;
     }
 
     public StickerWidget(Context context, Bitmap image, StickerButtonListener listener) {
@@ -246,8 +257,30 @@ public class StickerWidget extends ImageView {
             Log.e(TAG, "diagonal: " + diagonal);
             // only needed 2 * mButtonSide for buttons to lie on the white frame
             // but include another 2 * mButtonSide anyway so the image will fit within the frame
-            params.width = diagonal + (int) (4 * mButtonSide);
-            params.height = diagonal + (int) (4 * mButtonSide);
+            //params.width = diagonal + (int) (4 * mButtonSide);
+            //params.height = diagonal + (int) (4 * mButtonSide);
+            switch (mWidgetType) {
+                case WIDGET_TYPE_TEXT: {
+                    int val = diagonal + (int) (0.5 * mButtonSide);
+                    if(val < 150){
+                        val = 150;
+                    }
+                    params.width = val;
+                    params.height = val;
+                    break;
+                }
+                case WIDGET_TYPE_PHOTO: {
+                    params.width = diagonal + (int) (2.5 * mButtonSide / mContext.getResources().getDisplayMetrics().density);
+                    params.height = diagonal + (int) (2.5 * mButtonSide / mContext.getResources().getDisplayMetrics().density);
+                    break;
+                }
+                case WIDGET_TYPE_STICKER:
+                default:{
+                    params.width = diagonal + (int) (0.8 * mButtonSide / mContext.getResources().getDisplayMetrics().density);
+                    params.height = diagonal + (int) (0.8 * mButtonSide / mContext.getResources().getDisplayMetrics().density);
+                    break;
+                }
+            }
 
             Log.e(TAG, "width: " + params.width);
             Log.e(TAG, "height: " + params.height);
@@ -532,12 +565,19 @@ public class StickerWidget extends ImageView {
     DashPathEffect mDashPathEffect = new DashPathEffect(new float[]{50, 20}, (float) 1.0);
 
     private void drawFrame(Canvas canvas) {
-        float w = getWidth() * mCurrentScale;
-        float h = getHeight() * mCurrentScale;
+        float w = this.getWidth() * mCurrentScale;
+        float h = this.getHeight() * mCurrentScale;
         float r = radius * mDensity;
         frame.set(0 + mButtonSide * mDensity / 2, 0 + mButtonSide / 2, w - mButtonSide * mDensity / 2, h - mButtonSide
                 * mDensity / 2);
         mPaint.setPathEffect(mDashPathEffect);
         canvas.drawRoundRect(frame, r, r, mPaint);
+    }
+
+    public void setScale(float scale){
+        this.setScaleX(scale);
+        this.setScaleY(scale);
+        mCurrentScale = scale;
+        mLastScale = scale;
     }
 }
