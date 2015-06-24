@@ -91,6 +91,7 @@
     <dimen name="friend_dialog_button_margin_bottom">71px</dimen>
     <dimen name="friend_dialog_button_margin_side">515px</dimen>
     <dimen name="friend_request_sent_button_bottom_margin">71px</dimen>
+    <dimen name="friend_add_friend_dialog_button_margin_bottom">71px</dimen>
 
     <!-- setup views -->
     <dimen name="friend_setup_text_margin_top">120px</dimen>

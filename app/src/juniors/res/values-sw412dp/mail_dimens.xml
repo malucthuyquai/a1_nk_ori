@@ -83,7 +83,7 @@
     <dimen name="mail_camera_button_container_margin_top">293px</dimen>
     <dimen name="mail_camera_button_margin_side">5px</dimen>
     <dimen name="mail_sticker_widget_list_container_margin_right">20dp</dimen>
-    <dimen name="mail_sticker_widget_list_container_width">490dp</dimen>
+    <dimen name="mail_sticker_widget_list_container_width">487dp</dimen><!-- 490dp-->
     <dimen name="mail_sticker_widget_width">141px</dimen>
     <dimen name="mail_sticker_widget_height">309px</dimen>
     <dimen name="mail_sticker_widget_content_image_size">107px</dimen>

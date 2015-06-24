@@ -128,7 +128,7 @@
     </style>
 
     <style name="photolayout_leftbutton">
-        <item name="android:layout_width">190px</item>   <!-- 190px 143dp-->好
+        <item name="android:layout_width">190px</item>   <!-- 190px 143dp-->
         <item name="android:layout_height">164px</item>  <!-- 172px 123dp-->
     </style>
     

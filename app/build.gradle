@@ -89,14 +89,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("/Users/endor/fuhu_android");
+            storeFile file("/Users/Simon/cert_store/fuhu_android");
             storePassword "pass\$1214"
             keyAlias "fuhu"
             keyPassword "pass\$1214"
         }
 
         debug{
-            storeFile file("/Users/endor/fuhu_debug");
+            storeFile file("/Users/Simon/cert_store/fuhu_android");
             storePassword "pass\$1214"
             keyAlias "fuhu"
             keyPassword "pass\$1214"

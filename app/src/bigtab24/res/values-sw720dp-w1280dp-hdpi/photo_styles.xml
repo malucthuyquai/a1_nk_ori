@@ -129,12 +129,12 @@
 
     <style name="photolayout_leftbutton">
         <item name="android:layout_width">225px</item>   <!-- 225px 150dp-->
-        <item name="android:layout_height">208px</item>  <!-- 208px 139dp-->
+        <item name="android:layout_height">218px</item>  <!-- 208px 139dp-->
     </style>
     
      <style name="photolayout_leftbutton_Icon">
         <item name="android:layout_width">225px</item>   <!-- 187px 140dp-->
-        <item name="android:layout_height">208px</item>  <!-- 187px 140dp-->
+        <item name="android:layout_height">218px</item>  <!-- 187px 140dp-->
     </style>
     
     <style name="photolayout_textureview">

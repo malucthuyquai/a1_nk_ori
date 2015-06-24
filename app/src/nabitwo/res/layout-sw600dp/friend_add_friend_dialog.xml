@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="@dimen/friend_dialog_button_margin_bottom"
+            android:layout_marginBottom="@dimen/friend_add_friend_dialog_button_margin_bottom"
             android:layout_marginLeft="@dimen/friend_dialog_button_margin_side"
             android:background="@drawable/friend_btn_reject_friend_selector" />
 
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="@dimen/friend_dialog_button_margin_bottom"
+            android:layout_marginBottom="@dimen/friend_add_friend_dialog_button_margin_bottom"
             android:layout_marginRight="@dimen/friend_dialog_button_margin_side"
             android:background="@drawable/friend_btn_accept_friend_selector" />
     </RelativeLayout>
