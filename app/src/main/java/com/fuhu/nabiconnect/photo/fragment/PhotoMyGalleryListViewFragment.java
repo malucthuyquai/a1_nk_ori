@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.fuhu.data.SharedPhotoData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.PhotoActivity;
 import com.fuhu.nabiconnect.photo.PhotoActivity.PhotoWidgetListener;
@@ -74,6 +75,11 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
 
     View view;
     DatabaseAdapter db;
+
+    @Override
+    public String getTrack() {
+        return "my_gallery_list";
+    }
 
     public void SetUserAvatar(Drawable userimage) {
         LOG.I(TAG, "SetUserAvatar");
@@ -527,6 +533,10 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
                     v.setBackgroundResource(R.drawable.photo_x_button_select);
                     previous = v.getId();
                     LOG.I(TAG, "get id = " + v.getId());
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "delete_photo_select_#" + mPhotoWidgetArray.get(previous).GetPhotoId());
+
                 } else {
                     if (v.getId() == previous) {  //execute delete photo
                         IsDeleteing = true;
@@ -551,6 +561,9 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
 
                         LOG.I(TAG, "get id = " + v.getId());
                     }
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "deldete_photo_#" + mPhotoWidgetArray.get(previous).GetPhotoId());
                 }
             }
         }
@@ -568,6 +581,9 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
         public void onClickPhoto(int position) {
             // TODO Auto-generated method stub
             userBehaviorListener.ClickPhoto(position);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), "fullscreen_view_#" + position);
         }
     };
 
@@ -581,6 +597,9 @@ public class PhotoMyGalleryListViewFragment extends PhotoBaseFragment {
                 scrollView.removeScrollViewListener();
                 userBehaviorListener.ScrollBottomLoading();
                 //UpdateScrollViewBySlipDown();
+
+                //tracking
+                Tracking.pushTrack(getActivity(), "load_more_photo");
             }
 
         }

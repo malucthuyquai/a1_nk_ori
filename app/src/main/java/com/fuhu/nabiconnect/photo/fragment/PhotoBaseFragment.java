@@ -1,11 +1,11 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.PhotoActivity;
 
@@ -13,14 +13,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class PhotoBaseFragment extends Fragment {
+public class PhotoBaseFragment extends Tracking.TrackingInfoFragment {
 	private final String TAG = "PhotoBaseFragment";
 	
 	protected PhotoActivity mAct;
 	protected int ScreenWidth, ScreenHeight;
 	protected FragmentManager PhotoActFragmentManager;
-	
-	@Override
+
+    public PhotoBaseFragment() {
+        super(PhotoBaseFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return null;
+    }
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);

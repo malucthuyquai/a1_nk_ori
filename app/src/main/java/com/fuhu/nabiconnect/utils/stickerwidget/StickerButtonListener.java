@@ -12,7 +12,7 @@ public interface StickerButtonListener {
 	 * Called when receiving ACTION_DOWN touch event. Passes back the identifier of
 	 * this StickerWidget assigned by its parent
 	 * 
-	 * @param id
+	 * @param index
 	 */
 	public void onGainFocus(int index);
 }

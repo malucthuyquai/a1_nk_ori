@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.mail.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -22,6 +21,7 @@ import com.fuhu.data.MailData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.IOnMainBarItemSelectedListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -40,7 +40,7 @@ import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
 
-public class MailInboxFragment extends Fragment {
+public class MailInboxFragment extends Tracking.TrackingInfoFragment {
 
 	public static final String TAG = "MailInboxFragment";
 
@@ -182,7 +182,16 @@ public class MailInboxFragment extends Fragment {
 		}
 	};
 
-	@Override
+    public MailInboxFragment() {
+        super(MailInboxFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return "my_inbox";
+    }
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		m_Activity = (MailActivity) this.getActivity();
@@ -256,6 +265,10 @@ public class MailInboxFragment extends Fragment {
 					m_Handler.removeMessages(MSG_RELOAD_INBOX_LIST);
 					m_Handler.sendEmptyMessage(MSG_RELOAD_INBOX_LIST);
 				}
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "back_button");
+                Tracking.trackBack();
 			}
 		});
 
@@ -457,7 +470,7 @@ public class MailInboxFragment extends Fragment {
 			ImageView m_MailContentImage = (ImageView) m_BackgroundContainer.findViewById(R.id.mail_content_image);
 			ProgressBar m_ProgressBar = (ProgressBar) m_BackgroundContainer.findViewById(R.id.marker_progress);
 
-			MailData mailData = getItem(position);
+			final MailData mailData = getItem(position);
 			final String fullImageUrl = mailData.fileUrl;
 			final Bitmap thumbnail = m_MailContentThumbnailTable.get(mailData);
 			if (thumbnail != null) {
@@ -482,6 +495,9 @@ public class MailInboxFragment extends Fragment {
 						m_MailContentDialog.setCanceledOnTouchOutside(true);
 						m_MailContentDialog.show();
 					}
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "enlarge_image_#" + mailData.mailId);
 				}
 			});
 
@@ -591,6 +607,10 @@ public class MailInboxFragment extends Fragment {
 			}
 			m_Activity.getMail(m_Activity.getCurrentUserData().userKey, data.inboxID);
 			m_InboxListItemAdapter.notifyDataSetChanged();
+
+            //tracking
+            Tracking.pushTrack(view.getContext(), "view_message_#" + data.userName);
+            Tracking.trackNextSync("message_" + data.userName);
 		}
 	};
 }

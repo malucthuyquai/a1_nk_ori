@@ -33,4 +33,9 @@ public class PaintEffectGreenBold extends IPaintBoldEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "green_bold";
+    }
 }

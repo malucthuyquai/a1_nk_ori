@@ -381,6 +381,8 @@ public class NotificationDialogService extends IntentService {
 				public void onClick(View arg0) {
 					if(mActivityIntent != null)
 						mContext.startActivity(mActivityIntent);
+
+                    //tracking (just a tag for searching)
 				}
 			});
 			

@@ -32,4 +32,9 @@ public class StickerEffect extends Effect {
         }
         return m_SubItems;
     }
+
+    @Override
+    public String getTrack() {
+        return TrackingInfo.TRACK_PHOTO_STICKER_EFFECT;
+    }
 }

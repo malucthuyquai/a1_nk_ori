@@ -35,4 +35,9 @@ public class TextEffectPurple extends Effect implements ITextEffect{
 		// TODO Auto-generated method stub
 		return 6;
 	}
+
+    @Override
+    public String getTrack() {
+        return "text_tool_purple";
+    }
 }

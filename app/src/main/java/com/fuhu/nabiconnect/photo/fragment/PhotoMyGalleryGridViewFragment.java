@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -12,6 +11,7 @@ import android.widget.GridView;
 
 import com.fuhu.data.SharedPhotoData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.PhotoActivity;
 import com.fuhu.nabiconnect.photo.PhotoActivity.UserBehaviorListener;
@@ -22,7 +22,7 @@ import com.fuhu.nabiconnect.photo.util.PhotoParameter;
 
 import java.util.ArrayList;
 
-public class PhotoMyGalleryGridViewFragment extends Fragment implements OnTaskCompleted{
+public class PhotoMyGalleryGridViewFragment extends Tracking.TrackingInfoFragment implements OnTaskCompleted{
 	public final static String TAG = "MyGalleryGridViewFragment";
 	private static final int GetSharedPhotoMaxNum = PhotoParameter.LoadphotofromServerNumber;
 	
@@ -39,8 +39,12 @@ public class PhotoMyGalleryGridViewFragment extends Fragment implements OnTaskCo
 	private ImageDownLoadManager mImageDM;
 	private UserBehaviorListener userBehaviorListener;
 	private boolean IsUpdatePhotoing = false;
-		
-	public void SetPhotoListData(ArrayList<SharedPhotoData> SharedPhotoData){
+
+    public PhotoMyGalleryGridViewFragment() {
+        super(PhotoMyGalleryGridViewFragment.class.getSimpleName());
+    }
+
+    public void SetPhotoListData(ArrayList<SharedPhotoData> SharedPhotoData){
 		this.UserSharedPhotoData = SharedPhotoData;
 		LOG.I(TAG, "UserSharedPhotoData size = " + UserSharedPhotoData.size());
 	}
@@ -48,8 +52,13 @@ public class PhotoMyGalleryGridViewFragment extends Fragment implements OnTaskCo
 	public void SetUserBehaviorListener(UserBehaviorListener listener) {
 		this.userBehaviorListener = listener;
 	}
-	
-	@Override
+
+    @Override
+    public String getTrack() {
+        return "my_gallery_grid";
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -107,7 +116,10 @@ public class PhotoMyGalleryGridViewFragment extends Fragment implements OnTaskCo
 				mAct.SwitchToShowPhotoFragmentFromGrid(position);	*/
 			
 			if(position < mImageDM.GetPhotoFinishCount())
-				userBehaviorListener.ClickPhoto(position);	
+				userBehaviorListener.ClickPhoto(position);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), "fullscreen_view_#" + position);
 		}		
 	};
 
@@ -124,6 +136,8 @@ public class PhotoMyGalleryGridViewFragment extends Fragment implements OnTaskCo
 				IsUpdatePhotoing = true;
 				userBehaviorListener.ScrollBottomLoading();
 
+                //tracking
+                Tracking.pushTrack(getActivity(), "load_more_photo");
 			}
 			return false;
 		}

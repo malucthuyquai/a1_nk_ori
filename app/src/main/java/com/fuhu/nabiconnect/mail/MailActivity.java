@@ -1,8 +1,8 @@
 package com.fuhu.nabiconnect.mail;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import com.fuhu.data.InboxesData;
 import com.fuhu.data.UserData;
 import com.fuhu.nabiconnect.IOnMainBarItemSelectedListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiBaseActivity;
 import com.fuhu.nabiconnect.friend.dialog.CreateUserNameDialog;
 import com.fuhu.nabiconnect.log.LOG;
@@ -68,6 +69,10 @@ public class MailActivity extends ApiBaseActivity implements IOnMainBarItemSelec
     private String m_LogonUserKey;
 
     private boolean mNeedRelogin = false;
+
+    public MailActivity() {
+        super("nabiMail");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,19 +158,31 @@ public class MailActivity extends ApiBaseActivity implements IOnMainBarItemSelec
         m_MainBarFrag.OnMainBarIndexChanged(position);
         m_CurrentReceiverData = data;
 
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         Fragment newFragment = null;
 
         switch (position) {
             case MailMainBarFragment.ITEM_COMPOSE_ID:
                 newFragment = m_MailComposeFrag;
+
+                //tracking
+                Tracking.pushTrack(this, "nabiMail", "compose_message");
+
                 break;
             case MailMainBarFragment.ITEM_INBOX_ID:
                 newFragment = m_MailInboxFrag;
+
+                //tracking
+                Tracking.pushTrack(this, "nabiMail", "my_inbox");
+
                 break;
             case MailMainBarFragment.ITEM_UNSENT_ID:
                 newFragment = m_MailInboxFrag;
+
+                //tracking
+                Tracking.pushTrack(this, "nabiMail", "my_inbox");
+
                 break;
         }
 
@@ -197,7 +214,7 @@ public class MailActivity extends ApiBaseActivity implements IOnMainBarItemSelec
     @Override
     public void loginUserSuccess(UserData data) {
         super.loginUserSuccess(data);
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         if (!m_MainBarFrag.isVisible()) {
             ft.replace(R.id.left_fragment_container, m_MainBarFrag, "leftfragment");

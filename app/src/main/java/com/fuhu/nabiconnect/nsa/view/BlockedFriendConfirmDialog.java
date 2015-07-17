@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.fuhu.data.FriendData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 public class BlockedFriendConfirmDialog extends Dialog {
 
@@ -31,6 +32,9 @@ public class BlockedFriendConfirmDialog extends Dialog {
 		@Override
 		public void onClick(View v) {
 			BlockedFriendConfirmDialog.this.dismiss();
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "dialog_blocked_friends_confirm_close");
 		}
 	};
 }

@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.chat.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -34,6 +33,7 @@ import com.fuhu.data.conversationData;
 import com.fuhu.data.messageData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.ChatActivity;
 import com.fuhu.nabiconnect.chat.ChatActivity.ChatMessageData;
 import com.fuhu.nabiconnect.chat.IOnChatMessageReceivedListener;
@@ -60,7 +60,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ChatFragment extends Fragment implements IOnChatMessageReceivedListener {
+public class ChatFragment extends Tracking.TrackingInfoFragment implements IOnChatMessageReceivedListener {
 
     public static final String TAG = "ChatFragment";
     public static final int MSG_RELOAD_CHAT = 10001;
@@ -104,6 +104,15 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
 
     private SharedPreferences m_LastConversationPreference;
 
+    public ChatFragment() {
+        super(ChatFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return "chat";
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +153,9 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
         m_SendButton = (Button) getActivity().findViewById(R.id.sendBtn);
         m_SendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                //tracking
+                Tracking.pushTrack(view.getContext(), "send_message");
+
                 onSendMessageKeyPressed();
             }
         });
@@ -164,6 +176,10 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
 
             @Override
             public void onClick(View v) {
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "enter_message");
+
                 if (m_IsPictureLayoutShown) {
                     hidePictureLayout();
                 }
@@ -177,6 +193,9 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
 
             @Override
             public void onClick(View v) {
+                //tracking
+                Tracking.pushTrack(v.getContext(), "show_keyboard");
+
                 InputMethodManager imm = (InputMethodManager) m_Activity.getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                 m_TextMessage.requestFocus();
@@ -190,6 +209,9 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
 
             @Override
             public void onClick(View v) {
+                //tracking
+                Tracking.pushTrack(v.getContext(), "show_stickers");
+
                 if (m_IsPictureLayoutShown) {
                     hidePictureLayout();
                 } else {
@@ -450,6 +472,9 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
                 } else {
                     LOG.V(TAG, "Plus icon is clicked, go to shop page");
                 }
+
+                //tracking
+                Tracking.pushTrack(getActivity(), "select_sticker_sets_#" + selectedCategory.getName());
             } else if (viewName.equals(ChatStickerWidget.TAG)) {
                 Sticker selectedSticker = null;
                 if (args != null)
@@ -459,7 +484,12 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
                 String content = StickerManager.createPrefixString(m_CurrentStickerCategory.getId(),
                         String.valueOf(selectedSticker.getId()));
                 sendMessage(m_ChatFriend, content);
+
+                //tracking
+                Tracking.pushTrack(getActivity(), "select_sticker_#" + selectedSticker.getId());
             }
+
+
         }
     };
 
@@ -811,6 +841,9 @@ public class ChatFragment extends Fragment implements IOnChatMessageReceivedList
                     holder.m_SendFailedIndicator.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            //tracking
+                            Tracking.pushTrack(v.getContext(), "failed_to_send");
+
                             LOG.V(TAG, "Re-send the message");
                             m_Activity.sendMessage(m_CurrentConversationId, data.m_MessageContent,
                                     String.valueOf(data.m_MessageTime));

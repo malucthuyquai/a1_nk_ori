@@ -17,7 +17,6 @@ package com.fuhu.nabiconnect.chat.fragment;
 
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +27,13 @@ import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.IOnMainBarIndexChangedListener;
 import com.fuhu.nabiconnect.IOnMainBarItemSelectedListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.ChatActivity;
 import com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget;
 import com.fuhu.nabiconnect.log.LOG;
+import com.fuhu.tracking.TrackingFragmentActivity;
 
-public class ChatMainBarFragment extends Fragment implements IOnMainBarIndexChangedListener{
+public class ChatMainBarFragment extends Tracking.TrackingInfoFragment implements IOnMainBarIndexChangedListener{
 	
 	
 	public static final String TAG = "MainBarFragment";
@@ -50,6 +51,15 @@ public class ChatMainBarFragment extends Fragment implements IOnMainBarIndexChan
 	private int m_CurrentMainbarItem;
 	
 	private ChatActivity m_Activity;
+
+    public ChatMainBarFragment() {
+        super(ChatMainBarFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return null;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,7 +98,11 @@ public class ChatMainBarFragment extends Fragment implements IOnMainBarIndexChan
 			
 			@Override
 			public void onButtonClicked(int buttonId, String viewName, Object[] args) {
-				
+
+                //tracking
+                Tracking.pushTrack(getActivity(),
+                        ((TrackingFragmentActivity) getActivity()).getPageName(), "contact_list");
+
 				mCallback.OnMainBarItemSelected(ITEM_CONTACT_ID);
 				
 			}
@@ -97,7 +111,11 @@ public class ChatMainBarFragment extends Fragment implements IOnMainBarIndexChan
 			
 			@Override
 			public void onButtonClicked(int buttonId, String viewName, Object[] args) {
-				
+
+                //tracking
+                Tracking.pushTrack(getActivity(),
+                        ((TrackingFragmentActivity) getActivity()).getPageName(), "chat_page");
+
 				if(m_Activity.getCurrentMainBarItem() == ChatMainBarFragment.ITEM_CHAT_ID )
 				{
 					LOG.V(TAG, "already in chat page");
@@ -127,7 +145,12 @@ public class ChatMainBarFragment extends Fragment implements IOnMainBarIndexChan
 			
 			@Override
 			public void onButtonClicked(int buttonId, String viewName, Object[] args) {
-				mCallback.OnMainBarItemSelected(ITEM_SHOP_ID);
+
+                //tracking not used
+                Tracking.pushTrack(getActivity(),
+                        ((TrackingFragmentActivity) getActivity()).getPageName(), "sticker_store");
+
+                mCallback.OnMainBarItemSelected(ITEM_SHOP_ID);
 				
 			}
 		});

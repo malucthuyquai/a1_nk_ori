@@ -2,7 +2,6 @@ package com.fuhu.nabiconnect.photo.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -20,15 +18,17 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.EditPhotoItemAdapter;
 import com.fuhu.nabiconnect.utils.stickerwidget.StickerButtonListener;
 import com.fuhu.nabiconnect.utils.stickerwidget.StickerWidget;
+import com.fuhu.tracking.OnTrackClickListener;
 
 import java.util.ArrayList;
 
 @SuppressLint("ValidFragment")
-public class EditPhotoStickerFragment extends Fragment {
+public class EditPhotoStickerFragment extends Tracking.TrackingInfoFragment {
 
     public static final String TAG = "EditPhotoStickerFragment";
 
@@ -129,8 +129,18 @@ public class EditPhotoStickerFragment extends Fragment {
 
     private ArrayList<LoadingImageFromResTask> LoadingImageFromResTaskArray = new ArrayList<LoadingImageFromResTask>();
 
+    public EditPhotoStickerFragment() {
+        super(EditPhotoStickerFragment.class.getSimpleName());
+    }
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_EDIT_STICKER;
+    }
+
     @SuppressLint("ValidFragment")
     public EditPhotoStickerFragment(ImageView photoview, FrameLayout showphotolayout) {
+        //tracking
+        this();
 
         this.mPhotoView = photoview;
         this.mShowPhotoLayout = showphotolayout;
@@ -213,10 +223,15 @@ public class EditPhotoStickerFragment extends Fragment {
         }
     }
 
-    private OnClickListener clicklistener = new OnClickListener() {
+    private OnTrackClickListener clicklistener = new OnTrackClickListener() {
 
         @Override
-        public void onClick(View v) {
+        public String getActionName(Object... objects) {
+            return null; //jacktseng
+        }
+
+        @Override
+        public void onClickEvent(View v) {
             // TODO Auto-generated method stub
 
             if (mStickerList != null) {

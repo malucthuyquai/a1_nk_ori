@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 
@@ -58,27 +59,33 @@ public CreateUserNameDialog(Context context)
 	
 	if(m_RightButton != null)
 		m_RightButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
+            @Override
 			public void onClick(View v) {
-				notifyButtonListeners(CREATE_BUTTON_ID, TAG, null);
+                notifyButtonListeners(CREATE_BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_create_username_submit");
 			}
 		});
 	if(m_LeftButton != null)
 		m_LeftButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
+            @Override
 			public void onClick(View v) {
 				notifyButtonListeners(CLOSE_BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_create_username_cancel");
 			}
 		});
 	
 	if(m_XButton != null)
 		m_XButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
+            @Override
 			public void onClick(View v) {
 				notifyButtonListeners(X_BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_create_username_x");
 			}
 		});
 }

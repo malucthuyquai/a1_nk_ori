@@ -32,6 +32,7 @@ import com.fuhu.account.data.Kid;
 import com.fuhu.data.FriendData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.friend.dialog.AddFriendDialog;
@@ -94,6 +95,14 @@ public class FragmentFriend extends FragmentNSA {
     private FriendRequestSent mRequestSentDialog;
 
     private DatabaseAdapter db;
+
+//    {
+//        FragmentNSA.TRACKING_NAME = TrackingInfo.NSA_FRIEND_LIST;
+//    }
+    @Override
+    public String getTrack() {
+        return "friend_list";
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -441,10 +450,16 @@ public class FragmentFriend extends FragmentNSA {
                 // already pressed once, ok to delete
                 mDeleteFriendId = data.userID;
                 mCallback.deleteFriend(mDeleteFriendId);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "block_friend_#" + data.userName);
             } else {
                 // not yet selected, just mark item as delete pending
                 v.setSelected(true);
                 mDeleteFlag.add(data.userID);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "block_friend_select_#" + data.userName);
             }
         }
     };
@@ -504,6 +519,10 @@ public class FragmentFriend extends FragmentNSA {
                     } else {
                         idx--;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_left");
+
                     break;
                 case R.id.iv_right:
                     if (idx == mImageAdapter.getCount() - 1) {
@@ -511,6 +530,10 @@ public class FragmentFriend extends FragmentNSA {
                     } else {
                         idx++;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_right");
+
                     break;
             }
             mGlKids.setSelection(idx);
@@ -523,6 +546,9 @@ public class FragmentFriend extends FragmentNSA {
         @Override
         public void onClick(View v) {
             mFriendDialog.show();
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "add_friend");
         }
     };
 
@@ -539,6 +565,9 @@ public class FragmentFriend extends FragmentNSA {
             lp.width = WindowManager.LayoutParams.MATCH_PARENT;
             lp.height = WindowManager.LayoutParams.MATCH_PARENT;
             mBlockedDialog.getWindow().setAttributes(lp);
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "view_blocked_friend");
         }
     };
 
@@ -562,10 +591,18 @@ public class FragmentFriend extends FragmentNSA {
                 case R.id.btn_unblock:
                     mConfirmDialog = new BlockedFriendConfirmDialog(getActivity(), this, fd);
                     mConfirmDialog.show();
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_blocked_friends_unblock_user_" + fd.userName);
+
                     break;
                 case R.id.btn_confirm:
                     mConfirmDialog.dismiss();
                     mCallback.unblockFriend(fd);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_blocked_friends_confirm_unblock_friend" + fd.userName);
+
                     break;
             }
         }
@@ -632,6 +669,9 @@ public class FragmentFriend extends FragmentNSA {
             mCallback.onKidChanged(mKids.get(position));
             mImageAdapter.notifyDataSetChanged();
             sv_root.setScrollY(y);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), Tracking.H_NSA_NABI_NSA, "select_choose_kid_" + mKids.get(position).getkidName());
         }
 
         @Override

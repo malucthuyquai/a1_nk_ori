@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.PhotoImageAdapter;
 import com.fuhu.nabiconnect.photo.util.Exif;
@@ -52,9 +53,13 @@ public class PhotoCameraGalleryFragment extends PhotoBaseFragment {
 	
 	ExifInterface exif;
 	LoadingLocalPhotoPathTask task;
-	
-	
-	@Override
+
+    @Override
+    public String getTrack() {
+        return "add_photo";
+    }
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -349,11 +354,17 @@ public class PhotoCameraGalleryFragment extends PhotoBaseFragment {
 					
 					
 				}
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "confirm");
 				
 				break;
 
 			case R.id.Popup_X_Button:
-				
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "cancel");
+
 				mAct.onBackPressed();
 			/*	boolean nowmode = mode.getBoolean("MODE", false);
 				String logonUserKey = mode.getString("LOGON_USER_KEY", "");
@@ -363,7 +374,7 @@ public class PhotoCameraGalleryFragment extends PhotoBaseFragment {
 				intent.putExtra(KEY_IS_MOMMY_MODE, nowmode);
 				intent.putExtra(KEY_LOGON_USER_KEY, logonUserKey);
 			    startActivity(intent);*/
-				
+
 				break;
 						
 			}
@@ -382,7 +393,9 @@ public class PhotoCameraGalleryFragment extends PhotoBaseFragment {
 			NowPhotoPath = PhotoPathList.get(position);
 			ShowPhotoView.setImageBitmap(bmp);
 			LOG.W(TAG, "view w = " + ShowPhotoView.getWidth() + "view h = " + ShowPhotoView.getHeight());
-			
+
+            //tracking
+            Tracking.pushTrack(getActivity(), "select_photo_#" + position);
 		}		
 	};
 	

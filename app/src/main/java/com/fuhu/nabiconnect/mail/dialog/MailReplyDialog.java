@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.dialog.PopupDialog;
 import com.fuhu.nabiconnect.mail.MailActivity.ReplyReceiverData;
 import com.fuhu.nabiconnect.utils.LoadAvatarTask;
@@ -52,6 +53,9 @@ public class MailReplyDialog extends PopupDialog {
 			@Override
 			public void onClick(View v) {
 				notifyButtonListeners(YES_BUTTON_ID, TAG, new Object[]{m_ReceiverInfo});
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_reply_mail_send_message");
 			}
 		});
 		m_CancelButton.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,9 @@ public class MailReplyDialog extends PopupDialog {
 			@Override
 			public void onClick(View v) {
 				notifyButtonListeners(CANCEL_BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_reply_mail_close");
 			}
 		});
 		

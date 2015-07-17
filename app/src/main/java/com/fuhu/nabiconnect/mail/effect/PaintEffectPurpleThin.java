@@ -33,4 +33,9 @@ public class PaintEffectPurpleThin extends IPaintThinEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "crayon_tool_purple_thin";
+    }
 }

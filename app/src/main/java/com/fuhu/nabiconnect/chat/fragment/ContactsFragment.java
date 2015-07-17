@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.chat.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 import com.fuhu.data.FriendData;
 import com.fuhu.data.conversationData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.ChatActivity;
 import com.fuhu.nabiconnect.chat.IOnChatMessageReceivedListener;
 import com.fuhu.nabiconnect.chat.widget.ContactWidget;
@@ -39,7 +39,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 
-public class ContactsFragment extends Fragment implements IOnChatMessageReceivedListener, IOnContactClickedListener {
+public class ContactsFragment extends Tracking.TrackingInfoFragment implements IOnChatMessageReceivedListener, IOnContactClickedListener {
 
 	public static final String TAG = "ContactsFragment";
 
@@ -57,7 +57,16 @@ public class ContactsFragment extends Fragment implements IOnChatMessageReceived
 	private ArrayList<FriendData> mTempFriendList = new ArrayList<FriendData>();
 	private ArrayList<conversationData> mTempConversationList = new ArrayList<conversationData>();
 
-	@Override
+    public ContactsFragment() {
+        super(ContactsFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return "contact_list";
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.chat_contact_view, container, false);
 	}
@@ -452,6 +461,12 @@ public class ContactsFragment extends Fragment implements IOnChatMessageReceived
 			FriendData friendData = (FriendData) view.getTag(R.id.FRIEND_DATA);
 			conversationData conversationData = (conversationData) view.getTag(R.id.CONVERSATION_DATA);
 			m_Activity.OnContactClicked(friendData, conversationData);
+
+            //tracking
+            if (!friendData.userID.equals(ContactWidget.ADD_FRIEND_ID))
+                Tracking.pushTrack(view.getContext(), "contact_to_#" + friendData.userName);
+            else
+            Tracking.pushTrack(view.getContext(), "add_friend");
 		}
 	};
 

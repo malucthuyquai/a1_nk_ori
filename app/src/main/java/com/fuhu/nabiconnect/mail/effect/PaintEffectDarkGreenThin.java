@@ -33,4 +33,9 @@ public class PaintEffectDarkGreenThin extends IPaintThinEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "dark_green_thin";
+    }
 }

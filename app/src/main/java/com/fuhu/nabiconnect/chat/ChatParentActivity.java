@@ -5,7 +5,11 @@ import com.fuhu.nabiconnect.event.ApiBaseActivity;
 
 public class ChatParentActivity extends ParentActivityLauncher{
 
-	@Override
+    public ChatParentActivity() {
+        super(ChatActivity.class.getSimpleName());
+    }
+
+    @Override
 	public String getTargetActivityIntent() {
 		return ApiBaseActivity.INTENT_CHAT_ACTIVITY;
 	}

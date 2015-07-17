@@ -5,7 +5,11 @@ import com.fuhu.nabiconnect.event.ApiBaseActivity;
 
 public class PhotoParentActivity extends ParentActivityLauncher{
 
-	@Override
+    public PhotoParentActivity() {
+        super(PhotoParentActivity.class.getSimpleName());
+    }
+
+    @Override
 	public String getTargetActivityIntent() {
 		return ApiBaseActivity.INTENT_PHOTO_ACTIVITY;
 	}

@@ -27,6 +27,7 @@ import com.androidquery.callback.AjaxStatus;
 import com.androidquery.callback.BitmapAjaxCallback;
 import com.fuhu.data.messageData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.stickers.StickerManager;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
@@ -70,12 +71,25 @@ public class FragmentChatHistory extends FragmentNSA {
 
 	private DatabaseAdapter db;
 
-	@Override
+//    {
+//        FragmentNSA.TRACKING_NAME = TrackingInfo.NSA_CHAT_DETAILS;
+//    }
+
+
+    public static String TRACK_CHAT_NAME;
+    @Override
+    public String getTrack() {
+        return "chat_details_#" + TRACK_CHAT_NAME;
+    }
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (savedInstanceState != null) {
 			setData(savedInstanceState);
 		}
+
+
 	}
 
 	@Override
@@ -138,6 +152,11 @@ public class FragmentChatHistory extends FragmentNSA {
 	public void onPause() {
 		mActivity.onGetChatHistory.removeEventListener(onChatHistoryReceived);
 		super.onPause();
+
+        //tracking
+        Tracking.trackBack(); //cause we pass trackBack once when transform to this fragment on FragmentChat fragment
+
+
 	}
 
 	private IApiEventListener onChatHistoryReceived = new IApiEventListener() {
@@ -371,9 +390,15 @@ public class FragmentChatHistory extends FragmentNSA {
 					mCallback.delChatMessage(mUserKey, data.m_MessageId, mHandler);
 				}
 				// local message will be removed in success onChatMessageDeleted
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "delete_message_#" + data.m_MessageId);
 			} else {
 				v.setSelected(true);
 				mDeleteFlag.add(data.m_MessageId);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "delete_message_select_#" + data.m_MessageId);
 			}
 		}
 	};
@@ -381,7 +406,10 @@ public class FragmentChatHistory extends FragmentNSA {
 	private View.OnClickListener back_ocl = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			mActivity.onBackPressed();
+            //tracking
+            Tracking.pushTrack(v.getContext(), "back");
+
+            mActivity.onBackPressed();
 		}
 	};
 

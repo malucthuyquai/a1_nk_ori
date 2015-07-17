@@ -35,4 +35,9 @@ public class TextEffectGreen extends Effect implements ITextEffect{
 		// TODO Auto-generated method stub
 		return 3;
 	}
+
+    @Override
+    public String getTrack() {
+        return "text_tool_green";
+    }
 }

@@ -28,7 +28,12 @@ public class ConnectActivity extends ApiBaseActivity {
 
 	private TextView m_FriendCodeText;
 
-	@Override
+    public ConnectActivity() {
+        super("nabiKonnect");
+        setEnableTrackBack(false);
+    }
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.connect_activity_main);
@@ -48,6 +53,11 @@ public class ConnectActivity extends ApiBaseActivity {
 				i.putExtra(KEY_IS_MOMMY_MODE, true);
 				if (getCurrentUserData() != null)
 					i.putExtra(KEY_LOGON_USER_KEY, getCurrentUserData().userKey);
+
+                //tracking
+//                setTrackInfo(i, m_ChatItem, "go_chat");
+                Tracking.pushTrack(ConnectActivity.this, "nabiChat");
+
 				startActivity(i);
 			}
 		});
@@ -60,6 +70,11 @@ public class ConnectActivity extends ApiBaseActivity {
 				i.putExtra(KEY_IS_MOMMY_MODE, true);
 				if (getCurrentUserData() != null)
 					i.putExtra(KEY_LOGON_USER_KEY, getCurrentUserData().userKey);
+
+                //tracking
+//                setTrackInfo(i, m_FriendItem, "go_friend");
+                Tracking.pushTrack(ConnectActivity.this, "nabiFriend");
+
 				startActivity(i);
 			}
 		});
@@ -72,6 +87,11 @@ public class ConnectActivity extends ApiBaseActivity {
 				i.putExtra(KEY_IS_MOMMY_MODE, true);
 				if (getCurrentUserData() != null)
 					i.putExtra(KEY_LOGON_USER_KEY, getCurrentUserData().userKey);
+
+                //tracking
+//                setTrackInfo(i, m_PhotoItem, "go_photo");
+                Tracking.pushTrack(ConnectActivity.this, "nabiPhoto");
+
 				startActivity(i);
 			}
 		});
@@ -84,6 +104,11 @@ public class ConnectActivity extends ApiBaseActivity {
 				i.putExtra(KEY_IS_MOMMY_MODE, true);
 				if (getCurrentUserData() != null)
 					i.putExtra(KEY_LOGON_USER_KEY, getCurrentUserData().userKey);
+
+                //tracking
+//                setTrackInfo(i, m_MailItem, "go_mail");
+                Tracking.pushTrack(ConnectActivity.this, "nabiMail");
+
 				startActivity(i);
 			}
 		});

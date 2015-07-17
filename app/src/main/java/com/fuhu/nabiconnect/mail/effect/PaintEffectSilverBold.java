@@ -33,4 +33,9 @@ public class PaintEffectSilverBold extends IPaintBoldEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "crayon_tool_silver_bold";
+    }
 }

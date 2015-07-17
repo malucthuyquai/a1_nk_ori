@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,9 @@ public class MailStickerWidget extends RelativeLayout{
 				public void onClick(View v) {
 					Bitmap stickerBitmap = ((BitmapDrawable)m_TopSticker.getDrawable()).getBitmap();
 					notifyButtonListeners(0, TAG, new Object[]{stickerBitmap});
-					
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "select_sticker_" + m_TopImageResId);
 				}
 			});
 		}
@@ -106,7 +109,9 @@ public class MailStickerWidget extends RelativeLayout{
 				public void onClick(View v) {
 					Bitmap stickerBitmap = ((BitmapDrawable)m_BottomSticker.getDrawable()).getBitmap();
 					notifyButtonListeners(0, TAG, new Object[]{stickerBitmap});
-					
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "select_sticker_" + m_TopImageResId);
 				}
 			});
 		}

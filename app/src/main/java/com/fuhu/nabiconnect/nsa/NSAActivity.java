@@ -1,8 +1,8 @@
 package com.fuhu.nabiconnect.nsa;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -28,6 +28,7 @@ import com.fuhu.data.UserData;
 import com.fuhu.data.conversationData;
 import com.fuhu.data.messageData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiBaseActivity;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.notification.NabiNotificationManager;
@@ -156,21 +157,33 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
                         mFragmentFriend = null;
                         mFragmentFriend = new FragmentFriend();
                         switchFragment(mFragmentFriend);
+
+                        //tracking
+                        Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "friend_list");
                         break;
                     case R.id.iv_chat:
                         mFragmentChat = null;
                         mFragmentChat = new FragmentChat();
                         switchFragment(mFragmentChat);
+
+                        //tracking
+                        Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "chat_home");
                         break;
                     case R.id.iv_mail:
                         mFragmentMail = null;
                         mFragmentMail = new FragmentMail();
                         switchFragment(mFragmentMail);
+
+                        //tracking
+                        Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "mail_home");
                         break;
                     case R.id.iv_photo:
                         mFragmentPhoto = null;
                         mFragmentPhoto = new FragmentPhoto();
                         switchFragment(mFragmentPhoto);
+
+                        //tracking
+                        Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "photo_home");
                         break;
                 }
                 iv_prev.setSelected(false);
@@ -201,6 +214,12 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         }
     };
 
+    public NSAActivity() {
+        super(Tracking.H_NSA_NABI_NSA);
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -220,7 +239,7 @@ public class NSAActivity extends ApiBaseActivity implements NSAEventListener {
         // login parent
         db = DatabaseAdapter.getInstance(this);
 
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
         mFragmentMailViewer = (FragmentMailViewer) mFragmentManager.findFragmentById(R.id.ft_mail_viewer);
         mFragmentFriend = new FragmentFriend();
         mFragmentManager.beginTransaction().hide(mFragmentMailViewer).replace(R.id.fl_content, mFragmentFriend)

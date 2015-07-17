@@ -1,18 +1,18 @@
 package com.fuhu.nabiconnect.nsa.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Handler;
 
 import com.fuhu.account.data.Kid;
 import com.fuhu.data.FriendData;
 import com.fuhu.data.UserData;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.notification.NabiNotificationManager;
 import com.fuhu.nabiconnect.utils.DatabaseAdapter;
 
 import java.util.ArrayList;
 
-public class FragmentNSA extends Fragment {
+public abstract class FragmentNSA extends Tracking.TrackingInfoFragment {
 
 	final private String TAG = FragmentNSA.class.getSimpleName();
 
@@ -105,7 +105,18 @@ public class FragmentNSA extends Fragment {
 
 	protected NSAEventListener mCallback;
 
-	@Override
+    //jack@150713
+//    public static String TRACKING_NAME;
+    public FragmentNSA() {
+        super(FragmentNSA.class.getSimpleName());
+    }
+//
+//    @Override
+//    public String getTrack() {
+//        return null;
+//    }
+
+    @Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try {

@@ -5,7 +5,11 @@ import com.fuhu.nabiconnect.event.ApiBaseActivity;
 
 public class FriendParentActivity extends ParentActivityLauncher{
 
-	@Override
+    public FriendParentActivity() {
+        super(FriendParentActivity.class.getSimpleName());
+    }
+
+    @Override
 	public String getTargetActivityIntent() {
 		return ApiBaseActivity.INTENT_FRIEND_ACTIVITY;
 	}

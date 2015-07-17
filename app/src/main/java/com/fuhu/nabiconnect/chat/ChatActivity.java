@@ -1,8 +1,7 @@
 package com.fuhu.nabiconnect.chat;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
@@ -31,6 +30,7 @@ import com.fuhu.nabiconnect.mail.MailActivity.ReplyReceiverData;
 import com.fuhu.nabiconnect.notification.NabiNotificationManager;
 import com.fuhu.ndnslibsoutstructs.chatHistory_outObj;
 import com.fuhu.nns.cmr.lib.ClientCloudMessageReceiver.GCMSenderEventCallback;
+import com.fuhu.tracking.TrackingFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -100,7 +100,12 @@ public class ChatActivity extends ApiBaseActivity implements IOnMainBarItemSelec
 
 	private SharedPreferences m_ShopPreference;
 
-	@Override
+    public ChatActivity() {
+        super("nabiChat");
+    }
+
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.chat_activity_main);
@@ -180,9 +185,9 @@ public class ChatActivity extends ApiBaseActivity implements IOnMainBarItemSelec
 		// notify listener
 		m_MainBarFrag.OnMainBarIndexChanged(item);
 
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-		Fragment newFragment = null;
+		TrackingFragment newFragment = null;
 
 		switch (item) {
 		case ChatMainBarFragment.ITEM_CONTACT_ID:
@@ -387,7 +392,7 @@ public class ChatActivity extends ApiBaseActivity implements IOnMainBarItemSelec
 	public void loginUserSuccess(UserData data) {
 		super.loginUserSuccess(data);
         try {
-            FragmentManager fm = getFragmentManager();
+            FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             if (!m_MainBarFrag.isVisible()) {
                 ft.replace(R.id.left_fragment_container, m_MainBarFrag, "leftfragment");

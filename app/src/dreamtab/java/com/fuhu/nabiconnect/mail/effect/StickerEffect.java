@@ -1,6 +1,7 @@
 package com.fuhu.nabiconnect.mail.effect;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 
@@ -31,5 +32,10 @@ public class StickerEffect extends Effect {
             m_SubItems.add(new StickerEffectH());
         }
         return m_SubItems;
+    }
+
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_STICKER_EFFECT;
     }
 }

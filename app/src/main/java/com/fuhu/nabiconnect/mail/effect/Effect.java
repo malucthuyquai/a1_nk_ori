@@ -1,8 +1,10 @@
 package com.fuhu.nabiconnect.mail.effect;
 
+import com.fuhu.nabiconnect.Tracking;
+
 import java.util.ArrayList;
 
-public abstract class Effect {
+public abstract class Effect implements Tracking.OnTrackListener {
 
 	protected ArrayList<Effect> m_SubItems = null;
 	

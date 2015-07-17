@@ -5,6 +5,7 @@
     android:adjustViewBounds="true"
     android:background="#55000000"
     android:contentDescription="@string/empty"
-    android:scaleType="fitCenter" >
+    android:scaleType="fitCenter"
+    android:id="@+id/nsa_f_mail_viewer_image">
 
 </ImageView>

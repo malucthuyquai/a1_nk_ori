@@ -15,7 +15,6 @@
  */
 package com.fuhu.nabiconnect.chat.fragment;
 
-import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,14 +26,16 @@ import android.widget.TableRow;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.ChatActivity;
 import com.fuhu.nabiconnect.chat.IOnChatMessageReceivedListener;
 import com.fuhu.nabiconnect.chat.widget.ShopBarButtonWidget;
 import com.fuhu.nabiconnect.log.LOG;
+import com.fuhu.tracking.TrackingFragment;
 
 import java.util.ArrayList;
 
-public class ShopFragment extends Fragment implements IOnChatMessageReceivedListener, IButtonClickListener{
+public class ShopFragment extends TrackingFragment implements IOnChatMessageReceivedListener, IButtonClickListener{
 
 	public static final String TAG = "ShopFragment";
 
@@ -73,7 +74,11 @@ public class ShopFragment extends Fragment implements IOnChatMessageReceivedList
 		}
 		
 	};
-	
+
+    public ShopFragment() {
+        super("shop_station");
+    }
+
     @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -115,7 +120,9 @@ public class ShopFragment extends Fragment implements IOnChatMessageReceivedList
 				
 				loadItemTable(m_CurrentCategory);
 				//updateBarItem();
-				
+
+                //tracking
+                Tracking.pushTrack(getActivity(), "top");
 			}
 		});
 		
@@ -130,7 +137,9 @@ public class ShopFragment extends Fragment implements IOnChatMessageReceivedList
 				
 				loadItemTable(m_CurrentCategory);
 				//updateBarItem();
-				
+
+                //tracking
+                Tracking.pushTrack(getActivity(), "free");
 			}
 		});
 
@@ -148,7 +157,9 @@ public class ShopFragment extends Fragment implements IOnChatMessageReceivedList
 				loadItemTable(m_CurrentCategory);
 				//updateBarItem();
 
-			}
+                //tracking
+                Tracking.pushTrack(getActivity(), "new");
+            }
 		});
 
 		//m_CurrentCategory = StickerCategory.SHOP_TYPE_TOP;

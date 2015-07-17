@@ -58,4 +58,9 @@ public class PaintEffect extends Effect{
 		}
 		return m_SubItems;
 	}
+
+    @Override
+    public String getTrack() {
+        return "crayon_tool";
+    }
 }

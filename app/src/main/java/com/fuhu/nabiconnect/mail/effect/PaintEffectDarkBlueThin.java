@@ -33,4 +33,9 @@ public class PaintEffectDarkBlueThin extends IPaintThinEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "crayon_tool_dark_blue_thin";
+    }
 }

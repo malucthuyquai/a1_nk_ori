@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 
@@ -39,20 +40,24 @@ public class FriendRequestSent extends PopupDialog {
 
 		if (m_RightButton != null) {
 			m_RightButton.setOnClickListener(new View.OnClickListener() {
-
-				@Override
+                @Override
 				public void onClick(View v) {
 					notifyButtonListeners(OK_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_friend_request_sent_ok");
 				}
 			});
 		}
 
 		if (m_XButton != null) {
 			m_XButton.setOnClickListener(new View.OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(X_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_friend_request_sent_close");
 				}
 			});
 		}

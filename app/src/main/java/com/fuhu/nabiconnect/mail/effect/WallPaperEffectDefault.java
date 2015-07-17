@@ -26,4 +26,9 @@ public class WallPaperEffectDefault extends ISingleWallPaperEffect {
 	public int getWallPaperResId() {
 		return R.drawable.mail_wallpaper_default;
 	}
+
+    @Override
+    public String getTrack() {
+        return "change_background_remove_background";
+    }
 }

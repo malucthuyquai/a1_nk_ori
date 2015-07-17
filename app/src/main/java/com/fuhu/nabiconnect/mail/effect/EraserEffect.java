@@ -28,4 +28,9 @@ public class EraserEffect extends Effect{
 		}
 		return m_SubItems;
 	}
+
+    @Override
+    public String getTrack() {
+        return "eraser_tool";
+    }
 }

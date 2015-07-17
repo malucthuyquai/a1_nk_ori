@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.friend.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,7 +10,6 @@ import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +28,7 @@ import com.fuhu.data.PendingFriendRequestData;
 import com.fuhu.data.UserData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.friend.FriendActivity;
@@ -57,7 +56,7 @@ import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
 
-public class FriendMainFragment extends Fragment {
+public class FriendMainFragment extends Tracking.TrackingInfoFragment {
 
 	public static final String TAG = "FriendMainFragment";
 
@@ -96,7 +95,16 @@ public class FriendMainFragment extends Fragment {
 
 	private FriendRequestSent m_FriendRequestSent;
 
-	@Override
+    public FriendMainFragment() {
+        super(FriendMainFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return "landing_page";
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.friend_main_view, container, false);
 	}
@@ -136,24 +144,29 @@ public class FriendMainFragment extends Fragment {
 		m_HiddenButton = (View) getView().findViewById(R.id.hidden_button);
 
 		m_AddFriendButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
+            @Override
+			public void onClick(View v) {
 				if (m_AddFriendDialog != null && m_AddFriendDialog.isShowing()) {
 					LOG.V(TAG, "m_AddFriendDialog is already shown");
 					return;
 				}
+
 				m_AddFriendDialog = new AddFriendDialog(m_Activity);
 				m_AddFriendDialog.addButtonListener(m_OnButtonClickListener);
 				m_AddFriendDialog.show();
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "add_friend");
 			}
 		});
 
 		m_EditAvatarButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
+            @Override
 			public void onClick(View v) {
 				notifyButtonListeners(EDIT_AVATAR_BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "edit_character");
 			}
 		});
 
@@ -937,9 +950,8 @@ public class FriendMainFragment extends Fragment {
 			}
 
 			holder.m_AcceptButton.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View arg0) {
+                @Override
+				public void onClick(View v) {
 
 					if (!m_Activity.getNetworkManager().checkWifiProcess())
 						return;
@@ -956,12 +968,13 @@ public class FriendMainFragment extends Fragment {
 					m_AddFriendDialog.addButtonListener(m_OnButtonClickListener);
 					m_AddFriendDialog.show();
 
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "accept_friend_request_#" + m_CurrentFriendRequest.userName);
 				}
 			});
 			holder.m_RejectButton.setOnClickListener(new View.OnClickListener() {
-
 				@Override
-				public void onClick(View arg0) {
+				public void onClick(View v) {
 
 					if (!m_Activity.getNetworkManager().checkWifiProcess())
 						return;
@@ -970,17 +983,22 @@ public class FriendMainFragment extends Fragment {
 					LOG.V(TAG, "m_CurrentFriendRequest is " + m_CurrentFriendRequest);
 
 					m_Activity.denyFriend(m_Activity.getCurrentUserData().userKey, m_CurrentFriendRequest.userID);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "decline_friend_request_#" + m_CurrentFriendRequest.userName);
 				}
 			});
 
 			holder.m_DeleteFriendContainer.setOnClickListener(new View.OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
 					switch (deleteStatus) {
 					case NORMAL:
 						getItem(position).deleteStatus = FriendListItemProperty.DeleteStatus.DELETING;
 						notifyDataSetChanged();
+
+                        //tracking
+                        Tracking.pushTrack(v.getContext(), "remove_friend_select_#" + friendData.userName);
 						break;
 					case DELETING:
 
@@ -989,6 +1007,10 @@ public class FriendMainFragment extends Fragment {
 
 						m_DeletedFriendId = friendData.userID;
 						m_Activity.removeFriend(m_Activity.getCurrentUserData().userKey, friendData.userID);
+
+
+                        //tracking
+                        Tracking.pushTrack(v.getContext(), "remove_friend_#" + friendData.userName);
 
 						break;
 					}

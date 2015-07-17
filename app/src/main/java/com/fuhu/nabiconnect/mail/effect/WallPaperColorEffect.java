@@ -43,4 +43,8 @@ public class WallPaperColorEffect extends IColorWallPaperEffect {
 		return m_WallPaperList;
 	}
 
+    @Override
+    public String getTrack() {
+        return "change_background_color";
+    }
 }

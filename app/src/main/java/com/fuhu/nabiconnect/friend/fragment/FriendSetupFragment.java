@@ -1,7 +1,7 @@
 package com.fuhu.nabiconnect.friend.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,10 @@ import com.fuhu.nabiconnect.utils.Utils;
 
 import java.util.ArrayList;
 
+
+/**
+ * deprecated
+ */
 public class FriendSetupFragment extends Fragment {
 
 	public static final String TAG = "FriendSetupFragment";
@@ -33,7 +37,7 @@ public class FriendSetupFragment extends Fragment {
 	private TextView m_WarningText;
 	private ArrayList<IButtonClickListener> m_ButtonListeners;
 
-	@Override
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.friend_setup_view, container, false);
 	}

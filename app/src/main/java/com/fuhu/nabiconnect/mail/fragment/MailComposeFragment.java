@@ -16,13 +16,11 @@
 package com.fuhu.nabiconnect.mail.fragment;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.SurfaceTexture;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -57,6 +55,7 @@ import com.fuhu.data.InboxesData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.IOnMainBarItemSelectedListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -99,7 +98,7 @@ import com.fuhu.nns.cmr.lib.ClientCloudMessageReceiver.GCMSenderEventCallback;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MailComposeFragment extends Fragment implements TextureView.SurfaceTextureListener {
+public class MailComposeFragment extends Tracking.TrackingInfoFragment implements TextureView.SurfaceTextureListener {
 
     public static final String TAG = "MailComposeFragment";
     public static final int CAMREA_PREIVEW_WIDTH = 640;
@@ -174,6 +173,16 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
         public void onEffectUpdated(Effect newEffect, Effect oldEffect) {
 
             LOG.V(TAG, "onEffectUpdated() - newEffect is " + newEffect + " , oldEffect is " + oldEffect);
+
+            /**
+             * tracking
+             *
+             * the NoneEffect is a action which closing the tool bar, this track is tracking at
+             * m_EffectSubMenuSwitch button be clicked.
+             */
+            if(!(newEffect instanceof NoneEffect))
+                Tracking.pushTrack(getActivity(), newEffect.getTrack());
+
 
             // update UI
             updateItems(newEffect);
@@ -262,6 +271,8 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
                             m_MailPaintingView.cleanAllCanvas();
                         }
                         m_EraseAllDialog.dismiss();
+
+
                     }
                 });
 
@@ -315,6 +326,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
                 m_StickerContainer.setVisibility(View.VISIBLE);
                 updateColorWallPaperTable(((IColorWallPaperEffect) newEffect).getWallPaperResId());
             }
+
+
+
         }
     };
 
@@ -600,14 +614,12 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
                         int colorId = (Integer) args[0];
                         m_DrawingCanvas.setBackgroundColor(m_Activity.getResources().getColor(colorId));
                         m_StickerContainer.setVisibility(View.INVISIBLE);
-
                         break;
                     case MailWallpaperWidget.BUTTON_ID_IMAGE:
 
                         int imageResId = (Integer) args[0];
                         m_DrawingCanvas.setBackgroundResource(imageResId);
                         m_StickerContainer.setVisibility(View.INVISIBLE);
-
                         break;
                 }
             } else if (MailReplyDialog.TAG.equals(viewName)) {
@@ -668,6 +680,15 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
         }
     }
 
+    public MailComposeFragment() {
+        super(MailComposeFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return (m_ReceiverInfo == null) ? "compose_page" : "reply_compose_page";
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -713,6 +734,10 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
     @Override
     public void onResume() {
+
+        //tracking
+        m_ReceiverInfo = m_Activity.getReceiverData();
+
         super.onResume();
 
         m_EffectItemTable = (TableLayout) getView().findViewById(R.id.mail_effect_items_table);
@@ -791,6 +816,10 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
             @Override
             public void onClick(View arg0) {
+
+                //tracking
+                Tracking.pushTrack(arg0.getContext(), "close_toolbar");
+
                 leaveSubItemBar();
             }
         });
@@ -829,6 +858,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 				 * m_ReplyDialog.setCanceledOnTouchOutside(true);
 				 * m_ReplyDialog.show(); }
 				 */
+
+                 //tracking
+                Tracking.pushTrack(v.getContext(), "send_message");
             }
         });
 
@@ -838,6 +870,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             public void onClick(View v) {
                 m_CameraShutterButton.setClickable(false);
                 takePicture();
+
+                //Tracking
+                Tracking.pushTrack(v.getContext(), "take_photo");
             }
         });
         m_SwitchCameraButton.setOnClickListener(new View.OnClickListener() {
@@ -873,6 +908,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
 
                     LOG.V(TAG, "There is only one camera.");
                 }
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "switch_cameras");
             }
 
         });
@@ -882,6 +920,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             public void onClick(View v) {
                 m_CameraButtonContainer.setVisibility(View.INVISIBLE);
                 m_Handler.sendEmptyMessage(MSG_COUNT_DOWN);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "start_timer");
             }
         });
         m_DrawingCanvas.setOnClickListener(new View.OnClickListener() {
@@ -898,6 +939,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             @Override
             public void onClick(View v) {
                 m_MainBarCallback.OnMainBarItemSelected(MailMainBarFragment.ITEM_INBOX_ID);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "delete_message");
             }
         });
 
@@ -1052,6 +1096,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
             public void onClick(StickerWidget sw) {
                 m_DrawingCanvas.removeView(sw);
                 m_StickerList.remove(sw);
+
+                //tracking
+                Tracking.pushTrack(getActivity(), "cancel_content_#" + sw.getIndex());
             }
 
             @Override
@@ -1347,6 +1394,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
                 InputMethodManager imm = (InputMethodManager) m_Activity
                         .getSystemService(m_Activity.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mail_edit_edittext.getWindowToken(), 0);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_textbox_save");
             }
         });
 
@@ -1362,6 +1412,9 @@ public class MailComposeFragment extends Fragment implements TextureView.Surface
                 InputMethodManager imm = (InputMethodManager) m_Activity
                         .getSystemService(m_Activity.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mail_edit_edittext.getWindowToken(), 0);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_textbox_cancel");
             }
         });
 

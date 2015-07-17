@@ -3,6 +3,7 @@ package com.fuhu.nabiconnect.mail.effect;
 import android.util.Pair;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 
@@ -55,5 +56,10 @@ public class WallPaperTextureEffect extends IMultipleWallPaperEffect {
         }
 
         return m_WallPaperList;
+    }
+
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_WALL_PAPER_TEXTURE_EFFECT;
     }
 }

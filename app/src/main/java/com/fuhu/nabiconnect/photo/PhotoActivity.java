@@ -1,8 +1,8 @@
 package com.fuhu.nabiconnect.photo;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import com.androidquery.AQuery;
 import com.fuhu.data.UserData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.application.NabiconnectApplication;
 import com.fuhu.nabiconnect.event.ApiBaseActivity;
 import com.fuhu.nabiconnect.log.LOG;
@@ -88,6 +89,11 @@ public class PhotoActivity extends ApiBaseActivity {
 
     private AQuery aq;
 
+    public PhotoActivity() {
+//        super(PhotoActivity.class.getSimpleName());
+        super("nabiPhoto");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -99,7 +105,7 @@ public class PhotoActivity extends ApiBaseActivity {
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
 
         setContentView(R.layout.photo_activity_main);
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         // this action for Wings Challenge
         ActionName = getIntent().getComponent().getClassName();
@@ -364,6 +370,9 @@ public class PhotoActivity extends ApiBaseActivity {
                         switchFragment(InboxFragment, PhotoParameter.FRAGMENTTAG_INBOX);
                     }
                 }
+
+                //tracking
+                Tracking.pushTrack(PhotoActivity.this, getPageName(), "home_inbox");
             }
         });
 
@@ -403,6 +412,10 @@ public class PhotoActivity extends ApiBaseActivity {
                         switchFragment(cameraFragment, PhotoParameter.FRAGMENTTAG_CAMERA);
                     }
                 }
+
+
+                //tracking
+                Tracking.pushTrack(PhotoActivity.this, getPageName(), "take_photo");
             }
         });
 
@@ -443,6 +456,10 @@ public class PhotoActivity extends ApiBaseActivity {
                         switchFragment(mygalleryFragment, PhotoParameter.FRAGMENTTAG_MYGALLERY);
                     }
                 }
+
+                //tracking
+                Tracking.pushTrack(PhotoActivity.this, getPageName(), "my_gallery");
+
             }
         });
     }

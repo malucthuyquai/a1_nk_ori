@@ -1,8 +1,8 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import com.fuhu.data.FriendData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -94,6 +95,11 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
     Bundle bundle = new Bundle();
 
     private PhotoSendingAnimationDialog m_PhotoSendingAnimationDialog;
+
+    @Override
+    public String getTrack() {
+        return "camera_edit_photo";
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -577,6 +583,9 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
 
                     addFragment(mFramePage, "FramePage");
 
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "add_horizontal_frames");
+
                     break;
 
                 case R.id.Edit_Photo_Frame_Vertical:
@@ -611,6 +620,9 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
 
                     addFragment(mFrameVerticalPage, "FrameVerticalPage");
 
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "add_vertical_frames");
+
                     break;
 
 
@@ -629,6 +641,9 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
                     if (mStickerPage.isAdded())
                         return;
                     addFragment(mStickerPage, "StickerPage");
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "add_character");
 
                     break;
                 case R.id.Edit_Photo_Move:
@@ -649,6 +664,9 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
 
                     Fragment EmptyPage = new Fragment();
                     addFragment(EmptyPage, "EmptyPage");
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "move_photo");
 
                     break;
                 case R.id.Edit_Photo_Mail:
@@ -671,6 +689,9 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
                     mAct.CheckWifi();
                     mAct.getFriendList(UserId);
                     //CheckMode(); //check and login function
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "send_photo");
 
                     break;
                 default:
@@ -993,11 +1014,18 @@ public class PhotoCameraEditPhotoFragment extends PhotoBaseFragment {
                             case PhotoSentFailedDialog.CLOSE_BUTTON_ID:
                             case PhotoSentFailedDialog.X_BUTTON_ID:
                                 faileddialog.dismiss();
+
+                                //tracking
+                                Tracking.pushTrack(getActivity(), "dialog_photo_not_sent_close");
+
                                 break;
                             case PhotoSentFailedDialog.OK_BUTTON_ID:
                                 // send photo
 
                                 SendPhoto();
+
+                                //tracking
+                                Tracking.pushTrack(getActivity(), "dialog_photo_not_sent_send_try_again");
                                 break;
                         }
 

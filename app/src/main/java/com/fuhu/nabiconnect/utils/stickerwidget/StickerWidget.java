@@ -19,7 +19,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 
 import com.fuhu.nabiconnect.R;
-import com.fuhu.nabiconnect.log.LOG;
 
 public class StickerWidget extends ImageView {
 
@@ -335,6 +334,7 @@ public class StickerWidget extends ImageView {
                 if (mShouldDrawFullBackground && mButtonCheck.contains(event.getX(), event.getY())) {
                     mShouldDrawFullBackground = mShouldDrawBackground = false;
                     invalidate();
+
                 } else if (mButtonCross.contains(event.getX(), event.getY())) {
                     if (mParentCallback == null) {
                         ;
@@ -474,6 +474,7 @@ public class StickerWidget extends ImageView {
         public boolean onScale(ScaleGestureDetector detector) {
             float scale = mScaleGestureDetector.getCurrentSpan() / mInitDistance * mLastScale;
             resize(scale);
+
             return true;
         }
     };

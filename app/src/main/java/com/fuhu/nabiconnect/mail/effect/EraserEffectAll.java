@@ -21,4 +21,9 @@ public class EraserEffectAll extends Effect{
 	public ArrayList<Effect> getSubItems() {
 		return null;
 	}
+
+    @Override
+    public String getTrack() {
+        return "eraser_tool_eraser_all";
+    }
 }

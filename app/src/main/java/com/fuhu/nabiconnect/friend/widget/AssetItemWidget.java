@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.assetitem.AssetItemManager;
 import com.fuhu.nabiconnect.log.LOG;
 
@@ -56,7 +57,7 @@ public class AssetItemWidget extends RelativeLayout{
 		this( context,  itemId,  categoryId,  NON_SUBCATEGORY_ID,  iconResId,  coverResId,  status , 0);
 	}
 	
-	public AssetItemWidget(Context context, int itemId, int categoryId, int subCategoryId, int iconResId, int coverResId, SelectionStatus status, int backgroundColorResId)
+	public AssetItemWidget(Context context, final int itemId, final int categoryId, final int subCategoryId, int iconResId, int coverResId, SelectionStatus status, int backgroundColorResId)
 	{
 		super(context, null);
 		
@@ -91,11 +92,13 @@ public class AssetItemWidget extends RelativeLayout{
 		}
 		
 		m_TouchReceiver.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
+            @Override
 			public void onClick(View v) {
 				switchSelectedStatus();
 				notifyButtonListeners(BUTTON_ID, TAG, new Object[]{AssetItemWidget.this});
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "select_content_#" + categoryId + "_#" + itemId);
 			}
 		});
 		

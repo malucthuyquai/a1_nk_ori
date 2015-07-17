@@ -46,7 +46,8 @@ public class MainBarButtonWidget extends RelativeLayout{
 		
 		this.setOnTouchListener(new View.OnTouchListener() {
 			
-			public boolean onTouch(View view, MotionEvent mv) {			
+			public boolean onTouch(View view, MotionEvent mv) {
+
 				if(mv.getX() < 0 || mv.getX() > view.getWidth() || mv.getY() < 0 || mv.getY() > view.getHeight())
 				{
 					//m_Background.setBackgroundResource(m_BackgroundId);

@@ -1,10 +1,10 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.fuhu.data.SharedPhotoData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -67,6 +68,11 @@ public class PhotoMyGalleryFragment extends PhotoBaseFragment implements
 
     private ImageDownLoadManager mImageDM;
     DatabaseAdapter db;
+
+    @Override
+    public String getTrack() {
+        return "my_gallery";
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -225,6 +231,9 @@ public class PhotoMyGalleryFragment extends PhotoBaseFragment implements
 
                     SwitchToGridFragment();
 
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "my_gallery", "grid_view");
+
                     break;
 
                 case R.id.MyGallery_ListButton:
@@ -239,6 +248,9 @@ public class PhotoMyGalleryFragment extends PhotoBaseFragment implements
                     }
 
                     SwitchToListFragment();
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "my_gallery", "list_view");
 
                     break;
 

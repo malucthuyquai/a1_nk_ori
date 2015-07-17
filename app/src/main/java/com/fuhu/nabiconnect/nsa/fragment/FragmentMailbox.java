@@ -25,6 +25,7 @@ import com.androidquery.callback.AjaxStatus;
 import com.androidquery.callback.BitmapAjaxCallback;
 import com.fuhu.data.MailData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.nsa.NSAActivity;
@@ -72,7 +73,15 @@ public class FragmentMailbox extends FragmentNSA {
 
 	private DatabaseAdapter db;
 
-	@Override
+//    {
+//        FragmentNSA.TRACKING_NAME = TrackingInfo.NSA_MAIL_DETAILS;
+//    }
+    @Override
+    public String getTrack() {
+        return "mail_details_#" + Tracking.TrackingInfoFragment.TRACK_SPECIAL;
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.nsa_fragment_mailbox, null);
 	}
@@ -342,6 +351,9 @@ public class FragmentMailbox extends FragmentNSA {
 		public void onClick(View v) {
 			MailData md = (MailData) v.getTag();
 			mCallback.showMailContent(mUserKey, Long.toString(md.mailId), md.fileUrl);
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "view_message_#" + md.mailId);
 		}
 	};
 
@@ -356,11 +368,17 @@ public class FragmentMailbox extends FragmentNSA {
 			if (mDeleteFlag.contains(id) && v.isSelected()) {
 				if (mDeletePool.add(id)) {
 					mCallback.deleteMailMessage(mMailboxId, Long.toString(id), mUnreadCount != -1, mHandler);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "delete_message_#" + id);
 				}
 			} else {
 				// mark delete and return
 				mDeleteFlag.add(id);
 				v.setSelected(true);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "delete_message_select_#" + id);
 			}
 		}
 	};
@@ -368,7 +386,10 @@ public class FragmentMailbox extends FragmentNSA {
 	private View.OnClickListener back_ocl = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			mActivity.onBackPressed();
+            //tracking
+            Tracking.pushTrack(v.getContext(), "back");
+
+            mActivity.onBackPressed();
 		}
 	};
 

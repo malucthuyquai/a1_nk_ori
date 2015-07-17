@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.friend.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.InterfaceFriend;
 import com.fuhu.nabiconnect.nsa.util.NSAUtil;
 
@@ -16,14 +16,23 @@ import com.fuhu.nabiconnect.nsa.util.NSAUtil;
  * re-write
  */
 
-public class FragmentFriendSetup extends Fragment {
+public class FragmentFriendSetup extends Tracking.TrackingInfoFragment {
 
 	final private static String TAG = FragmentFriendSetup.class.getSimpleName();
 
 	private InterfaceFriend mCallback;
 	private EditText et_name;
 
-	@Override
+    public FragmentFriendSetup() {
+        super(FragmentFriendSetup.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return "create_user";
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_friend_setup, parent, false);
 	}
@@ -44,8 +53,7 @@ public class FragmentFriendSetup extends Fragment {
 	}
 
 	private View.OnClickListener next_ocl = new View.OnClickListener() {
-
-		@Override
+        @Override
 		public void onClick(View v) {
 			String name = et_name.getText().toString();
 			if (name.isEmpty()) {
@@ -53,6 +61,9 @@ public class FragmentFriendSetup extends Fragment {
 			} else {
 				mCallback.goToStepTwo(name);
 			}
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "next_step");
 		}
 	};
 }

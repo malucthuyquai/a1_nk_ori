@@ -33,4 +33,9 @@ public class EraserEffectBold extends IEraserEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "eraser_tool_eraser_bold";
+    }
 }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.fuhu.data.FriendData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiBaseActivity;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.utils.LoadAvatarBitmapTask;
@@ -62,6 +63,9 @@ public class MailChooseContactWidget extends RelativeLayout{
 			@Override
 			public void onClick(View v) {
 				switchChoosedStatus();
+
+                //tracking
+                Tracking.pushTrack(getContext(), "dialog_choose_contact_select_#" + m_ContactName.getText());
 			}
 		});
 		

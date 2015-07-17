@@ -33,4 +33,9 @@ public class PaintEffectRedBold extends IPaintBoldEffect{
 		
 		return m_Paint;
 	}
+
+    @Override
+    public String getTrack() {
+        return "crayon_tool_red_bold";
+    }
 }

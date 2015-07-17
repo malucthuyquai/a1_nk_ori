@@ -1,7 +1,6 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -23,13 +22,14 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.EditPhotoItemAdapter;
 
 import java.util.ArrayList;
 
 
-public class EditPhotoFramePortFragment extends Fragment {
+public class EditPhotoFramePortFragment extends Tracking.TrackingInfoFragment {
 
 	public static final String TAG = "EditPhotoFramePortFragment";
 	
@@ -75,8 +75,16 @@ public class EditPhotoFramePortFragment extends Fragment {
 	private EditPhotoItemAdapter FrameAdapter;
 	
 	RelativeLayout.LayoutParams rlp;
-	
-	public void SetEditPhotoFramePortFragmentPrameter (int photoW, int photoH, FrameLayout showphotolayout, ImageView mFrameView){
+
+    public EditPhotoFramePortFragment() {
+        super(EditPhotoFramePortFragment.class.getSimpleName());
+    }
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_EDIT_PHOTO;
+    }
+
+    public void SetEditPhotoFramePortFragmentPrameter (int photoW, int photoH, FrameLayout showphotolayout, ImageView mFrameView){
 		LOG.I(TAG, "SetEditPhotoFramePortFragmentPrameter ");
 		
 		this.mNowPhotoWidth = photoW;
@@ -86,7 +94,9 @@ public class EditPhotoFramePortFragment extends Fragment {
 		
 	}
 
-	@Override
+
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		
@@ -185,6 +195,10 @@ public class EditPhotoFramePortFragment extends Fragment {
 					mShowPhotoLayout.addView(mFrameView);
 				}
 			}
+
+            //tracking
+            Tracking.pushTrack(getActivity(), "select_vertical_frame_#" +
+                    ((FramePictures.length > position) ? FramePictures[position] : position));
 		}		
 	};
 	

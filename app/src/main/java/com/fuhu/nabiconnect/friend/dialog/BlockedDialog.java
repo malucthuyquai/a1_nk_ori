@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 public class BlockedDialog extends Dialog {
 
@@ -16,10 +17,12 @@ public class BlockedDialog extends Dialog {
 	}
 
 	private View.OnClickListener ocl = new View.OnClickListener() {
-
-		@Override
+        @Override
 		public void onClick(View v) {
-			dismiss();
+            dismiss();
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "dialog_unable_to_add_friend_close");
 		}
 	};
 }

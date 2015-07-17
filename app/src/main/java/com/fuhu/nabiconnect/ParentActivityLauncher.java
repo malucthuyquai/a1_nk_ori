@@ -1,17 +1,20 @@
 package com.fuhu.nabiconnect;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.fuhu.nabiconnect.event.ApiBaseActivity;
 import com.fuhu.nabiconnect.log.LOG;
 
-public abstract class ParentActivityLauncher extends Activity{
+public abstract class ParentActivityLauncher extends Tracking.TrackingInfoActivity {
 
 	public static final String TAG = "ParentActivityLauncher";
-	
-	@Override
+
+    public ParentActivityLauncher(String name) {
+        super(name);
+    }
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		

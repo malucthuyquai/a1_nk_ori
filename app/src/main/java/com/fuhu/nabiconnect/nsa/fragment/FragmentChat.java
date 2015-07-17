@@ -28,6 +28,7 @@ import com.fuhu.account.data.Kid;
 import com.fuhu.data.FriendData;
 import com.fuhu.data.conversationData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -74,6 +75,16 @@ public class FragmentChat extends FragmentNSA {
     private Bundle mBundleHistory = new Bundle();
 
     private DatabaseAdapter db;
+
+//    {
+//        FragmentNSA.TRACKING_NAME = TrackingInfo.NSA_CHAT;
+//    }
+
+
+    @Override
+    public String getTrack() {
+        return "chat_home";
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -384,6 +395,12 @@ public class FragmentChat extends FragmentNSA {
             if (mFragmentHistory == null) {
                 mFragmentHistory = new FragmentChatHistory();
             }
+
+            //tracking
+            Tracking.pushTrack(view.getContext(), "view_message_#" + data.userName);
+            passTrackBackOnce();
+            FragmentChatHistory.TRACK_CHAT_NAME = data.userName;
+
             mFragmentHistory.setData(mBundleHistory);
             mActivity.switchFragment(mFragmentHistory, true);
         }
@@ -401,6 +418,10 @@ public class FragmentChat extends FragmentNSA {
                     } else {
                         idx--;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_left");
+
                     break;
                 case R.id.iv_right:
                     if (idx == mImageAdapter.getCount() - 1) {
@@ -408,6 +429,10 @@ public class FragmentChat extends FragmentNSA {
                     } else {
                         idx++;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_right");
+
                     break;
             }
             // this will trigger onItemSelectedListener
@@ -433,6 +458,9 @@ public class FragmentChat extends FragmentNSA {
             mCallback.onKidChanged(mKids.get(position));
             mImageAdapter.notifyDataSetChanged();
             sv_root.setScrollY(y);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), Tracking.H_NSA_NABI_NSA, "select_choose_kid_" + mKids.get(position).getkidName());
         }
 
         @Override

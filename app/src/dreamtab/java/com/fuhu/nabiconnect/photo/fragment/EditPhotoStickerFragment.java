@@ -2,7 +2,6 @@ package com.fuhu.nabiconnect.photo.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -20,6 +19,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.EditPhotoItemAdapter;
 import com.fuhu.nabiconnect.utils.stickerwidget.StickerButtonListener;
@@ -28,7 +28,7 @@ import com.fuhu.nabiconnect.utils.stickerwidget.StickerWidget;
 import java.util.ArrayList;
 
 @SuppressLint("ValidFragment")
-public class EditPhotoStickerFragment extends Fragment {
+public class EditPhotoStickerFragment extends Tracking.TrackingInfoFragment {
 
     public static final String TAG = "EditPhotoStickerFragment";
 
@@ -129,8 +129,17 @@ public class EditPhotoStickerFragment extends Fragment {
 
     private ArrayList<LoadingImageFromResTask> LoadingImageFromResTaskArray = new ArrayList<LoadingImageFromResTask>();
 
+    public EditPhotoStickerFragment() {
+        super(EditPhotoStickerFragment.class.getSimpleName());
+    }
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_EDIT_STICKER;
+    }
+
     @SuppressLint("ValidFragment")
     public EditPhotoStickerFragment(ImageView photoview, FrameLayout showphotolayout) {
+        this();
 
         this.mPhotoView = photoview;
         this.mShowPhotoLayout = showphotolayout;
@@ -225,6 +234,9 @@ public class EditPhotoStickerFragment extends Fragment {
                     widget.hideControl();
 
             }
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "save_sticker");
         }
     };
 
@@ -239,6 +251,9 @@ public class EditPhotoStickerFragment extends Fragment {
                 StickerBitmap = BitmapFactory.decodeResource(getResources(), mStickers[position]);
 
                 addSticker(StickerBitmap);
+
+                //tracking
+                Tracking.pushTrack(parent.getContext(), "select_sticker_" + position);
 
             }
         }
@@ -338,6 +353,9 @@ public class EditPhotoStickerFragment extends Fragment {
             mShowPhotoLayout.removeView(sw);
             mStickerList.remove(sw);
             //LOG.I(TAG, "sw id = " + sw);
+
+            //tracking
+            Tracking.pushTrack(sw.getContext(), "remove_sticker_#" + sw.getIndex());
         }
 
         @Override

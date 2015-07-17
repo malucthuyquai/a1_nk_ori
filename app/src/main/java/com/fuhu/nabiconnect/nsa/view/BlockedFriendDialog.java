@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.fuhu.data.FriendData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,9 @@ public class BlockedFriendDialog extends Dialog {
 	private View.OnClickListener ok_ocl = new View.OnClickListener() {
 		public void onClick(View v) {
 			BlockedFriendDialog.this.dismiss();
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "dialog_blocked_friends_close");
 		}
 	};
 
@@ -65,6 +69,9 @@ public class BlockedFriendDialog extends Dialog {
 		@Override
 		public void onClick(View v) {
 			BlockedFriendDialog.this.dismiss();
+
+            //tracking
+            Tracking.pushTrack(v.getContext(), "dialog_blocked_friends_close");
 		}
 	};
 

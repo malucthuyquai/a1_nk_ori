@@ -29,4 +29,9 @@ public class WallPaperEffect extends Effect{
 		}
 		return m_SubItems;
 	}
+
+    @Override
+    public String getTrack() {
+        return "change_background";
+    }
 }

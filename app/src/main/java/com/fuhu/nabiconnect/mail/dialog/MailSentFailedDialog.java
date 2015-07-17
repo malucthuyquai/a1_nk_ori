@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.dialog.PopupDialog;
 
 import java.util.ArrayList;
@@ -51,6 +52,9 @@ public class MailSentFailedDialog extends PopupDialog {
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(OK_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_mail_sent_failed_try_again");
 				}
 			});
 		}
@@ -61,6 +65,9 @@ public class MailSentFailedDialog extends PopupDialog {
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(CLOSE_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_mail_sent_failed_close");
 				}
 			});
 		}
@@ -71,6 +78,9 @@ public class MailSentFailedDialog extends PopupDialog {
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(X_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_mail_sent_failed_close_x");
 				}
 			});
 		}

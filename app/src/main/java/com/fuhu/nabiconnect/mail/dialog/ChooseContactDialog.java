@@ -9,6 +9,7 @@ import android.widget.TableRow;
 import com.fuhu.data.FriendData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.dialog.PopupDialog;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.mail.widget.MailChooseContactWidget;
@@ -71,6 +72,9 @@ public class ChooseContactDialog extends PopupDialog {
 					
 					// disable the button
 					m_YesButton.setEnabled(false);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_choose_contact_send_message");
 				}
 			});
 		if(m_CancelButton != null)
@@ -80,6 +84,9 @@ public class ChooseContactDialog extends PopupDialog {
 				public void onClick(View v) {
 					cancelWidgetLoadingAvatar();
 					notifyButtonListeners(CANCEL_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_choose_contact_cancel");
 				}
 			});
 		

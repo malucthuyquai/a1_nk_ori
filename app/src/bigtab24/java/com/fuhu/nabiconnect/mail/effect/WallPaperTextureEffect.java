@@ -56,4 +56,9 @@ public class WallPaperTextureEffect extends IMultipleWallPaperEffect {
 
         return m_WallPaperList;
     }
+
+    @Override
+    public String getTrack() {
+        return TrackingInfo.TRACK_PHOTO_WALL_PAPER_TEXTURE_EFFECT;
+    }
 }

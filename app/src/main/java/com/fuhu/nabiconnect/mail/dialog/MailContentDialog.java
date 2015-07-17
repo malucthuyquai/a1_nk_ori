@@ -16,13 +16,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.dialog.PopupDialog;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.utils.LoadAvatarBitmapTask;
 import com.fuhu.nabiconnect.utils.Utils;
 
 public class MailContentDialog extends PopupDialog {
-	
+
 	/*======================================================================
 	 * Constant Fields
 	 *=======================================================================*/
@@ -121,6 +122,9 @@ public class MailContentDialog extends PopupDialog {
 							LOG.V(TAG, "Touch inside the image");
 						} else {
 							dismiss();
+
+                            //tracking
+                            Tracking.pushTrack(v.getContext(), "dialog_mail_content_close");
 						}
 						
 						//dismiss();
@@ -138,7 +142,10 @@ public class MailContentDialog extends PopupDialog {
 			
 			@Override
 			public void onClick(View v) {
-				notifyButtonListeners(BUTTON_ID, TAG, null);		
+				notifyButtonListeners(BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_mail_content_reply_button");
 			}
 		});
 		

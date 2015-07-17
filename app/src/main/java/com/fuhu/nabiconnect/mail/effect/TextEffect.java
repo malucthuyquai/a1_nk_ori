@@ -32,4 +32,9 @@ public class TextEffect extends Effect{
 		}
 		return m_SubItems;
 	}
+
+    @Override
+    public String getTrack() {
+        return "text_tool";
+    }
 }

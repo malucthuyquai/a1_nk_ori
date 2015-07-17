@@ -1,10 +1,10 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.fuhu.data.ReceivedPhotoData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -85,6 +86,10 @@ public class PhotoInBoxFragment extends PhotoBaseFragment implements OnTaskCompl
 
     DatabaseAdapter db;
 
+    @Override
+    public String getTrack() {
+        return "home_feed";
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -398,6 +403,9 @@ public class PhotoInBoxFragment extends PhotoBaseFragment implements OnTaskCompl
         public void onClickPhoto(int position) {
             // TODO Auto-generated method stub
             SwitchToShowPhotoFragment(position);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), "fullscreen_view_" + position);
         }
     };
 
@@ -615,6 +623,10 @@ public class PhotoInBoxFragment extends PhotoBaseFragment implements OnTaskCompl
                     v.setBackgroundResource(R.drawable.photo_x_button_select);
                     previous = v.getId();
                     LOG.I(TAG, "get id = " + v.getId());
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "delete_photo_select_#" + PhotoWidgetArray.get(previous).GetPhotoId());
+
                 } else {
                     if (v.getId() == previous) {  //execute delete photo
 
@@ -641,8 +653,13 @@ public class PhotoInBoxFragment extends PhotoBaseFragment implements OnTaskCompl
 
                         LOG.I(TAG, "get id = " + v.getId());
                     }
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "delete_photo_#" + PhotoWidgetArray.get(previous).GetPhotoId());
                 }
             }
+
+
         }
     };
 

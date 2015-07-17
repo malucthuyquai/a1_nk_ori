@@ -16,7 +16,6 @@
 package com.fuhu.nabiconnect.mail.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +26,12 @@ import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.IOnMainBarIndexChangedListener;
 import com.fuhu.nabiconnect.IOnMainBarItemSelectedListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.widget.MainBarButtonWidget;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.mail.MailActivity;
 
-public class MailMainBarFragment extends Fragment implements IOnMainBarIndexChangedListener {
+public class MailMainBarFragment extends Tracking.TrackingInfoFragment implements IOnMainBarIndexChangedListener {
 
 	public static final String TAG = "MailMainBarFragment";
 	IOnMainBarItemSelectedListener mCallback;
@@ -49,7 +49,16 @@ public class MailMainBarFragment extends Fragment implements IOnMainBarIndexChan
 
 	private MailActivity m_Activity;
 
-	@Override
+    public MailMainBarFragment() {
+        super(MailMainBarFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return null;
+    }
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		m_Activity = (MailActivity) getActivity();

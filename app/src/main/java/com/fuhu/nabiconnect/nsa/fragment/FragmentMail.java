@@ -31,6 +31,7 @@ import com.fuhu.account.data.Kid;
 import com.fuhu.data.InboxesData;
 import com.fuhu.data.OutboxesData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -75,6 +76,16 @@ public class FragmentMail extends FragmentNSA {
     private FragmentMailbox mFragmentMailbox;
 
     private DatabaseAdapter db;
+
+//    {
+//        FragmentNSA.TRACKING_NAME = TrackingInfo.NSA_MAIL;
+//    }
+
+
+    @Override
+    public String getTrack() {
+        return "mail_home";
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -442,6 +453,10 @@ public class FragmentMail extends FragmentNSA {
                 bundle.putString(FragmentNSA.KEY_USER_ID, data.userId);
                 bundle.putString(FragmentNSA.KEY_USER_NAME, data.userName);
                 bundle.putBoolean(FragmentNSA.KEY_BLOCKED, data.blocked);
+
+                //tracking
+                Tracking.pushTrack(view.getContext(), "inbox_view_mail_message_#" + data.userName);
+                Tracking.TrackingInfoFragment.TRACK_SPECIAL = data.userName;
             } else {
                 // currently showing sent mail
                 OutboxesData data = mOutboxAdapter.getItem(position);
@@ -451,7 +466,15 @@ public class FragmentMail extends FragmentNSA {
                 bundle.putString(FragmentNSA.KEY_USER_ID, data.userId);
                 bundle.putString(FragmentNSA.KEY_USER_NAME, data.userName);
                 bundle.putBoolean(FragmentNSA.KEY_BLOCKED, data.blocked);
+
+                //tracking
+                Tracking.pushTrack(view.getContext(), "sent_view_mail_message_#" + data.userName);
+                Tracking.TrackingInfoFragment.TRACK_SPECIAL = data.userName;
             }
+
+            //tracking
+            passTrackBackOnce();
+
             mFragmentMailbox.setData(bundle);
             mActivity.showMailbox(mFragmentMailbox, true);
         }
@@ -469,6 +492,10 @@ public class FragmentMail extends FragmentNSA {
                     } else {
                         idx--;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_left");
+
                     break;
                 case R.id.iv_right:
                     if (idx == mImageAdapter.getCount() - 1) {
@@ -476,6 +503,10 @@ public class FragmentMail extends FragmentNSA {
                     } else {
                         idx++;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_right");
+
                     break;
             }
             mGlKids.setSelection(idx);
@@ -497,9 +528,17 @@ public class FragmentMail extends FragmentNSA {
             switch (v.getId()) {
                 case R.id.iv_inbox:
                     mListView.setAdapter(mInboxAdapter);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "inbox_mail");
+
                     break;
                 case R.id.iv_outbox:
                     mListView.setAdapter(mOutboxAdapter);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "sent_mail");
+
                     break;
             }
             mCurrentTab.setSelected(false);
@@ -527,6 +566,9 @@ public class FragmentMail extends FragmentNSA {
             mCallback.onKidChanged(mKids.get(position));
             mImageAdapter.notifyDataSetChanged();
             sv_root.setScrollY(y);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), Tracking.H_NSA_NABI_NSA, "select_choose_kid_" + mKids.get(position).getkidName());
         }
 
         @Override

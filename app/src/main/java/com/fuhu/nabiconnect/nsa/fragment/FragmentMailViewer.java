@@ -1,6 +1,5 @@
 package com.fuhu.nabiconnect.nsa.fragment;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -20,10 +19,11 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxStatus;
 import com.androidquery.callback.BitmapAjaxCallback;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.nsa.util.NSAUtil;
 import com.fuhu.nabiconnect.utils.DatabaseAdapter;
 
-public class FragmentMailViewer extends Fragment {
+public class FragmentMailViewer extends Tracking.TrackingInfoFragment {
 
 	private final String TAG = FragmentMailViewer.class.getSimpleName();
 
@@ -35,7 +35,16 @@ public class FragmentMailViewer extends Fragment {
 
 	private DatabaseAdapter db;
 
-	@Override
+    public FragmentMailViewer() {
+        super(FragmentMailViewer.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return null;
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.nsa_fragment_mail_viewer, null);
 	}
@@ -44,7 +53,8 @@ public class FragmentMailViewer extends Fragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		aq = new AQuery(view);
-		iv_content = (ImageView) view;
+//		iv_content = (ImageView) view;
+        iv_content = (ImageView) view.findViewById(R.id.nsa_f_mail_viewer_image); //jack@150707 fixed for tracking modify
 		iv_content.setOnTouchListener(otl);
 	}
 
@@ -72,6 +82,9 @@ public class FragmentMailViewer extends Fragment {
 					;
 				} else {
 					getActivity().onBackPressed();
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_mail_content_close");
 				}
 			}
 			return true;

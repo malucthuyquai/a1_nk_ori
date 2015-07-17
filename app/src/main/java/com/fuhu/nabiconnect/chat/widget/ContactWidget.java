@@ -19,6 +19,9 @@ import com.fuhu.nabiconnect.utils.Utils;
 
 import java.util.ArrayList;
 
+/**
+ * This class is deprecated but still have some class refer to static member and inner interface.
+ */
 public class ContactWidget extends RelativeLayout /*
 												 * implements
 												 * IFriendBeanUpdateListner
@@ -85,6 +88,8 @@ public class ContactWidget extends RelativeLayout /*
 					notifyCallbacks(m_FriendData, m_ConversationData);
 					// m_Callback.OnContactClicked(m_FriendData,
 					// m_ConversationData);
+
+
 					return true;
 				}
 				return false;

@@ -25,6 +25,7 @@ import com.fuhu.account.data.Kid;
 import com.fuhu.data.ReceivedPhotoData;
 import com.fuhu.data.UserData;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.IApiEventListener;
 import com.fuhu.nabiconnect.log.LOG;
@@ -85,6 +86,16 @@ public class FragmentPhoto extends FragmentNSA {
     private DatabaseAdapter db;
 
     private ColorMatrixColorFilter mBlackAndWhiteFilter;
+
+//    {
+//        FragmentNSA.TRACKING_NAME = TrackingInfo.NSA_PHOTO;
+//    }
+
+
+    @Override
+    public String getTrack() {
+        return "photo_home";
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -252,10 +263,16 @@ public class FragmentPhoto extends FragmentNSA {
                         mCallback.removeReceivedPhoto(data.id, mHandler);
                     }
                 }
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "delete_photos_#" + data.id);
             } else {
                 // not yet selected, just mark item as delete pending
                 v.setSelected(true);
                 mDeleteFlag.add(data.id);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "select_delete_photos_#" + data.id);
             }
         }
     };
@@ -404,6 +421,10 @@ public class FragmentPhoto extends FragmentNSA {
                     } else {
                         idx--;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_left");
+
                     break;
                 case R.id.iv_right:
                     if (idx == mImageAdapter.getCount() - 1) {
@@ -411,6 +432,10 @@ public class FragmentPhoto extends FragmentNSA {
                     } else {
                         idx++;
                     }
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), Tracking.H_NSA_NABI_NSA, "choose_kid_right");
+
                     break;
             }
             mGlKids.setSelection(idx);
@@ -449,6 +474,9 @@ public class FragmentPhoto extends FragmentNSA {
             mImageAdapter.notifyDataSetChanged();
             mLVAdapter.notifyDataSetChanged();
             sv_root.setScrollY(y);
+
+            //tracking
+            Tracking.pushTrack(getActivity(), Tracking.H_NSA_NABI_NSA, "select_choose_kid_" + mKids.get(position).getkidName());
         }
 
         @Override

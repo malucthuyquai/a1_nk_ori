@@ -21,4 +21,9 @@ public class CameraEffect extends Effect{
 	public ArrayList<Effect> getSubItems() {
 		return null;
 	}
+
+    @Override
+    public String getTrack() {
+        return "camera";
+    }
 }

@@ -2,7 +2,6 @@ package com.fuhu.nabiconnect.photo.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -24,13 +23,14 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.EditPhotoItemAdapter;
 
 import java.util.ArrayList;
 
 @SuppressLint("ValidFragment")
-public class EditPhotoFrameLandFragment extends Fragment {
+public class EditPhotoFrameLandFragment extends Tracking.TrackingInfoFragment {
 
     public static final String TAG = "EditPhotoFrameLandFragment";
     private Activity mAct;
@@ -79,6 +79,15 @@ public class EditPhotoFrameLandFragment extends Fragment {
     private EditPhotoItemAdapter FrameAdapter;
 
     RelativeLayout.LayoutParams rlp;
+
+    public EditPhotoFrameLandFragment() {
+        super(EditPhotoFrameLandFragment.class.getSimpleName());
+    }
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_EDIT_PHOTO;
+    }
+
 
     public void SetEditPhotoFrameLandFragment(int photoW, int photoH, FrameLayout showphotolayout, ImageView mFrameView) {
 
@@ -193,6 +202,10 @@ public class EditPhotoFrameLandFragment extends Fragment {
                     mShowPhotoLayout.addView(mFrameView);
                 }
             }
+
+            //tracking
+            Tracking.pushTrack(getActivity(), "select_horizontal_frame_#" +
+                    ((FramePictures.length > position) ? FramePictures[position] : position));
 
         }
 

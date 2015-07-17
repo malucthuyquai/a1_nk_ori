@@ -1,9 +1,9 @@
 package com.fuhu.nabiconnect.friend;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -45,7 +45,11 @@ public class FriendActivity extends ApiBaseActivity implements IButtonClickListe
 
 	private View mLeftBar;
 
-	@Override
+    public FriendActivity() {
+        super("nabiFriend");
+    }
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.friend_activity_main);
@@ -141,7 +145,7 @@ public class FriendActivity extends ApiBaseActivity implements IButtonClickListe
 	}
 
 	private void switchFragment(int fragmentId) {
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 		Fragment newFragment = null;
 		switch (fragmentId) {
 		case FRAGMENT_ID_FRIEND_LIST:
@@ -211,7 +215,7 @@ public class FriendActivity extends ApiBaseActivity implements IButtonClickListe
 	public void loginUserSuccess(UserData data) {
 		super.loginUserSuccess(data);
 		m_IsInSetup = false;
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.left_fragment_container, m_MainBarFrag, "leftfragment");
 		ft.replace(R.id.right_fragment_container, m_FriendMainFrag, "rightfragment");
@@ -231,7 +235,7 @@ public class FriendActivity extends ApiBaseActivity implements IButtonClickListe
 	public void accountNeedsCreate(String data) {
 		super.accountNeedsCreate(data);
 		m_IsInSetup = true;
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.replace(R.id.left_fragment_container, m_MainBarFrag, "leftfragment");
 		ft.replace(R.id.right_fragment_container, m_SetupFrag, "rightfragment");

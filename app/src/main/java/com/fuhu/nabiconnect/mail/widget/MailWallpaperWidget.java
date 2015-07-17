@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 
 import java.util.ArrayList;
 
@@ -71,7 +72,9 @@ public class MailWallpaperWidget extends RelativeLayout{
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(BUTTON_ID_IMAGE, TAG, new Object[]{m_TopLargeImageResId});
-					
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "select_background_" + m_TopLargeImageResId);
 				}
 			});
 		}
@@ -83,7 +86,9 @@ public class MailWallpaperWidget extends RelativeLayout{
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(BUTTON_ID_COLOR, TAG, new Object[]{m_TopColorId});
-					
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "select_background_" + m_BottomColorId);
 				}
 			});
 		}
@@ -102,7 +107,9 @@ public class MailWallpaperWidget extends RelativeLayout{
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(BUTTON_ID_IMAGE, TAG, new Object[]{m_BottomLargeImageResId});
-					
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "select_background_#" + m_TopLargeImageResId);
 				}
 			});
 		}
@@ -113,8 +120,10 @@ public class MailWallpaperWidget extends RelativeLayout{
 				
 				@Override
 				public void onClick(View v) {
-					notifyButtonListeners(BUTTON_ID_COLOR, TAG, new Object[]{m_BottomColorId});
-					
+					notifyButtonListeners(BUTTON_ID_COLOR, TAG, new Object[]{m_TopColorId});
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "select_background_#" + m_BottomColorId);
 				}
 			});
 		}

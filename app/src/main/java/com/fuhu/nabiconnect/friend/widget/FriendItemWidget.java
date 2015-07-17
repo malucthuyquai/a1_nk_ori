@@ -23,6 +23,11 @@ import com.fuhu.nabiconnect.utils.Utils;
 
 import java.util.ArrayList;
 
+/**
+ * This class's click listener no need to set tracking cause listener will be reset by another
+ * class of FriendMainFragment.
+ *
+ */
 public class FriendItemWidget extends RelativeLayout{
 	
 	/*======================================================================
@@ -137,8 +142,8 @@ public class FriendItemWidget extends RelativeLayout{
 		}
 		
 		m_AcceptButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
+
+            @Override
 			public void onClick(View arg0) {
 				notifyButtonListeners(ACCEPT_BUTTON_ID, TAG, new Object[]{m_FriendRequestData});
 			}

@@ -16,7 +16,6 @@
 package com.fuhu.nabiconnect.friend.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,6 +40,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.fuhu.data.UserData;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.event.ApiEvent;
 import com.fuhu.nabiconnect.event.Event;
 import com.fuhu.nabiconnect.event.IApiEventListener;
@@ -61,7 +61,7 @@ import com.fuhu.ndnslibsoutstructs.uploadUserAvatarImage_outObj;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
-public class EditAvatarFragment extends Fragment implements IButtonClickListener {
+public class EditAvatarFragment extends Tracking.TrackingInfoFragment implements IButtonClickListener {
 
 	public static final String TAG = "EditAvatarFragment";
 	public static final int CANCEL_BUTTON_ID = 1001;
@@ -100,7 +100,16 @@ public class EditAvatarFragment extends Fragment implements IButtonClickListener
 	private DatabaseAdapter m_DatabaseAdapter;
 	private Bitmap m_AvatarBitmap;
 
-	@Override
+    public EditAvatarFragment() {
+        super(EditAvatarFragment.class.getSimpleName());
+    }
+
+    @Override
+    public String getTrack() {
+        return "edit_character";
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.friend_edit_avatar_view, container, false);
 	}
@@ -186,16 +195,17 @@ public class EditAvatarFragment extends Fragment implements IButtonClickListener
 			widget.addButtonListener(m_AvatarButtonSelectedListener);
 
 		m_CancelButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
+            @Override
 			public void onClick(View v) {
 				notifyButtonListeners(CANCEL_BUTTON_ID, TAG, null);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "exit_edit_mode");
 			}
 		});
 
 		m_ConfirmButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
+            @Override
 			public void onClick(View v) {
 				if (!m_Activity.getNetworkManager().checkWifiProcess()) {
 					return;
@@ -233,14 +243,19 @@ public class EditAvatarFragment extends Fragment implements IButtonClickListener
 						startActivityForResult(intent, ASK_MOM_REQUEST_CODE);
 					}
 				}
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "save_setting");
 			}
 		});
 
 		m_NameEditButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
+            @Override
 			public void onClick(View v) {
 				updateEditingName();
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "edit_name");
 			}
 		});
 		m_NameEditText.setOnEditorActionListener(new OnEditorActionListener() {
@@ -354,6 +369,33 @@ public class EditAvatarFragment extends Fragment implements IButtonClickListener
 			int categoryId = (Integer) args[0];
 			updateItemTable(categoryId);
 			onAvatarButtonSelected(categoryId);
+
+            //tracking
+            String track = null;
+            /**
+             * action corresponding to category id
+             */
+            switch (categoryId) {
+                case AssetItemManager.CATEGORY_ID_AVATAR_ICON:
+                    track = "edit_character";
+                    break;
+                case AssetItemManager.CATEGORY_ID_AVATAR_COLOR:
+                    track = "edit_character_color";
+                    break;
+                case AssetItemManager.CATEGORY_ID_AVATAR_CLOTHES:
+                    track = "add_clothing";
+                    break;
+                case AssetItemManager.CATEGORY_ID_AVATAR_ACCESSORIES:
+                    track = "add_accessoriess";
+                    break;
+                case AssetItemManager.CATEGORY_ID_AVATAR_BACKGROUND:
+                    track = "change_background";
+                    break;
+                default:
+                    track = "edit_character_bar";
+                    break;
+            }
+            Tracking.pushTrack(getActivity(), track);
 		}
 	};
 

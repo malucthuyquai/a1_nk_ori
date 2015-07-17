@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.friend.dialog.PopupDialog;
 
 import java.util.ArrayList;
@@ -49,6 +50,9 @@ public class EraseAllDialog extends PopupDialog {
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(YES_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_erase_all_erase_all");
 				}
 			});
 		if(m_CancelButton != null)
@@ -57,6 +61,9 @@ public class EraseAllDialog extends PopupDialog {
 				@Override
 				public void onClick(View v) {
 					notifyButtonListeners(CANCEL_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_erase_all_close");
 				}
 			});
 

@@ -46,8 +46,7 @@ public class AvatarBarButtonWidget extends RelativeLayout{
 
 		
 		m_BackgroundContainer.setOnTouchListener(new View.OnTouchListener() {
-			
-			public boolean onTouch(View view, MotionEvent mv) {			
+            public boolean onTouch(View view, MotionEvent mv) {
 				if(mv.getX() < 0 || mv.getX() > view.getWidth() || mv.getY() < 0 || mv.getY() > view.getHeight())
 				{
 					//m_Background.setBackgroundResource(m_BackgroundId);
@@ -62,7 +61,8 @@ public class AvatarBarButtonWidget extends RelativeLayout{
 						//m_Background.setBackgroundResource(m_BackgroundId);
 						notifyButtonListeners(BUTTON_ID, TAG, new Object[]{m_Type});
 						return true;
-				}			
+				}
+
 				return false;
 			}
 		});

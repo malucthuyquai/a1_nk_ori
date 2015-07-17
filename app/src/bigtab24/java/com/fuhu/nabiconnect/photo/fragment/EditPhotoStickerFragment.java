@@ -2,7 +2,6 @@ package com.fuhu.nabiconnect.photo.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -20,15 +19,17 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.EditPhotoItemAdapter;
 import com.fuhu.nabiconnect.utils.stickerwidget.StickerButtonListener;
 import com.fuhu.nabiconnect.utils.stickerwidget.StickerWidget;
 
+import java.lang.String;
 import java.util.ArrayList;
 
 @SuppressLint("ValidFragment")
-public class EditPhotoStickerFragment extends Fragment {
+public class EditPhotoStickerFragment extends Tracking.TrackingInfoFragment {
 
     public static final String TAG = "EditPhotoStickerFragment";
 
@@ -129,8 +130,18 @@ public class EditPhotoStickerFragment extends Fragment {
 
     private ArrayList<LoadingImageFromResTask> LoadingImageFromResTaskArray = new ArrayList<LoadingImageFromResTask>();
 
+    public EditPhotoStickerFragment() {
+        super(EditPhotoStickerFragment.class.getSimpleName());
+    }
+    @Override
+    public String getTrack() {
+        return Tracking.TRACK_PHOTO_EDIT_STICKER;
+    }
+
     @SuppressLint("ValidFragment")
     public EditPhotoStickerFragment(ImageView photoview, FrameLayout showphotolayout) {
+        //tracking
+        this();
 
         this.mPhotoView = photoview;
         this.mShowPhotoLayout = showphotolayout;

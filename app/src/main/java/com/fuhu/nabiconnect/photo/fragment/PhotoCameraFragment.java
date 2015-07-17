@@ -29,6 +29,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.object.CircularSeekBar;
 import com.fuhu.nabiconnect.photo.object.CircularSeekBar.OnCircularSeekBarChangeListener;
@@ -74,6 +75,10 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
 
     private ArrayList<String> PhotoPathList = new ArrayList<String>();
 
+    @Override
+    public String getTrack() {
+        return "take_photo";
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -402,6 +407,10 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
 
                     mShutter.setEnabled(false);
                     mGalleryButton.setEnabled(false);
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "take_photo");
+
                     break;
 
                 case R.id.SwitchCamera:
@@ -422,6 +431,10 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                             LOG.W(TAG, "CAMERA_FACING_BACK !");
                         }
                     }
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "switch_camera");
+
                     break;
                 case R.id.CameraGotoGalleryButton:
 
@@ -460,6 +473,10 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                         }
                     }
 
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "add_photo");
+                    passTrackBackOnce();
+
                     break;
                 case R.id.ZoomIn_Plus:
 
@@ -492,6 +509,9 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                         }
                     }
 
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "zoom_in");
+
                     break;
                 case R.id.ZoomOut_Minus:
 
@@ -519,6 +539,10 @@ public class PhotoCameraFragment extends PhotoBaseFragment implements TextureVie
                             mCamera.setParameters(CameraParameters);
                         }
                     }
+
+                    //tracking
+                    Tracking.pushTrack(getActivity(), "zoom_out");
+
                     break;
             }
         }

@@ -1,7 +1,6 @@
 package com.fuhu.nabiconnect.photo.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -14,11 +13,12 @@ import com.fuhu.nabiconnect.R;
 import com.fuhu.nabiconnect.log.LOG;
 import com.fuhu.nabiconnect.photo.adapter.ViewPagerAdapter;
 import com.fuhu.nabiconnect.photo.object.ImageDownLoadManager;
+import com.fuhu.tracking.TrackingFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ShowPhotoFragment extends Fragment {
+public class ShowPhotoFragment extends TrackingFragment {
 	public static final String TAG = "ShowPhotoFragment";
 
 	private Activity mAct;
@@ -35,8 +35,12 @@ public class ShowPhotoFragment extends Fragment {
 	private int position;
 	
 	private ImageDownLoadManager mImageDM = null;
-	
-	@Override
+
+    public ShowPhotoFragment() {
+        super(ShowPhotoFragment.class.getSimpleName());
+    }
+
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

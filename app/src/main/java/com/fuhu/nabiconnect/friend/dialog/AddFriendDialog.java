@@ -18,6 +18,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.log.LOG;
 
 import java.util.ArrayList;
@@ -162,24 +163,35 @@ public class AddFriendDialog extends PopupDialog {
 				// show keyboard
 				InputMethodManager imm = (InputMethodManager) m_Context.getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+                //tracking
+                Tracking.pushTrack(v.getContext(), "dialog_add_friend_enter_code");
 			}
 		});
 
 		if (m_YesButton != null)
 			m_YesButton.setOnClickListener(new View.OnClickListener() {
 
-				@Override
+                @Override
 				public void onClick(View v) {
 
 					commitFriendCode();
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_add_friend_submit_#" + m_FriendCodeEditText.getText().toString());
+
 				}
 			});
 		if (m_CancelButton != null)
 			m_CancelButton.setOnClickListener(new View.OnClickListener() {
 
-				@Override
+                @Override
 				public void onClick(View v) {
+
 					notifyButtonListeners(CANCEL_BUTTON_ID, TAG, null);
+
+                    //tracking
+                    Tracking.pushTrack(v.getContext(), "dialog_add_friend_close");
 				}
 			});
 

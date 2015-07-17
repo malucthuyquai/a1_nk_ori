@@ -40,4 +40,9 @@ public class WallPaperSceneEffect extends IMultipleWallPaperEffect{
 		
 		return m_WallPaperList;
 	}
+
+    @Override
+    public String getTrack() {
+        return "change_background_scene";
+    }
 }

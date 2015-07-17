@@ -35,4 +35,9 @@ public class TextEffectBlueDark extends Effect implements ITextEffect{
 		// TODO Auto-generated method stub
 		return 5;
 	}
+
+    @Override
+    public String getTrack() {
+        return "text_tool_dark_blue";
+    }
 }

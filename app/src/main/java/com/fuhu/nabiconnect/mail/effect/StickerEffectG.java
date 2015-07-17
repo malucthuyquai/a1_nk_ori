@@ -42,4 +42,9 @@ public class StickerEffectG extends IStickerEffect{
 	
 		return m_StickerList;
 	}
+
+    @Override
+    public String getTrack() {
+        return "sticker_g";
+    }
 }

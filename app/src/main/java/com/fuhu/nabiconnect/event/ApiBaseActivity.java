@@ -12,6 +12,7 @@ import com.fuhu.data.UserData;
 import com.fuhu.nabiconnect.ConnectActivity;
 import com.fuhu.nabiconnect.IButtonClickListener;
 import com.fuhu.nabiconnect.R;
+import com.fuhu.nabiconnect.Tracking;
 import com.fuhu.nabiconnect.chat.ChatActivity;
 import com.fuhu.nabiconnect.friend.FriendActivity;
 import com.fuhu.nabiconnect.friend.avatar.FriendBean;
@@ -75,7 +76,7 @@ import com.fuhu.util.NabiFunction;
 
 import java.util.ArrayList;
 
-public class ApiBaseActivity extends Activity {
+public class ApiBaseActivity extends Tracking.TrackingInfoActivity {
 
 	public static final String TAG = "ApiBaseActivity";
 	public static final String KEY_IS_MOMMY_MODE = "mommyMode";
@@ -143,7 +144,37 @@ public class ApiBaseActivity extends Activity {
 	static final public String PREF_NAME_OF_MESSAGE_CENTER_CACHE = "preference_for_message_center";
 	private SharedPreferences m_Preference;
 
-	@Override
+    public ApiBaseActivity(String name) {
+        super(name);
+    }
+
+//    private void setTrackInfo(Intent intent) {
+//        String from = null;
+//        Bundle bundle = null;
+//
+//        do {
+//            if(intent == null) break;
+//
+//            bundle = intent.getExtras();
+//            if(bundle == null) break;
+//
+//            from = bundle.getString(TrackingInfo.TAG_INTNET_FROM);
+//            TrackingInfo.INTENT_FROM = from;
+//
+//            //jack@150703
+//            TrackingInfo.trackNextSync(from);
+//            TrackingInfo.trackNextSync(getPageName());
+//
+//            Log.e(TAG, "intent from: " + from);
+//
+//        } while(false);
+//
+//        TrackingInfo.NOW_ACTIVITY = this;
+//    }
+
+
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
